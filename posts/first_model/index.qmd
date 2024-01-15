@@ -1,0 +1,13 @@
+---
+title: "Mon premier modèle d'apprentissage automatique"
+author: "Jason Suárez"
+date: "2024-01-12"
+categories: [AI, Machine Learning, Python, Fastai]
+---
+
+# Mon premier modele d'apprentissage automatique
+
+![Cristiano Ronaldo vs Lionel Messi](goat.jpg)
+## Introduction
+
+Dans ce post, je vais vous montrer comment créer un modèle d'apprentissage automatique en utilisant la bibliothèque Fastai. Nous allons créer un modèle qui peut prédire si une image est Cristiano Ronaldo ou Lionel Messi.
