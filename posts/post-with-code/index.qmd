@@ -7,3 +7,16 @@ image: "image.jpg"
 ---
 
 This is a post with executable code.
+
+```{python}
+# | label: fig-polar
+# | fig-cap: "A line plot on a polar axis"
+
+
+```
+
+```{python}
+import sys
+print(sys.executable)
+```
+

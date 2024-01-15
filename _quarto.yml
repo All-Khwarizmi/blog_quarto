@@ -2,14 +2,14 @@ project:
   type: website
 
 website:
-  title: "blog_quarto"
+  title: "Education 2.0"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/All-Khwarizmi
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jason-suarez/
 format:
   html:
     theme: darkly
