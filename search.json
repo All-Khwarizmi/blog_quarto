@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "A propos",
+    "objectID": "posts/first_model/index.html",
+    "href": "posts/first_model/index.html",
+    "title": "Mon premier modèle d’apprentissage automatique",
     "section": "",
-    "text": "Bienvenue sur Education 2.0, un espace dédié à l’exploration de l’éducation du futur à la croisée des neurosciences cognitives, de la programmation, et de l’intelligence artificielle. Je suis [Votre Nom], le fondateur de ce blog, et je suis enchanté de vous accueillir dans notre communauté d’apprentissage et d’innovation.\nChez Education 2.0, nous croyons en une vision d’apprentissage qui transcende les frontières traditionnelles. Notre mission est d’explorer les horizons de l’éducation, de repousser les limites de l’apprentissage, et d’inspirer une nouvelle génération d’apprenants et d’éducateurs.\nMon propre parcours éducatif est le moteur de ce blog. Originaire de la République Dominicaine, j’ai fait de Paris ma maison. En tant que professeur d’espagnol, j’ai eu le privilège d’enseigner et de voir les lumières de la compréhension s’allumer dans les yeux de mes élèves. Mais j’ai toujours été un éternel apprenant, avide de découvrir comment fonctionne le cerveau humain et comment l’IA peut améliorer nos vies.\nEducation 2.0 est né de cette passion pour l’éducation et l’innovation. Ici, nous explorons un éventail d’idées, des neurosciences cognitives aux projets d’IA en passant par les défis de l’apprentissage moderne. Nous partageons notre propre voyage à travers le développement de projets, des initiatives conçues pour repousser les frontières de l’apprentissage personnalisé et de l’optimisation éducative."
+    "text": "Mon premier modele d’apprentissage automatique\n ## Introduction\nDans ce post, je vais vous montrer comment créer un modèle d’apprentissage automatique en utilisant la bibliothèque Fastai. Nous allons créer un modèle qui peut prédire si une image est Cristiano Ronaldo ou Lionel Messi."
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -14,17 +14,24 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "A propos",
+    "section": "",
+    "text": "Bienvenue sur Education 2.0, un espace dédié à l’exploration de l’éducation du futur à la croisée des neurosciences cognitives, de la programmation, et de l’intelligence artificielle. Je suis [Votre Nom], le fondateur de ce blog, et je suis enchanté de vous accueillir dans notre communauté d’apprentissage et d’innovation.\nChez Education 2.0, nous croyons en une vision d’apprentissage qui transcende les frontières traditionnelles. Notre mission est d’explorer les horizons de l’éducation, de repousser les limites de l’apprentissage, et d’inspirer une nouvelle génération d’apprenants et d’éducateurs.\nMon propre parcours éducatif est le moteur de ce blog. Originaire de la République Dominicaine, j’ai fait de Paris ma maison. En tant que professeur d’espagnol, j’ai eu le privilège d’enseigner et de voir les lumières de la compréhension s’allumer dans les yeux de mes élèves. Mais j’ai toujours été un éternel apprenant, avide de découvrir comment fonctionne le cerveau humain et comment l’IA peut améliorer nos vies.\nEducation 2.0 est né de cette passion pour l’éducation et l’innovation. Ici, nous explorons un éventail d’idées, des neurosciences cognitives aux projets d’IA en passant par les défis de l’apprentissage moderne. Nous partageons notre propre voyage à travers le développement de projets, des initiatives conçues pour repousser les frontières de l’apprentissage personnalisé et de l’optimisation éducative."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Education 2.0",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJan 15, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\n  \n\n\n\n\nMon premier modèle d’apprentissage automatique\n\n\n\n\n\n\n\nAI\n\n\nMachine Learning\n\n\nPython\n\n\nFastai\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2024\n\n\nJason Suárez\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
     "section": "",
     "text": "This is a post with executable code.\n\nimport sys\nprint(sys.executable)\n\n/usr/local/bin/python3"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "blog_quarto",
-    "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 15, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 12, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,1 +1,1 @@
-Sitemap: https://All-Khwarizmi.github.io/blog_quarto/sitemap.xml
+Sitemap: https://github.com/All-Khwarizmi/blog_quarto/sitemap.xml

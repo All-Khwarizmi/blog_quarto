@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://All-Khwarizmi.github.io/blog_quarto/about.html</loc>
-    <lastmod>2024-01-15T21:14:08.660Z</lastmod>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/first_model/index.html</loc>
+    <lastmod>2024-01-15T21:55:20.445Z</lastmod>
   </url>
   <url>
-    <loc>https://All-Khwarizmi.github.io/blog_quarto/posts/welcome/index.html</loc>
-    <lastmod>2024-01-15T20:55:05.604Z</lastmod>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/welcome/index.html</loc>
+    <lastmod>2024-01-15T21:55:19.893Z</lastmod>
   </url>
   <url>
-    <loc>https://All-Khwarizmi.github.io/blog_quarto/posts/post-with-code/index.html</loc>
-    <lastmod>2024-01-15T21:26:51.307Z</lastmod>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/about.html</loc>
+    <lastmod>2024-01-15T21:55:18.781Z</lastmod>
   </url>
   <url>
-    <loc>https://All-Khwarizmi.github.io/blog_quarto/index.html</loc>
-    <lastmod>2024-01-15T20:55:05.601Z</lastmod>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/index.html</loc>
+    <lastmod>2024-01-15T21:55:19.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/post-with-code/index.html</loc>
+    <lastmod>2024-01-15T21:55:20.201Z</lastmod>
   </url>
 </urlset>
