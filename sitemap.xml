@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/first_model/index.html</loc>
-    <lastmod>2024-01-15T21:55:20.445Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/welcome/index.html</loc>
-    <lastmod>2024-01-15T21:55:19.893Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/All-Khwarizmi/blog_quarto/about.html</loc>
-    <lastmod>2024-01-15T21:55:18.781Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/All-Khwarizmi/blog_quarto/index.html</loc>
-    <lastmod>2024-01-15T21:55:19.645Z</lastmod>
+    <lastmod>2024-01-15T22:22:50.073Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/post-with-code/index.html</loc>
-    <lastmod>2024-01-15T21:55:20.201Z</lastmod>
+    <lastmod>2024-01-15T22:22:49.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/index.html</loc>
+    <lastmod>2024-01-15T22:22:48.873Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/about.html</loc>
+    <lastmod>2024-01-15T22:22:47.941Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/welcome/index.html</loc>
+    <lastmod>2024-01-15T22:22:49.121Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/All-Khwarizmi/blog_quarto/posts/first_notebook_model/goat_detector_training.html</loc>
+    <lastmod>2024-01-15T22:22:49.829Z</lastmod>
   </url>
 </urlset>
