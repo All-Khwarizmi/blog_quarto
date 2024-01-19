@@ -1,0 +1,66 @@
+---
+title: "L'Education 2.0"
+author: "Jason Suárez"
+date: "2024-01-19"
+categories: [education, STI, LLM]
+image: "image.png"
+---
+# Education 2.0
+
+Quiconque essaye d'apprendre une langue, a pu se rendre compte que malgré la multitude d'outils disponibles, il n'existe pas de méthode intégrale (ce terme est utilisé dans le sens de "qui contient tout ce qui est nécessaire") pour apprendre une langue, surtout pour un public adolescent. En effet, les méthodes d'apprentissage des langues sont souvent trop scolaires et ne permettent pas de développer les compétences nécessaires pour communiquer dans la langue cible. De plus, les outils disponibles sur internet sont souvent trop éparpillés, ne permettant pas de suivre une progression logique, et/ou incomplètes, c'est-à-dire qu'elles ne permettent de travailler que certaines des compétences linguistiques. 
+
+## La méthode intégrale
+### Qu'est-ce que la méthode intégrale ?
+La méthode intégrale est une méthode d'apprentissage des langues qui a été développée par John and Evelyn White en 1963. Elle est basée sur le principe que l'apprentissage d'une langue doit se faire de manière naturelle, comme l'apprentissage de la langue maternelle. Elle se base sur 4 compétences linguistiques : la compréhension orale, la compréhension écrite, l'expression orale et l'expression écrite.
+
+### Mon approche
+En tant que professeur de langue mon approche est de développer les 4 compétences linguistiques de manière équilibrée, intuitive et amusante. Cependant, ma pratique enseignante m'a montré que les élèves ont souvent des difficultés d'ordre méthodologique. En effet, ils ne savent pas comment travailler efficacement et comment utiliser les outils à leur disposition. 
+
+Dès lors, il devient primordial de leur apprendre à apprendre. C'est pourquoi, j'ai décidé de développer une méthode intégrale qui permettra aux élèves de travailler de manière autonome et efficace. Cette méthode est basée sur 3 piliers : 
+> la motivation, la méthodologie et la mémorisation.
+
+Se pose alors la question de savoir comment développer ces 3 piliers. Pour répondre à cette question, j'ai dû explorer les sciences cognitives et les neurosciences afin de comprendre comment fonctionne le cerveau humain, l'informatique pour être capable de créer les outils nécessaires, et l'IA afin de créer un "double" du professeur à même de guider l'élève dans son apprentissage.
+
+## Architecture conceptuelle
+Il s'agit-là d'un projet titanesque. J'ai longtemps alterné entre différents projets cherchant à développer chacun des piliers. Cependant, j'ai fini par me rendre compte que j'avais besoin d'une architecture conceptuelle qui me permettrait de développer les 3 piliers de manière simultanée. 
+
+### Les forces en présence
+#### Les LLM (Large Language Model)
+J'ai d'abord été bleuffé par ChatGPT. 
+
+> ChatGPT est un modèle de génération de texte basé sur l'architecture Transformer. Ce modèle est capable de générer du texte à partir d'un texte d'entrée. Il est capable de générer des textes cohérents et pertinents. 
+
+J'ai alors eu l'idée de créer un chatbot capable de guider l'élève dans son apprentissage. Cependant, je me suis vite rendu compte qu'il allait falloir orchestrer plusieurs LLM ou **agents** pour pouvoir couvrir l'ensemble des compétences linguistiques et methodologiques. 
+
+#### Les STI (Systèmes Tutoriels Intelligents)
+
+> Les Systèmes Tutoriels Intelligents (STI) représentent une avancée majeure dans le domaine de l'éducation assistée par la technologie. Ces systèmes, qui allient les principes de l'intelligence artificielle à la pédagogie, sont conçus pour offrir une expérience d'apprentissage personnalisée, s'adaptant au rythme et aux besoins spécifiques de chaque apprenant.
+
+Les STI sont des programmes informatiques qui utilisent des techniques d'IA pour simuler l'interaction personnalisée entre un enseignant et un élève. Dans une vision traditionnelle, un STI se compose de quatre modules principaux :
+- le modèle du domaine, qui contient les connaissances à enseigner
+- le modèle pédagogique, qui définit la manière d'enseigner
+- le modèle de l'apprenant, qui s'adapte aux caractéristiques individuelles de l'élève
+- le modèle de l'interface, qui facilite l'interaction entre l'élève et le système.
+
+Ces composants travaillent de concert pour créer un environnement d'apprentissage interactif et adaptatif, permettant à l'élève de progresser à son propre rythme et selon son style d'apprentissage unique.
+
+#### STI pour l'Apprentissage des Langues
+L'application des STI à l'apprentissage des langues ouvre des horizons passionnants. Dans un STI dédié à l'apprentissage d'une langue, le modèle du domaine intégrerait non seulement la grammaire et le vocabulaire, mais aussi des éléments culturels et contextuels essentiels à la maîtrise de la langue. Le modèle pédagogique pourrait inclure des méthodes telles que l'immersion linguistique, les dialogues interactifs, et les jeux de rôle. Le modèle de l'apprenant suivrait les progrès de l'élève en compréhension orale et écrite, en expression, et en grammaire, s'ajustant pour cibler les domaines nécessitant une attention supplémentaire. Enfin, l'interface serait conçue pour encourager l'engagement et la pratique active, avec des fonctionnalités comme la reconnaissance vocale pour la pratique de la prononciation et des simulations de conversation.
+
+En intégrant ces éléments, un STI pour l'apprentissage des langues ne se contente pas de transmettre des connaissances ; il crée un environnement riche et interactif où l'apprenant peut s'immerger dans la langue et la culture, favorisant ainsi une expérience d'apprentissage plus naturelle et efficace.
+
+### Intégration des Modèles Génératifs dans les STI pour l'Apprentissage des Langues
+
+#### Utilisation des Modèles Génératifs
+ Les modèles génératifs, tels que les grands modèles de langage basés sur l'intelligence artificielle, offrent une capacité de génération de contenu dynamique et contextuel. Dans un STI pour l'apprentissage des langues, ces modèles peuvent produire des dialogues réalistes, des exercices de compréhension, ou même des scénarios interactifs. Cette capacité de génération de contenu enrichit le modèle du domaine en fournissant une variété de matériel éducatif, allant des phrases simples aux dialogues complexes, adaptés au niveau de compétence de l'élève.
+
+#### Personnalisation et Réactivité
+ Les modèles génératifs permettent une personnalisation plus profonde dans le modèle de l'apprenant. En analysant les réponses et les interactions de l'élève, le système peut ajuster dynamiquement le contenu pour cibler les zones de faiblesse, offrir des défis appropriés, et encourager la progression. De plus, ces modèles peuvent simuler des conversations réelles, permettant aux élèves de pratiquer la langue dans un contexte plus naturel et engageant.
+
+#### Feedback et Évaluation
+ Dans le modèle pédagogique, les modèles génératifs contribuent à fournir un retour d'information instantané et contextualisé. Par exemple, après un exercice de dialogue, le système peut offrir des corrections, des suggestions et des explications spécifiques, aidant l'apprenant à comprendre et à corriger ses erreurs en temps réel.
+
+#### Interaction Améliorée grâce à l'IA
+ Enfin, dans le modèle de l'interface, l'intégration de l'IA et des modèles génératifs peut rendre l'interaction avec le système plus intuitive et naturelle. Des fonctionnalités comme la reconnaissance vocale avancée et la génération de réponses en langue naturelle rendent l'apprentissage plus immersif et similaire à une interaction humaine.
+
+En somme, l'intégration des modèles génératifs dans les STI pour l'apprentissage des langues transforme non seulement la manière dont le contenu éducatif est présenté, mais aussi la façon dont les élèves interagissent avec ce contenu, rendant l'expérience d'apprentissage plus riche, personnalisée et efficace.
