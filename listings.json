@@ -2,8 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html",
+      "/posts/road_map/index.html",
       "/posts/first_notebook_model/goat_detector_training.html",
       "/posts/first_model/index.html"
     ]
