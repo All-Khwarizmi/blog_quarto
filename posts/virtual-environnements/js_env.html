@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jason Suárez">
+<meta name="dcterms.date" content="2024-01-21">
 
-<title>Education 2.0 - Accueil</title>
+<title>Education 2.0 - Environnements virtuels avec Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description','listing-categories','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
+<link rel="stylesheet" href="../../styles.css">
+</head>
 
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Education 2.0" href="index.xml"></head>
-
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Education 2.0</span>
     </a>
   </div>
@@ -115,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">A propos</span></a>
   </li>  
   <li class="nav-item compact">
@@ -136,204 +105,100 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Environnements virtuels avec Javascript</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Git</div>
+                <div class="quarto-category">Javascript</div>
+                <div class="quarto-category">NodeJS</div>
+                <div class="quarto-category">NPM</div>
+                <div class="quarto-category">Yarn</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jason Suárez </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 21, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="AI">AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Fastai">Fastai <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Git">Git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Javascript">Javascript <span class="quarto-category-count">(1)</span></div><div class="category" data-category="LLM">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Machine Learning">Machine Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NPM">NPM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="NodeJS">NodeJS <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="STI">STI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Yarn">Yarn <span class="quarto-category-count">(1)</span></div><div class="category" data-category="education">education <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Accueil</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="series" class="level1">
-<h1>Series</h1>
-<section id="environnements-virtuels" class="level5">
-<h5 class="anchored" data-anchor-id="environnements-virtuels"><a href="env-series.html">environnements virtuels</a></h5>
-<p>Ceci est une série d’articles sur les environnements virtuels.</p>
-
+<p><img src="image.png" class="img-fluid"> <br> <br> <br></p>
+<p>Dans le monde du développement logiciel, l’utilisation d’environnements virtuels est devenue une pratique essentielle, surtout lorsqu’il s’agit de gérer des projets complexes avec de nombreuses dépendances. Cet article se concentre sur l’écosystème JavaScript et explore l’utilisation d’outils tels que Git, npm et yarn dans le cadre de ces environnements.</p>
+<section id="pourquoi-utiliser-des-environnements-virtuels" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-utiliser-des-environnements-virtuels">Pourquoi Utiliser des Environnements Virtuels ?</h2>
+<p>Les environnements virtuels sont des espaces isolés où les développeurs peuvent gérer les dépendances de leurs projets de manière indépendante et sécurisée. Voici pourquoi ils sont si cruciaux :</p>
+<ul>
+<li><p>Isolation : Dans un environnement virtuel, chaque projet possède son propre ensemble de dépendances, isolé des autres projets. Cela signifie que vous pouvez travailler sur plusieurs projets ayant des besoins différents en termes de versions de bibliothèques sans que l’un interfère avec l’autre.</p></li>
+<li><p>Reproductibilité : Les environnements virtuels assurent que votre projet fonctionnera de la même manière sur tous les systèmes où il est déployé. En définissant clairement les dépendances, vous évitez les problèmes liés aux différences de configurations entre les environnements de développement et de production.</p></li>
+<li><p>Éviter les Conflits : L’utilisation d’environnements virtuels aide à prévenir les conflits entre les différentes versions des paquets nécessaires pour différents projets. Cela évite les situations où la mise à jour d’une bibliothèque pour un projet casse un autre projet dépendant d’une version antérieure.</p></li>
+</ul>
+</section>
+<section id="environnements-virtuels-dans-javascript" class="level2">
+<h2 class="anchored" data-anchor-id="environnements-virtuels-dans-javascript">Environnements Virtuels dans JavaScript</h2>
+<ul>
+<li><p>Le monde de JavaScript est vaste et en constante évolution, avec un écosystème riche en bibliothèques et outils. L’utilisation d’environnements virtuels dans ce contexte prend une importance particulière pour plusieurs raisons :</p></li>
+<li><p>Gestion des Dépendances Complexes : JavaScript, en particulier avec Node.js, implique souvent de gérer de nombreuses dépendances, ce qui peut rapidement devenir complexe. Les environnements virtuels permettent de gérer ces dépendances de manière ordonnée, en s’assurant que chaque projet dispose de la version correcte de chaque paquet.</p></li>
+<li><p>Développement Modulaire : JavaScript est célèbre pour son approche modulaire. Dans un environnement virtuel, il est plus facile de tester différents modules et de s’assurer qu’ils fonctionnent bien ensemble, sans affecter d’autres projets.</p></li>
+<li><p>Collaboration et Consistance : En partageant un environnement virtuel bien défini entre les membres d’une équipe, on assure une uniformité dans le processus de développement, réduisant ainsi les problèmes liés aux différences d’environnements de travail.</p></li>
+</ul>
+</section>
+<section id="gestion-des-dépendances-avec-git" class="level2">
+<h2 class="anchored" data-anchor-id="gestion-des-dépendances-avec-git">Gestion des Dépendances avec Git</h2>
+<p>Bien que Git soit principalement connu comme un outil de contrôle de version, il joue également un rôle crucial dans la gestion des dépendances dans les projets JavaScript :</p>
+<ul>
+<li><p>Contrôle de Version et Dépendances : Git permet de suivre les modifications apportées aux fichiers de dépendances, comme le package.json dans les projets Node.js. Cela aide à maintenir une historique claire des changements apportés aux dépendances et facilite la gestion des mises à jour ou des régressions.</p></li>
+<li><p>Branches pour Gérer les Dépendances : L’utilisation des branches Git permet de tester de nouvelles versions de dépendances sans affecter la branche principale. Cela rend les expérimentations plus sûres et réduit les risques de perturbations dans le projet principal.</p></li>
+<li><p>Intégration avec les Outils de CI/CD : En utilisant Git, les développeurs peuvent intégrer facilement leur gestion de dépendances avec des systèmes d’intégration continue et de déploiement continu (CI/CD), garantissant que les modifications de dépendances sont correctement testées avant d’être déployées.</p></li>
+</ul>
+</section>
+<section id="npm-et-yarn-dans-les-environnements-virtuels-comparaison-et-pratiques" class="level2">
+<h2 class="anchored" data-anchor-id="npm-et-yarn-dans-les-environnements-virtuels-comparaison-et-pratiques">NPM et Yarn dans les Environnements Virtuels : Comparaison et Pratiques</h2>
+<p>Bien que npm et Yarn soient tous deux utilisés pour la gestion des dépendances dans les projets JavaScript, ils présentent des différences et des similarités notables :</p>
+<ul>
+<li><p>Fonctionnalités Communes : npm et Yarn servent tous deux à gérer les dépendances des projets Node.js, utilisant un dossier node_modules pour les installations locales. Chacun commence par initialiser un projet (npm avec npm init et Yarn avec yarn init) et gère les dépendances avec un fichier de verrouillage (package-lock.json pour npm et yarn.lock pour Yarn).</p></li>
+<li><p>Avantages de Yarn sur npm : Yarn est reconnu pour sa vitesse supérieure, sa gestion efficace du cache et ses fonctionnalités avancées comme les Workspaces. Yarn offre également une meilleure fiabilité avec son fichier yarn.lock, qui enregistre des informations plus détaillées sur les versions exactes des paquets installés.</p></li>
+<li><p>Gestion des Dépendances : Les deux outils permettent d’ajouter, de mettre à jour et de supprimer des paquets facilement (npm avec npm install/add, npm update et npm remove; Yarn avec yarn add, yarn upgrade, et yarn remove).</p></li>
+<li><p>Meilleures Pratiques : Il est crucial de maintenir les dépendances à jour et de comprendre l’impact des mises à jour sur votre projet. Que vous utilisiez npm ou Yarn, une gestion attentive des dépendances directes et indirectes est essentielle pour la santé et la sécurité du projet.</p></li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>L’utilisation d’environnements virtuels et la gestion efficace des dépendances sont des piliers essentiels dans le développement moderne de logiciels, en particulier dans l’écosystème JavaScript. Que ce soit à travers npm ou Yarn, la capacité de gérer les dépendances de manière isolée et reproductible est cruciale pour la réussite et la stabilité des projets.</p>
+<p>En embrassant ces outils et pratiques, les développeurs peuvent non seulement améliorer la qualité et la fiabilité de leurs applications, mais aussi faciliter la collaboration au sein des équipes et entre les projets. Il est important de rester à jour avec les meilleures pratiques et les nouvelles fonctionnalités offertes par ces outils, afin de tirer le meilleur parti des technologies disponibles.</p>
+<p>En conclusion, les environnements virtuels et la gestion adéquate des dépendances ne sont pas seulement des facilitateurs techniques ; ils représentent une approche stratégique vers un développement plus ordonné, sécurisé et collaboratif.</p>
 
 
 </section>
-</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title" data-direction="asc">
-          Title
-        </option>
-         <option value="listing-date-sort" data-direction="asc">
-          Date - Oldest
-        </option>
-         <option value="listing-date-sort" data-direction="desc">
-          Date - Newest
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Git,Javascript,NodeJS,NPM,Yarn" data-listing-date-sort="1705795200000" data-listing-file-modified-sort="1705845599721" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/virtual-environnements/js_env.html"> <img src="./posts/virtual-environnements/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/virtual-environnements/js_env.html">
-<h3 class="no-anchor listing-title">
-Environnements virtuels avec Javascript
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Git'); return false;">
-Git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Javascript'); return false;">
-Javascript
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('NodeJS'); return false;">
-NodeJS
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('NPM'); return false;">
-NPM
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Yarn'); return false;">
-Yarn
-</div>
-</div>
-<a href="./posts/virtual-environnements/js_env.html">
-<div class="listing-description">
- <br> <br> <br>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/virtual-environnements/js_env.html">
-<div class="listing-date">
-Jan 21, 2024
-</div>
-<div class="listing-reading-time">
-5 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="education,STI,LLM" data-listing-date-sort="1705622400000" data-listing-file-modified-sort="1705845599713" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/road_map/index.html"> <img src="./posts/road_map/image.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/road_map/index.html">
-<h3 class="no-anchor listing-title">
-L’Education 2.0
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('education'); return false;">
-education
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('STI'); return false;">
-STI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('LLM'); return false;">
-LLM
-</div>
-</div>
-<a href="./posts/road_map/index.html">
-<div class="listing-description">
-Quiconque essaye d’apprendre une langue, a pu se rendre compte que malgré la multitude d’outils disponibles, il n’existe pas de méthode intégrale (ce terme est utilisé dans…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/road_map/index.html">
-<div class="listing-date">
-Jan 19, 2024
-</div>
-<div class="listing-reading-time">
-6 min
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="AI,Machine Learning,Python,Fastai" data-listing-date-sort="1705017600000" data-listing-file-modified-sort="1705845599709" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/first_notebook_model/goat_detector_training.html"> <p class="card-img-top"><img src="posts/first_notebook_model/goat_detector_training_files/figure-html/cell-5-output-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/first_notebook_model/goat_detector_training.html">
-<h3 class="no-anchor listing-title">
-Mon premier modèle d’apprentissage automatique
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('AI'); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
-Machine Learning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Fastai'); return false;">
-Fastai
-</div>
-</div>
-<a href="./posts/first_notebook_model/goat_detector_training.html">
-<div class="listing-description">
-This notebook utilizes the fastai and fastbook libraries to train a machine learning model for image classification. The goal is to classify images as either featuring Messi…
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/first_notebook_model/goat_detector_training.html">
-<div class="listing-date">
-Jan 12, 2024
-</div>
-<div class="listing-reading-time">
-1 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

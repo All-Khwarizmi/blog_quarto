@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Education 2.0</title>
+<link>https://all-khwarizmi.github.io/blog_quarto/index.html</link>
+<atom:link href="https://all-khwarizmi.github.io/blog_quarto/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Sun, 21 Jan 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Environnements virtuels avec Javascript</title>
+  <dc:creator>Jason Suárez</dc:creator>
+  <link>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/js_env.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/image.png" class="img-fluid"> <br> <br> <br></p>
+<p>Dans le monde du développement logiciel, l’utilisation d’environnements virtuels est devenue une pratique essentielle, surtout lorsqu’il s’agit de gérer des projets complexes avec de nombreuses dépendances. Cet article se concentre sur l’écosystème JavaScript et explore l’utilisation d’outils tels que Git, npm et yarn dans le cadre de ces environnements.</p>
+<section id="pourquoi-utiliser-des-environnements-virtuels" class="level2">
+<h2 class="anchored" data-anchor-id="pourquoi-utiliser-des-environnements-virtuels">Pourquoi Utiliser des Environnements Virtuels ?</h2>
+<p>Les environnements virtuels sont des espaces isolés où les développeurs peuvent gérer les dépendances de leurs projets de manière indépendante et sécurisée. Voici pourquoi ils sont si cruciaux :</p>
+<ul>
+<li><p>Isolation : Dans un environnement virtuel, chaque projet possède son propre ensemble de dépendances, isolé des autres projets. Cela signifie que vous pouvez travailler sur plusieurs projets ayant des besoins différents en termes de versions de bibliothèques sans que l’un interfère avec l’autre.</p></li>
+<li><p>Reproductibilité : Les environnements virtuels assurent que votre projet fonctionnera de la même manière sur tous les systèmes où il est déployé. En définissant clairement les dépendances, vous évitez les problèmes liés aux différences de configurations entre les environnements de développement et de production.</p></li>
+<li><p>Éviter les Conflits : L’utilisation d’environnements virtuels aide à prévenir les conflits entre les différentes versions des paquets nécessaires pour différents projets. Cela évite les situations où la mise à jour d’une bibliothèque pour un projet casse un autre projet dépendant d’une version antérieure.</p></li>
+</ul>
+</section>
+<section id="environnements-virtuels-dans-javascript" class="level2">
+<h2 class="anchored" data-anchor-id="environnements-virtuels-dans-javascript">Environnements Virtuels dans JavaScript</h2>
+<ul>
+<li><p>Le monde de JavaScript est vaste et en constante évolution, avec un écosystème riche en bibliothèques et outils. L’utilisation d’environnements virtuels dans ce contexte prend une importance particulière pour plusieurs raisons :</p></li>
+<li><p>Gestion des Dépendances Complexes : JavaScript, en particulier avec Node.js, implique souvent de gérer de nombreuses dépendances, ce qui peut rapidement devenir complexe. Les environnements virtuels permettent de gérer ces dépendances de manière ordonnée, en s’assurant que chaque projet dispose de la version correcte de chaque paquet.</p></li>
+<li><p>Développement Modulaire : JavaScript est célèbre pour son approche modulaire. Dans un environnement virtuel, il est plus facile de tester différents modules et de s’assurer qu’ils fonctionnent bien ensemble, sans affecter d’autres projets.</p></li>
+<li><p>Collaboration et Consistance : En partageant un environnement virtuel bien défini entre les membres d’une équipe, on assure une uniformité dans le processus de développement, réduisant ainsi les problèmes liés aux différences d’environnements de travail.</p></li>
+</ul>
+</section>
+<section id="gestion-des-dépendances-avec-git" class="level2">
+<h2 class="anchored" data-anchor-id="gestion-des-dépendances-avec-git">Gestion des Dépendances avec Git</h2>
+<p>Bien que Git soit principalement connu comme un outil de contrôle de version, il joue également un rôle crucial dans la gestion des dépendances dans les projets JavaScript :</p>
+<ul>
+<li><p>Contrôle de Version et Dépendances : Git permet de suivre les modifications apportées aux fichiers de dépendances, comme le package.json dans les projets Node.js. Cela aide à maintenir une historique claire des changements apportés aux dépendances et facilite la gestion des mises à jour ou des régressions.</p></li>
+<li><p>Branches pour Gérer les Dépendances : L’utilisation des branches Git permet de tester de nouvelles versions de dépendances sans affecter la branche principale. Cela rend les expérimentations plus sûres et réduit les risques de perturbations dans le projet principal.</p></li>
+<li><p>Intégration avec les Outils de CI/CD : En utilisant Git, les développeurs peuvent intégrer facilement leur gestion de dépendances avec des systèmes d’intégration continue et de déploiement continu (CI/CD), garantissant que les modifications de dépendances sont correctement testées avant d’être déployées.</p></li>
+</ul>
+</section>
+<section id="npm-et-yarn-dans-les-environnements-virtuels-comparaison-et-pratiques" class="level2">
+<h2 class="anchored" data-anchor-id="npm-et-yarn-dans-les-environnements-virtuels-comparaison-et-pratiques">NPM et Yarn dans les Environnements Virtuels : Comparaison et Pratiques</h2>
+<p>Bien que npm et Yarn soient tous deux utilisés pour la gestion des dépendances dans les projets JavaScript, ils présentent des différences et des similarités notables :</p>
+<ul>
+<li><p>Fonctionnalités Communes : npm et Yarn servent tous deux à gérer les dépendances des projets Node.js, utilisant un dossier node_modules pour les installations locales. Chacun commence par initialiser un projet (npm avec npm init et Yarn avec yarn init) et gère les dépendances avec un fichier de verrouillage (package-lock.json pour npm et yarn.lock pour Yarn).</p></li>
+<li><p>Avantages de Yarn sur npm : Yarn est reconnu pour sa vitesse supérieure, sa gestion efficace du cache et ses fonctionnalités avancées comme les Workspaces. Yarn offre également une meilleure fiabilité avec son fichier yarn.lock, qui enregistre des informations plus détaillées sur les versions exactes des paquets installés.</p></li>
+<li><p>Gestion des Dépendances : Les deux outils permettent d’ajouter, de mettre à jour et de supprimer des paquets facilement (npm avec npm install/add, npm update et npm remove; Yarn avec yarn add, yarn upgrade, et yarn remove).</p></li>
+<li><p>Meilleures Pratiques : Il est crucial de maintenir les dépendances à jour et de comprendre l’impact des mises à jour sur votre projet. Que vous utilisiez npm ou Yarn, une gestion attentive des dépendances directes et indirectes est essentielle pour la santé et la sécurité du projet.</p></li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>L’utilisation d’environnements virtuels et la gestion efficace des dépendances sont des piliers essentiels dans le développement moderne de logiciels, en particulier dans l’écosystème JavaScript. Que ce soit à travers npm ou Yarn, la capacité de gérer les dépendances de manière isolée et reproductible est cruciale pour la réussite et la stabilité des projets.</p>
+<p>En embrassant ces outils et pratiques, les développeurs peuvent non seulement améliorer la qualité et la fiabilité de leurs applications, mais aussi faciliter la collaboration au sein des équipes et entre les projets. Il est important de rester à jour avec les meilleures pratiques et les nouvelles fonctionnalités offertes par ces outils, afin de tirer le meilleur parti des technologies disponibles.</p>
+<p>En conclusion, les environnements virtuels et la gestion adéquate des dépendances ne sont pas seulement des facilitateurs techniques ; ils représentent une approche stratégique vers un développement plus ordonné, sécurisé et collaboratif.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Git</category>
+  <category>Javascript</category>
+  <category>NodeJS</category>
+  <category>NPM</category>
+  <category>Yarn</category>
+  <guid>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/js_env.html</guid>
+  <pubDate>Sun, 21 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/image.png" medium="image" type="image/png" height="82" width="144"/>
+</item>
+<item>
+  <title>L’Education 2.0</title>
+  <dc:creator>Jason Suárez</dc:creator>
+  <link>https://all-khwarizmi.github.io/blog_quarto/posts/road_map/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="education-2.0" class="level1">
+<h1>Education 2.0</h1>
+<p>Quiconque essaye d’apprendre une langue, a pu se rendre compte que malgré la multitude d’outils disponibles, il n’existe pas de méthode intégrale (ce terme est utilisé dans le sens de “qui contient tout ce qui est nécessaire”) pour apprendre une langue, surtout pour un public adolescent. En effet, les méthodes d’apprentissage des langues sont souvent trop scolaires et ne permettent pas de développer les compétences nécessaires pour communiquer dans la langue cible. De plus, les outils disponibles sur internet sont souvent trop éparpillés, ne permettant pas de suivre une progression logique, et/ou incomplètes, c’est-à-dire qu’elles ne permettent de travailler que certaines des compétences linguistiques.</p>
+<section id="la-méthode-intégrale" class="level2">
+<h2 class="anchored" data-anchor-id="la-méthode-intégrale">La méthode intégrale</h2>
+<section id="quest-ce-que-la-méthode-intégrale" class="level3">
+<h3 class="anchored" data-anchor-id="quest-ce-que-la-méthode-intégrale">Qu’est-ce que la méthode intégrale ?</h3>
+<p>La méthode intégrale est une méthode d’apprentissage des langues qui a été développée par John and Evelyn White en 1963. Elle est basée sur le principe que l’apprentissage d’une langue doit se faire de manière naturelle, comme l’apprentissage de la langue maternelle. Elle se base sur 4 compétences linguistiques : la compréhension orale, la compréhension écrite, l’expression orale et l’expression écrite.</p>
+</section>
+<section id="mon-approche" class="level3">
+<h3 class="anchored" data-anchor-id="mon-approche">Mon approche</h3>
+<p>En tant que professeur de langue mon approche est de développer les 4 compétences linguistiques de manière équilibrée, intuitive et amusante. Cependant, ma pratique enseignante m’a montré que les élèves ont souvent des difficultés d’ordre méthodologique. En effet, ils ne savent pas comment travailler efficacement et comment utiliser les outils à leur disposition.</p>
+<p>Dès lors, il devient primordial de leur apprendre à apprendre. C’est pourquoi, j’ai décidé de développer une méthode intégrale qui permettra aux élèves de travailler de manière autonome et efficace. Cette méthode est basée sur 3 piliers : &gt; la motivation, la méthodologie et la mémorisation.</p>
+<p>Se pose alors la question de savoir comment développer ces 3 piliers. Pour répondre à cette question, j’ai dû explorer les sciences cognitives et les neurosciences afin de comprendre comment fonctionne le cerveau humain, l’informatique pour être capable de créer les outils nécessaires, et l’IA afin de créer un “double” du professeur à même de guider l’élève dans son apprentissage.</p>
+</section>
+</section>
+<section id="architecture-conceptuelle" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-conceptuelle">Architecture conceptuelle</h2>
+<p>Il s’agit-là d’un projet titanesque. J’ai longtemps alterné entre différents projets cherchant à développer chacun des piliers. Cependant, j’ai fini par me rendre compte que j’avais besoin d’une architecture conceptuelle qui me permettrait de développer les 3 piliers de manière simultanée.</p>
+<section id="les-forces-en-présence" class="level3">
+<h3 class="anchored" data-anchor-id="les-forces-en-présence">Les forces en présence</h3>
+<section id="les-llm-large-language-model" class="level4">
+<h4 class="anchored" data-anchor-id="les-llm-large-language-model">Les LLM (Large Language Model)</h4>
+<p>J’ai d’abord été bleuffé par ChatGPT.</p>
+<blockquote class="blockquote">
+<p>ChatGPT est un modèle de génération de texte basé sur l’architecture Transformer. Ce modèle est capable de générer du texte à partir d’un texte d’entrée. Il est capable de générer des textes cohérents et pertinents.</p>
+</blockquote>
+<p>J’ai alors eu l’idée de créer un chatbot capable de guider l’élève dans son apprentissage. Cependant, je me suis vite rendu compte qu’il allait falloir orchestrer plusieurs LLM ou <strong>agents</strong> pour pouvoir couvrir l’ensemble des compétences linguistiques et methodologiques.</p>
+</section>
+<section id="les-sti-systèmes-tutoriels-intelligents" class="level4">
+<h4 class="anchored" data-anchor-id="les-sti-systèmes-tutoriels-intelligents">Les STI (Systèmes Tutoriels Intelligents)</h4>
+<blockquote class="blockquote">
+<p>Les Systèmes Tutoriels Intelligents (STI) représentent une avancée majeure dans le domaine de l’éducation assistée par la technologie. Ces systèmes, qui allient les principes de l’intelligence artificielle à la pédagogie, sont conçus pour offrir une expérience d’apprentissage personnalisée, s’adaptant au rythme et aux besoins spécifiques de chaque apprenant.</p>
+</blockquote>
+<p>Les STI sont des programmes informatiques qui utilisent des techniques d’IA pour simuler l’interaction personnalisée entre un enseignant et un élève. Dans une vision traditionnelle, un STI se compose de quatre modules principaux : - le modèle du domaine, qui contient les connaissances à enseigner - le modèle pédagogique, qui définit la manière d’enseigner - le modèle de l’apprenant, qui s’adapte aux caractéristiques individuelles de l’élève - le modèle de l’interface, qui facilite l’interaction entre l’élève et le système.</p>
+<p>Ces composants travaillent de concert pour créer un environnement d’apprentissage interactif et adaptatif, permettant à l’élève de progresser à son propre rythme et selon son style d’apprentissage unique.</p>
+</section>
+<section id="sti-pour-lapprentissage-des-langues" class="level4">
+<h4 class="anchored" data-anchor-id="sti-pour-lapprentissage-des-langues">STI pour l’Apprentissage des Langues</h4>
+<p>L’application des STI à l’apprentissage des langues ouvre des horizons passionnants. Dans un STI dédié à l’apprentissage d’une langue, le modèle du domaine intégrerait non seulement la grammaire et le vocabulaire, mais aussi des éléments culturels et contextuels essentiels à la maîtrise de la langue. Le modèle pédagogique pourrait inclure des méthodes telles que l’immersion linguistique, les dialogues interactifs, et les jeux de rôle. Le modèle de l’apprenant suivrait les progrès de l’élève en compréhension orale et écrite, en expression, et en grammaire, s’ajustant pour cibler les domaines nécessitant une attention supplémentaire. Enfin, l’interface serait conçue pour encourager l’engagement et la pratique active, avec des fonctionnalités comme la reconnaissance vocale pour la pratique de la prononciation et des simulations de conversation.</p>
+<p>En intégrant ces éléments, un STI pour l’apprentissage des langues ne se contente pas de transmettre des connaissances ; il crée un environnement riche et interactif où l’apprenant peut s’immerger dans la langue et la culture, favorisant ainsi une expérience d’apprentissage plus naturelle et efficace.</p>
+</section>
+</section>
+<section id="intégration-des-modèles-génératifs-dans-les-sti-pour-lapprentissage-des-langues" class="level3">
+<h3 class="anchored" data-anchor-id="intégration-des-modèles-génératifs-dans-les-sti-pour-lapprentissage-des-langues">Intégration des Modèles Génératifs dans les STI pour l’Apprentissage des Langues</h3>
+<section id="utilisation-des-modèles-génératifs" class="level4">
+<h4 class="anchored" data-anchor-id="utilisation-des-modèles-génératifs">Utilisation des Modèles Génératifs</h4>
+<p>Les modèles génératifs, tels que les grands modèles de langage basés sur l’intelligence artificielle, offrent une capacité de génération de contenu dynamique et contextuel. Dans un STI pour l’apprentissage des langues, ces modèles peuvent produire des dialogues réalistes, des exercices de compréhension, ou même des scénarios interactifs. Cette capacité de génération de contenu enrichit le modèle du domaine en fournissant une variété de matériel éducatif, allant des phrases simples aux dialogues complexes, adaptés au niveau de compétence de l’élève.</p>
+</section>
+<section id="personnalisation-et-réactivité" class="level4">
+<h4 class="anchored" data-anchor-id="personnalisation-et-réactivité">Personnalisation et Réactivité</h4>
+<p>Les modèles génératifs permettent une personnalisation plus profonde dans le modèle de l’apprenant. En analysant les réponses et les interactions de l’élève, le système peut ajuster dynamiquement le contenu pour cibler les zones de faiblesse, offrir des défis appropriés, et encourager la progression. De plus, ces modèles peuvent simuler des conversations réelles, permettant aux élèves de pratiquer la langue dans un contexte plus naturel et engageant.</p>
+</section>
+<section id="feedback-et-évaluation" class="level4">
+<h4 class="anchored" data-anchor-id="feedback-et-évaluation">Feedback et Évaluation</h4>
+<p>Dans le modèle pédagogique, les modèles génératifs contribuent à fournir un retour d’information instantané et contextualisé. Par exemple, après un exercice de dialogue, le système peut offrir des corrections, des suggestions et des explications spécifiques, aidant l’apprenant à comprendre et à corriger ses erreurs en temps réel.</p>
+</section>
+<section id="interaction-améliorée-grâce-à-lia" class="level4">
+<h4 class="anchored" data-anchor-id="interaction-améliorée-grâce-à-lia">Interaction Améliorée grâce à l’IA</h4>
+<p>Enfin, dans le modèle de l’interface, l’intégration de l’IA et des modèles génératifs peut rendre l’interaction avec le système plus intuitive et naturelle. Des fonctionnalités comme la reconnaissance vocale avancée et la génération de réponses en langue naturelle rendent l’apprentissage plus immersif et similaire à une interaction humaine.</p>
+<p>En somme, l’intégration des modèles génératifs dans les STI pour l’apprentissage des langues transforme non seulement la manière dont le contenu éducatif est présenté, mais aussi la façon dont les élèves interagissent avec ce contenu, rendant l’expérience d’apprentissage plus riche, personnalisée et efficace.</p>
+
+
+</section>
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>education</category>
+  <category>STI</category>
+  <category>LLM</category>
+  <guid>https://all-khwarizmi.github.io/blog_quarto/posts/road_map/index.html</guid>
+  <pubDate>Fri, 19 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://all-khwarizmi.github.io/blog_quarto/posts/road_map/image.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Mon premier modèle d’apprentissage automatique</title>
+  <dc:creator>Jason Suárez</dc:creator>
+  <link>https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="goat-detector-training" class="level1">
+<h1>Goat Detector Training</h1>
+<p>This notebook utilizes the fastai and fastbook libraries to train a machine learning model for image classification. The goal is to classify images as either featuring Messi or Cristiano Ronaldo, two renowned football players. ## Importing Necessary Libraries Import fastai and fastbook libraries essential for image loading, preparation, and machine learning model operations.</p>
+<div id="fig-installation" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span>pip install <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Uqq fastai fastbook Pillow nbdev</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> fastbook</span>
+<span id="cb1-3">fastbook.setup_book()</span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastbook <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: nbdev in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (2.3.13)
+Requirement already satisfied: ipywidgets&lt;=8.0.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (7.7.2)
+Requirement already satisfied: fastcore&gt;=1.5.27 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (1.5.29)
+Requirement already satisfied: execnb&gt;=0.1.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (0.1.5)
+Requirement already satisfied: astunparse in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (1.6.3)
+Requirement already satisfied: ghapi&gt;=1.0.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (1.0.4)
+Requirement already satisfied: watchdog in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (3.0.0)
+Requirement already satisfied: asttokens in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (2.4.1)
+Requirement already satisfied: PyYAML in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbdev) (6.0.1)
+Requirement already satisfied: ipython in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from execnb&gt;=0.1.4-&gt;nbdev) (8.20.0)
+Requirement already satisfied: pip in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from fastcore&gt;=1.5.27-&gt;nbdev) (23.3.2)
+Requirement already satisfied: packaging in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from fastcore&gt;=1.5.27-&gt;nbdev) (23.2)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipywidgets&lt;=8.0.4-&gt;nbdev) (6.28.0)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipywidgets&lt;=8.0.4-&gt;nbdev) (0.2.0)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipywidgets&lt;=8.0.4-&gt;nbdev) (5.14.1)
+Requirement already satisfied: widgetsnbextension~=3.6.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipywidgets&lt;=8.0.4-&gt;nbdev) (3.6.6)
+Requirement already satisfied: jupyterlab-widgets&lt;3,&gt;=1.0.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipywidgets&lt;=8.0.4-&gt;nbdev) (1.1.7)
+Requirement already satisfied: six&gt;=1.12.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from asttokens-&gt;nbdev) (1.16.0)
+Requirement already satisfied: wheel&lt;1.0,&gt;=0.23.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from astunparse-&gt;nbdev) (0.42.0)
+Requirement already satisfied: appnope in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.1.3)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.2.1)
+Requirement already satisfied: debugpy&gt;=1.6.5 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.8.0)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (8.6.0)
+Requirement already satisfied: jupyter-core!=5.0.*,&gt;=4.12 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (5.7.1)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.1.6)
+Requirement already satisfied: nest-asyncio in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.5.8)
+Requirement already satisfied: psutil in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (5.9.7)
+Requirement already satisfied: pyzmq&gt;=24 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (25.1.2)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (6.3.3)
+Requirement already satisfied: decorator in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.19.1)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.41 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (3.0.42)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (2.17.2)
+Requirement already satisfied: stack-data in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.6.2)
+Requirement already satisfied: exceptiongroup in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (1.2.0)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (4.8.0)
+Requirement already satisfied: notebook&gt;=4.4.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (7.0.6)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.8.3)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.8.2)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-core!=5.0.*,&gt;=4.12-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.1.0)
+Requirement already satisfied: jupyter-server&lt;3,&gt;=2.4.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.12.4)
+Requirement already satisfied: jupyterlab-server&lt;3,&gt;=2.22.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.25.2)
+Requirement already satisfied: jupyterlab&lt;5,&gt;=4.0.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.0.10)
+Requirement already satisfied: notebook-shim&lt;0.3,&gt;=0.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.2.3)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.2.13)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from stack-data-&gt;ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (2.0.1)
+Requirement already satisfied: pure-eval in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from stack-data-&gt;ipython-&gt;execnb&gt;=0.1.4-&gt;nbdev) (0.2.2)
+Requirement already satisfied: anyio&gt;=3.1.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.2.0)
+Requirement already satisfied: argon2-cffi in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (23.1.0)
+Requirement already satisfied: jinja2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (3.1.3)
+Requirement already satisfied: jupyter-events&gt;=0.9.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.9.0)
+Requirement already satisfied: jupyter-server-terminals in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.5.1)
+Requirement already satisfied: nbconvert&gt;=6.4.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (7.14.1)
+Requirement already satisfied: nbformat&gt;=5.3.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (5.9.2)
+Requirement already satisfied: overrides in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (7.4.0)
+Requirement already satisfied: prometheus-client in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.19.0)
+Requirement already satisfied: send2trash&gt;=1.8.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.8.2)
+Requirement already satisfied: terminado&gt;=0.8.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.18.0)
+Requirement already satisfied: websocket-client in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.7.0)
+Requirement already satisfied: async-lru&gt;=1.0.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.0.4)
+Requirement already satisfied: jupyter-lsp&gt;=2.0.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.2.1)
+Requirement already satisfied: tomli in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab&lt;5,&gt;=4.0.2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.0.1)
+Requirement already satisfied: babel&gt;=2.10 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.14.0)
+Requirement already satisfied: json5&gt;=0.9.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.9.14)
+Requirement already satisfied: jsonschema&gt;=4.18.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.20.0)
+Requirement already satisfied: requests&gt;=2.31 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.31.0)
+Requirement already satisfied: idna&gt;=2.8 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from anyio&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (3.6)
+Requirement already satisfied: sniffio&gt;=1.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from anyio&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.3.0)
+Requirement already satisfied: typing-extensions&gt;=4.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from anyio&gt;=3.1.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.9.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jinja2-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.1.3)
+Requirement already satisfied: attrs&gt;=22.2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (23.2.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2023.12.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.32.1)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=4.18.0-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.16.2)
+Requirement already satisfied: python-json-logger&gt;=2.0.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.0.7)
+Requirement already satisfied: rfc3339-validator in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.1.4)
+Requirement already satisfied: rfc3986-validator&gt;=0.1.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.1.1)
+Requirement already satisfied: beautifulsoup4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (4.12.2)
+Requirement already satisfied: bleach!=5.0.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (6.1.0)
+Requirement already satisfied: defusedxml in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.7.1)
+Requirement already satisfied: jupyterlab-pygments in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.3.0)
+Requirement already satisfied: mistune&lt;4,&gt;=2.0.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (3.0.2)
+Requirement already satisfied: nbclient&gt;=0.5.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.8.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.5.0)
+Requirement already satisfied: tinycss2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.2.1)
+Requirement already satisfied: fastjsonschema in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from nbformat&gt;=5.3.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.19.1)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests&gt;=2.31-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (3.3.2)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests&gt;=2.31-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.1.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests&gt;=2.31-&gt;jupyterlab-server&lt;3,&gt;=2.22.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2023.11.17)
+Requirement already satisfied: argon2-cffi-bindings in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (21.2.0)
+Requirement already satisfied: webencodings in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from bleach!=5.0.0-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (0.5.1)
+Requirement already satisfied: fqdn in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.5.1)
+Requirement already satisfied: isoduration in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (20.11.0)
+Requirement already satisfied: jsonpointer&gt;1.13 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.4)
+Requirement already satisfied: uri-template in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.3.0)
+Requirement already satisfied: webcolors&gt;=1.11 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.13)
+Requirement already satisfied: cffi&gt;=1.0.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.16.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from beautifulsoup4-&gt;nbconvert&gt;=6.4.4-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.5)
+Requirement already satisfied: pycparser in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.21)
+Requirement already satisfied: arrow&gt;=0.15.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from isoduration-&gt;jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (1.3.0)
+Requirement already satisfied: types-python-dateutil&gt;=2.8.10 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from arrow&gt;=0.15.0-&gt;isoduration-&gt;jsonschema[format-nongpl]&gt;=4.18.0-&gt;jupyter-events&gt;=0.9.0-&gt;jupyter-server&lt;3,&gt;=2.4.0-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&lt;=8.0.4-&gt;nbdev) (2.8.19.20240106)
+Requirement already satisfied: gradio==3.47.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (3.47.1)
+Requirement already satisfied: aiofiles&lt;24.0,&gt;=22.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (23.2.1)
+Requirement already satisfied: altair&lt;6.0,&gt;=4.2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (5.2.0)
+Requirement already satisfied: fastapi in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.109.0)
+Requirement already satisfied: ffmpy in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.3.1)
+Requirement already satisfied: gradio-client==0.6.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.6.0)
+Requirement already satisfied: httpx in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.26.0)
+Requirement already satisfied: huggingface-hub&gt;=0.14.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.20.2)
+Requirement already satisfied: importlib-resources&lt;7.0,&gt;=1.3 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (6.1.1)
+Requirement already satisfied: jinja2&lt;4.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (3.1.3)
+Requirement already satisfied: markupsafe~=2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (2.1.3)
+Requirement already satisfied: matplotlib~=3.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (3.8.2)
+Requirement already satisfied: numpy~=1.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (1.26.3)
+Requirement already satisfied: orjson~=3.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (3.9.10)
+Requirement already satisfied: packaging in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (23.2)
+Requirement already satisfied: pandas&lt;3.0,&gt;=1.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (2.1.4)
+Requirement already satisfied: pillow&lt;11.0,&gt;=8.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (10.2.0)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,&lt;3.0.0,&gt;=1.7.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (2.0.3)
+Requirement already satisfied: pydub in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.25.1)
+Requirement already satisfied: python-multipart in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.0.6)
+Requirement already satisfied: pyyaml&lt;7.0,&gt;=5.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (6.0.1)
+Requirement already satisfied: requests~=2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (2.31.0)
+Requirement already satisfied: semantic-version~=2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (2.10.0)
+Requirement already satisfied: typing-extensions~=4.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (4.9.0)
+Requirement already satisfied: uvicorn&gt;=0.14.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (0.25.0)
+Requirement already satisfied: websockets&lt;12.0,&gt;=10.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio==3.47.1) (11.0.3)
+Requirement already satisfied: fsspec in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from gradio-client==0.6.0-&gt;gradio==3.47.1) (2023.10.0)
+Requirement already satisfied: jsonschema&gt;=3.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (4.20.0)
+Requirement already satisfied: toolz in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (0.12.0)
+Requirement already satisfied: filelock in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from huggingface-hub&gt;=0.14.0-&gt;gradio==3.47.1) (3.13.1)
+Requirement already satisfied: tqdm&gt;=4.42.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from huggingface-hub&gt;=0.14.0-&gt;gradio==3.47.1) (4.66.1)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (1.2.0)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (4.47.2)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (1.4.5)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from matplotlib~=3.0-&gt;gradio==3.47.1) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from pandas&lt;3.0,&gt;=1.0-&gt;gradio==3.47.1) (2023.3.post1)
+Requirement already satisfied: tzdata&gt;=2022.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from pandas&lt;3.0,&gt;=1.0-&gt;gradio==3.47.1) (2023.4)
+Requirement already satisfied: annotated-types&gt;=0.4.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,&lt;3.0.0,&gt;=1.7.4-&gt;gradio==3.47.1) (0.6.0)
+Requirement already satisfied: pydantic-core==2.3.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,&lt;3.0.0,&gt;=1.7.4-&gt;gradio==3.47.1) (2.3.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests~=2.0-&gt;gradio==3.47.1) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests~=2.0-&gt;gradio==3.47.1) (3.6)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests~=2.0-&gt;gradio==3.47.1) (2.1.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from requests~=2.0-&gt;gradio==3.47.1) (2023.11.17)
+Requirement already satisfied: click&gt;=7.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from uvicorn&gt;=0.14.0-&gt;gradio==3.47.1) (8.1.7)
+Requirement already satisfied: h11&gt;=0.8 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from uvicorn&gt;=0.14.0-&gt;gradio==3.47.1) (0.14.0)
+Requirement already satisfied: starlette&lt;0.36.0,&gt;=0.35.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from fastapi-&gt;gradio==3.47.1) (0.35.1)
+Requirement already satisfied: anyio in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from httpx-&gt;gradio==3.47.1) (4.2.0)
+Requirement already satisfied: httpcore==1.* in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from httpx-&gt;gradio==3.47.1) (1.0.2)
+Requirement already satisfied: sniffio in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from httpx-&gt;gradio==3.47.1) (1.3.0)
+Requirement already satisfied: attrs&gt;=22.2.0 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (23.2.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (2023.12.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (0.32.1)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from jsonschema&gt;=3.0-&gt;altair&lt;6.0,&gt;=4.2.0-&gt;gradio==3.47.1) (0.16.2)
+Requirement already satisfied: six&gt;=1.5 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib~=3.0-&gt;gradio==3.47.1) (1.16.0)
+Requirement already satisfied: exceptiongroup&gt;=1.0.2 in /Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages (from anyio-&gt;httpx-&gt;gradio==3.47.1) (1.2.0)</code></pre>
+</div>
+<figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption>
+</figure>
+</div>
+<section id="loading-and-preparing-images" class="level2">
+<h2 class="anchored" data-anchor-id="loading-and-preparing-images">Loading and Preparing Images</h2>
+<p>Load the dataset containing images of Messi and Cristiano Ronaldo. This step includes preprocessing the images to make them suitable for training the model.</p>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastcore.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb3-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb3-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> PIL <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Image</span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> search_images(term, max_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>):</span>
+<span id="cb3-6">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"term : (string )name of the search target"</span></span>
+<span id="cb3-7">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Searching for '</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>term<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'"</span>)</span>
+<span id="cb3-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> search_images_ddg(term, max_images)</span>
+<span id="cb3-9"></span></code></pre></div>
+</div>
+<div class="cell" data-outputid="4bbc480c-7d79-46f4-80ac-c3217007b3b9" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">urls <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> search_images(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cristiano Ronaldo photos'</span>, max_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb4-2">urls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Searching for 'Cristiano Ronaldo photos'</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>'http://www.fotolip.com/wp-content/uploads/2016/05/Cristiano-Ronaldo-1.jpg'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastdownload <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> download_url</span>
+<span id="cb7-2">dest <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cristiano.jpg'</span></span>
+<span id="cb7-3">download_url(urls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], dest, show_progress<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb7-4"></span>
+<span id="cb7-5">im <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(dest)</span>
+<span id="cb7-6">im.to_thumb(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">messi_dest <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'messi.jpg'</span></span>
+<span id="cb8-2">messi_image_url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> search_images(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Lionel Messi photos'</span>, max_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb8-3">messi_image_url</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Searching for 'Lionel Messi photos'</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>(#1) ['https://wallpapercave.com/wp/wp2043344.jpg']</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">download_url(messi_image_url[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], messi_dest, show_progress<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb11-2">im_messi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(messi_dest)</span>
+<span id="cb11-3">im_messi.to_thumb(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">searches <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Cristiano Ronaldo'</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Lionel Messi'</span></span>
+<span id="cb12-2"></span>
+<span id="cb12-3">path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Path(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'images'</span>)</span>
+<span id="cb12-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> time <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> sleep</span>
+<span id="cb12-5"></span>
+<span id="cb12-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> searches:</span>
+<span id="cb12-7">    dest <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span>
+<span id="cb12-8">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(dest)</span>
+<span id="cb12-9">    dest.mkdir(exist_ok<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, parents<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb12-10">    download_images(dest, urls<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>search_images(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>o<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> photo'</span>))</span>
+<span id="cb12-11">    sleep(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Pause between searches to avoid over-loading server</span></span>
+<span id="cb12-12">    resize_images(path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o, max_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>, dest<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>images/Cristiano Ronaldo
+Searching for 'Cristiano Ronaldo photo'
+images/Lionel Messi
+Searching for 'Lionel Messi photo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/jasonsuarez/anaconda3/envs/pydata-book/lib/python3.10/site-packages/PIL/Image.py:981: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="2b737003-1f96-45c9-eb8a-780ac4aa10b8" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Check if any image is broken and delete it</span></span>
+<span id="cb15-2">failed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> verify_images(get_image_files(path))</span>
+<span id="cb15-3">failed.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">map</span>(Path.unlink)</span>
+<span id="cb15-4"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(failed)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>0</code></pre>
+</div>
+</div>
+</section>
+<section id="preparing-for-model-training" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-for-model-training">Preparing for Model Training</h2>
+<p>Setup of the pretrained model for fine-tuning. This includes specifying model parameters and configuring the learning environment.</p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">dls <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> DataBlock(</span>
+<span id="cb17-2">    blocks<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(ImageBlock, CategoryBlock),</span>
+<span id="cb17-3">    get_items<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>get_image_files,</span>
+<span id="cb17-4">    splitter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>RandomSplitter(valid_pct<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, seed<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>),</span>
+<span id="cb17-5">    get_y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>parent_label,</span>
+<span id="cb17-6">    item_tfms<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[Resize(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">192</span>, method<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'squish'</span>)]</span>
+<span id="cb17-7">).dataloaders(path, bs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>)</span>
+<span id="cb17-8"></span>
+<span id="cb17-9">dls.show_batch(max_n<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="training-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model">Training the Model</h2>
+<p>Fine-tuning the pretrained model on our dataset. This step involves training the model to classify images as either Messi or Cristiano Ronaldo accurately.</p>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">learn <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vision_learner(dls, resnet18, metrics<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>error_rate)</span>
+<span id="cb18-2">learn.fine_tune(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1.065711</td>
+<td>0.397649</td>
+<td>0.196078</td>
+<td>00:02</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.476915</td>
+<td>0.178397</td>
+<td>0.058824</td>
+<td>00:02</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.365285</td>
+<td>0.163348</td>
+<td>0.058824</td>
+<td>00:02</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.277333</td>
+<td>0.129455</td>
+<td>0.058824</td>
+<td>00:02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">results <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> learn.show_results()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training_files/figure-html/cell-12-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="evaluating-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-the-model">Evaluating the Model</h2>
+<p>Assess the performance of the trained model on test data to ensure accurate classification.</p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">is_goat,_,probs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> learn.predict(PILImage.create(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cristiano.jpg'</span>))</span>
+<span id="cb20-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Who is it?: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>is_goat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">."</span>)</span>
+<span id="cb20-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Probability it's the GOAT: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>probs[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Is it the GOAT?: Cristiano Ronaldo.
+Probability it's the GOAT: 0.9999</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">is_goat,_,probs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> learn.predict(PILImage.create(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'messi.jpg'</span>))</span>
+<span id="cb22-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Who is it?: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>is_goat<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">."</span>)</span>
+<span id="cb22-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Probability it's the GOAT: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>probs[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> 🙃"</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Picking the probability it's Ronaldo when it's Messi tells the joke</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Who is it?: Lionel Messi.
+Probability it's the GOAT: 0.0002 🙃</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Exports the model as a pickel file that may later be loaded, regardless of all the code that have served to train it.</span></span>
+<span id="cb24-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Have a look on the goat_detector_inference.ipynb file to see how it's done </span></span>
+<span id="cb24-3">learn.export()</span></code></pre></div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Summary of the training process and results. The trained model is now capable of classifying images between Messi and Cristiano Ronaldo with a certain accuracy.</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <category>Machine Learning</category>
+  <category>Python</category>
+  <category>Fastai</category>
+  <guid>https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training.html</guid>
+  <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

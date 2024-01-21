@@ -1,10 +1,23 @@
 [
   {
+    "listing": "/archive.html",
+    "items": [
+      "/posts/virtual-environnements/js_env.html",
+      "/posts/road_map/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
+      "/posts/virtual-environnements/js_env.html",
       "/posts/road_map/index.html",
-      "/posts/first_notebook_model/goat_detector_training.html",
-      "/posts/first_model/index.html"
+      "/posts/first_notebook_model/goat_detector_training.html"
+    ]
+  },
+  {
+    "listing": "/env-series.html",
+    "items": [
+      "/posts/virtual-environnements/js_env.html"
     ]
   }
 ]
