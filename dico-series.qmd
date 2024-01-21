@@ -1,0 +1,14 @@
+---
+title: "Dico, le dictionnaire automatique qui éduque les élèves à l'utiliser judicieusement"
+listing:
+  contents: posts/dico/*.qmd
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+  fields: [date, title, reading-time, description]
+page-layout: full
+title-block-banner: true
+---
+

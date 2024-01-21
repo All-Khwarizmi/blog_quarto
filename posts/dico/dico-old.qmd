@@ -1,0 +1,44 @@
+---
+title: "Dico, première version"
+author: "Jason Suárez"
+date: "2024-01-19"
+categories: [API, dictionnaire, éducation, numérique, autonomie, linguistique]
+image: "image.png"
+---
+
+*Ceci est une traduction de l'article [Dico](https://dev.to/allkhwarizmi/dico-3ni2) de Jason Suárez.*
+
+## Qu'est-ce que Dico ?
+Tout d'abord, voici le répertoire et le site de Dico.
+
+Ensuite, comme vous l'avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.
+
+Dico vous permet de chercher un mot à la fois dans les deux langues grâce à l'API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d'une clé API, mais leur offre gratuite est largement suffisante pour commencer.
+
+Pour ce projet, j'ai utilisé :
+
+- Typescript pour des raisons de sécurité
+- Next.js pour le front-end et le back-end
+une base de données PostgreSQL hébergée sur Railway.app
+- Prisma comme ORM
+- Tailwindcss pour le style
+  
+## L'objectif de Dico
+En tant que professeur d'espagnol, mon plus grand défi est de faire faire leurs devoirs aux élèves. Ensuite, le second est de les empêcher d'écrire tout en français dans un traducteur en ligne, mais plutôt de l'utiliser à bon escient lorsqu'ils en ont le plus besoin.
+
+Cependant, ce que j'ai appris jusqu'à présent, c'est que bien qu'ils soient censés être des natifs numériques, ils ne savent pas utiliser un tel outil efficacement. C'est comme avoir une voiture mais ne pas savoir comment la conduire correctement.
+
+J'ai donc introduit Dico dans un cours où ils pouvaient chercher un certain nombre de mots pour accomplir une série de tâches. Moins ils l'utilisent, plus ils obtiennent de points. Cela les oblige à essayer de deviner ou à réaliser qu'ils pourraient ne pas avoir besoin de ce mot spécifique pour comprendre le document.
+
+## Big Theta de Dico
+Étant un développeur adepte des "free tyer", j'ai rapidement réalisé que même s'il est peu probable que mes élèves utilisent Dico assez pour atteindre la limite d'utilisation de l'API (1000 mots), cela pourrait arriver.
+
+De plus, j'ai également réalisé que le coût algorithmique de Dico pourrait être exponentiel si chaque élève recherche n'importe quel mot. Pas performant du tout.
+
+## Big O de Dico
+La solution que j'ai trouvée est basée en partie sur la linguistique et une stratégie de partage des coûts.
+
+Je sais en effet que nous, en tant que locuteurs, tendons à utiliser de moins en moins de vocabulaire de nos jours. J'ai donc pensé que si je pouvais stocker chaque mot la première fois qu'il a été recherché, cela rendrait le coût de l'algorithme linéaire au lieu d'exponentiel. Cela rendrait moins probable le dépassement de la limite de l'API puisque nous avons en moyenne environ 25 000 mots de vocabulaire. Enfin, cela pourrait améliorer la performance de recherche. Une fois qu'un mot a été recherché et stocké dans une base de données, il peut être accédé plus rapidement que s'il fallait le demander à l'API.
+
+## Conclusion
+En somme, Dico est un dictionnaire automatique qui, malgré sa simplicité, aurait pu être vraiment coûteux si je n'avais pas trouvé une sorte d'optimisation. C'est un peu le revers de la médaille avec lequel j'ai dû travailler en évitant de trop solliciter l'API du dictionnaire.
