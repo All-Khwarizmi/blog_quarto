@@ -1,14 +1,21 @@
 ---
 title: "Accueil"
 listing:
-  contents: posts
+# Add support for .qmd and .ipynb files
+  contents: posts/**/*[qmd, ipynb]
   sort: "date desc"
   type: default
+  fields: [date, title, reading-time, description, categories, image]
   categories: true
-  sort-ui: false
-  filter-ui: false
+  sort-ui: true
+  filter-ui: true
+  feed: true
 page-layout: full
-title-block-banner: true
+title-block-banner: false
 ---
 
 
+# Series
+
+##### [environnements virtuels](env-series.html)
+Ceci est une série d'articles sur les environnements virtuels.

@@ -3,6 +3,7 @@ title: "Mon premier modèle d'apprentissage automatique"
 author: "Jason Suárez"
 date: "2024-01-12"
 categories: [AI, Machine Learning, Python, Fastai]
+draft: true
 ---
 
 # Mon premier modele d'apprentissage automatique

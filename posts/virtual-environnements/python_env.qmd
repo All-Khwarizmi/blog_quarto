@@ -1,0 +1,11 @@
+---
+title: "Environnements virtuels avec Python "
+author: "Jason Suárez"
+date: "2024-01-21"
+categories: [Venv, Python, Anaconda]
+image: "image.png"
+draft: true
+---
+![image article](image.png)
+
+# Environnements virtuels avec Python

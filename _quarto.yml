@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Education 2.0"
+  site-url: https://all-khwarizmi.github.io/blog_quarto/
   navbar:
     right:
       - about.qmd
@@ -14,7 +15,6 @@ format:
   html:
     theme: darkly
     css: styles.css
-
 
 
 execute: 
