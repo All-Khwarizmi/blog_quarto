@@ -1,0 +1,31 @@
+---
+title: "DicoIA"
+author: "Jason Suárez"
+date: "2024-01-21"
+categories: [API, dictionnaire, éducation, numérique, autonomie, linguistique]
+image: "image-new.png"
+draft: true
+---
+
+![](image-new.png)
+
+## L'Évolution d'une Révolution Pédagogique en Langues
+
+Introduction :
+La première version de Dico a marqué un tournant dans l'apprentissage des langues, offrant aux élèves un outil simple et efficace pour la traduction français-espagnol. Cependant, malgré son utilité, cette version avait ses limites, notamment en termes de coût et de performance dus aux appels API répétés.
+
+Le Développement de DicoIA :
+Aujourd'hui, nous franchissons une nouvelle étape avec DicoIA, une application de chatbot basée sur un modèle génératif. Ce pas de géant repousse les frontières de l'éducation numérique, en transformant non seulement la manière dont les élèves apprennent les langues, mais aussi comment ils interagissent avec la technologie.
+
+Les Avancées de DicoIA :
+Contrairement à la version précédente, DicoIA n'est pas limité par les coûts d'API ou la latence. Il permet de traduire un mot à la fois, renforçant l'apprentissage autonome et la réflexion critique. De plus, DicoIA peut maintenir des discussions, fournir des définitions et même conseiller sur l'utilisation optimale de l'outil.
+
+Les Objectifs Pédagogiques :
+Au cœur de DicoIA se trouve l'objectif de rendre les élèves non seulement compétents en langues, mais aussi autonomes dans leur apprentissage. Les interactions avec le chatbot sont conçues pour être informatives, engageantes et adaptées aux besoins éducatifs des élèves.
+
+Feuille de Route :
+L'avenir de DicoIA est prometteur, avec des plans pour intégrer des quizz interactifs, des jeux de mots et des conseils méthodologiques personnalisés. Nous envisageons également de recueillir des retours des utilisateurs pour améliorer continuellement l'expérience.
+
+Conclusion :
+DicoIA n'est pas seulement une application, c'est une révolution dans l'apprentissage des langues. En fusionnant la technologie avancée avec des stratégies pédagogiques innovantes, DicoIA promet d'enrichir l'expérience éducative des élèves et des enseignants.
+

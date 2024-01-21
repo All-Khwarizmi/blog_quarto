@@ -1,11 +1,11 @@
 ---
 title: "Dico, première version"
 author: "Jason Suárez"
-date: "2024-01-19"
+date: "2024-01-21"
 categories: [API, dictionnaire, éducation, numérique, autonomie, linguistique]
 image: "image.png"
 ---
-
+![](image.png)
 *Ceci est une traduction de l'article [Dico](https://dev.to/allkhwarizmi/dico-3ni2) de Jason Suárez.*
 
 ## Qu'est-ce que Dico ?

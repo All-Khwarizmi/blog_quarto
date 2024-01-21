@@ -1,5 +1,4 @@
 ---
-title: "Accueil"
 listing:
 # Add support for .qmd and .ipynb files
   contents: posts/**/*[qmd, ipynb]
@@ -22,3 +21,6 @@ Ceci est une série d'articles sur les environnements virtuels.
 
 ##### [Dico](dico-series.html)
 Dico, le dictionnaire qui éduque les élèves à l'utiliser judicieusement, les guidant vers une autonomie linguistique et numérique.
+
+<br>
+<br>
