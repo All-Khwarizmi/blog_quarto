@@ -4,77 +4,7 @@
     "href": "archive.html",
     "title": "Archive",
     "section": "",
-    "text": "Environnements virtuels avec Javascript\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n\n\n\n\n\n\nDico, première version\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n\n\n\n\n\n\nL’Education 2.0\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/dico/dico-old.html",
-    "href": "posts/dico/dico-old.html",
-    "title": "Dico, première version",
-    "section": "",
-    "text": "Ceci est une traduction de l’article Dico de Jason Suárez."
-  },
-  {
-    "objectID": "posts/dico/dico-old.html#quest-ce-que-dico",
-    "href": "posts/dico/dico-old.html#quest-ce-que-dico",
-    "title": "Dico, première version",
-    "section": "Qu’est-ce que Dico ?",
-    "text": "Qu’est-ce que Dico ?\nTout d’abord, voici le répertoire et le site de Dico.\nEnsuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.\nDico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.\nPour ce projet, j’ai utilisé :\n\nTypescript pour des raisons de sécurité\nNext.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app\nPrisma comme ORM\nTailwindcss pour le style"
-  },
-  {
-    "objectID": "posts/dico/dico-old.html#lobjectif-de-dico",
-    "href": "posts/dico/dico-old.html#lobjectif-de-dico",
-    "title": "Dico, première version",
-    "section": "L’objectif de Dico",
-    "text": "L’objectif de Dico\nEn tant que professeur d’espagnol, mon plus grand défi est de faire faire leurs devoirs aux élèves. Ensuite, le second est de les empêcher d’écrire tout en français dans un traducteur en ligne, mais plutôt de l’utiliser à bon escient lorsqu’ils en ont le plus besoin.\nCependant, ce que j’ai appris jusqu’à présent, c’est que bien qu’ils soient censés être des natifs numériques, ils ne savent pas utiliser un tel outil efficacement. C’est comme avoir une voiture mais ne pas savoir comment la conduire correctement.\nJ’ai donc introduit Dico dans un cours où ils pouvaient chercher un certain nombre de mots pour accomplir une série de tâches. Moins ils l’utilisent, plus ils obtiennent de points. Cela les oblige à essayer de deviner ou à réaliser qu’ils pourraient ne pas avoir besoin de ce mot spécifique pour comprendre le document."
-  },
-  {
-    "objectID": "posts/dico/dico-old.html#big-theta-de-dico",
-    "href": "posts/dico/dico-old.html#big-theta-de-dico",
-    "title": "Dico, première version",
-    "section": "Big Theta de Dico",
-    "text": "Big Theta de Dico\nÉtant un développeur adepte des “free tyer”, j’ai rapidement réalisé que même s’il est peu probable que mes élèves utilisent Dico assez pour atteindre la limite d’utilisation de l’API (1000 mots), cela pourrait arriver.\nDe plus, j’ai également réalisé que le coût algorithmique de Dico pourrait être exponentiel si chaque élève recherche n’importe quel mot. Pas performant du tout."
-  },
-  {
-    "objectID": "posts/dico/dico-old.html#big-o-de-dico",
-    "href": "posts/dico/dico-old.html#big-o-de-dico",
-    "title": "Dico, première version",
-    "section": "Big O de Dico",
-    "text": "Big O de Dico\nLa solution que j’ai trouvée est basée en partie sur la linguistique et une stratégie de partage des coûts.\nJe sais en effet que nous, en tant que locuteurs, tendons à utiliser de moins en moins de vocabulaire de nos jours. J’ai donc pensé que si je pouvais stocker chaque mot la première fois qu’il a été recherché, cela rendrait le coût de l’algorithme linéaire au lieu d’exponentiel. Cela rendrait moins probable le dépassement de la limite de l’API puisque nous avons en moyenne environ 25 000 mots de vocabulaire. Enfin, cela pourrait améliorer la performance de recherche. Une fois qu’un mot a été recherché et stocké dans une base de données, il peut être accédé plus rapidement que s’il fallait le demander à l’API."
-  },
-  {
-    "objectID": "posts/dico/dico-old.html#conclusion",
-    "href": "posts/dico/dico-old.html#conclusion",
-    "title": "Dico, première version",
-    "section": "Conclusion",
-    "text": "Conclusion\nEn somme, Dico est un dictionnaire automatique qui, malgré sa simplicité, aurait pu être vraiment coûteux si je n’avais pas trouvé une sorte d’optimisation. C’est un peu le revers de la médaille avec lequel j’ai dû travailler en évitant de trop solliciter l’API du dictionnaire."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Accueil",
-    "section": "",
-    "text": "Series\n\nenvironnements virtuels\nCeci est une série d’articles sur les environnements virtuels.\n\n\nDico\nDico, le dictionnaire qui éduque les élèves à l’utiliser judicieusement, les guidant vers une autonomie linguistique et numérique.\n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nEnvironnements virtuels avec Javascript\n\n\n\n\n\n\n\nGit\n\n\nJavascript\n\n\nNodeJS\n\n\nNPM\n\n\nYarn\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nDico, première version\n\n\n\n\n\n\n\nAPI\n\n\ndictionnaire\n\n\néducation\n\n\nnumérique\n\n\nautonomie\n\n\nlinguistique\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nL’Education 2.0\n\n\n\n\n\n\n\neducation\n\n\nSTI\n\n\nLLM\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nMon premier modèle d’apprentissage automatique\n\n\n\n\n\n\n\nAI\n\n\nMachine Learning\n\n\nPython\n\n\nFastai\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2024\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "A propos",
-    "section": "",
-    "text": "Chez Education 2.0, nous croyons en une vision d’apprentissage qui transcende les frontières traditionnelles. Notre mission est d’explorer les horizons de l’éducation, de repousser les limites de l’apprentissage, et d’inspirer une nouvelle génération d’apprenants et d’éducateurs.\nMon propre parcours éducatif est le moteur de ce blog. Originaire de la République Dominicaine, j’ai fait de Paris ma maison. En tant que professeur d’espagnol, j’ai eu le privilège d’enseigner et de voir les lumières de la compréhension s’allumer dans les yeux de mes élèves. Mais j’ai toujours été un éternel apprenant, avide de découvrir comment fonctionne le cerveau humain et comment l’IA peut améliorer nos vies.\nEducation 2.0 est né de cette passion pour l’éducation et l’innovation. Ici, nous explorons un éventail d’idées, des neurosciences cognitives aux projets d’IA en passant par les défis de l’apprentissage moderne. Nous partageons notre propre voyage à travers le développement de projets, des initiatives conçues pour repousser les frontières de l’apprentissage personnalisé et de l’optimisation éducative."
-  },
-  {
-    "objectID": "env-series.html",
-    "href": "env-series.html",
-    "title": "Series: environments virtuels",
-    "section": "",
-    "text": "Environnements virtuels avec Javascript\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n5 min\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "dico-series.html",
-    "href": "dico-series.html",
-    "title": "Dico, le dictionnaire automatique qui éduque les élèves à l’utiliser judicieusement",
-    "section": "",
-    "text": "Dico, première version\n\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n3 min\n\n\n\n\n\n\nNo matching items"
+    "text": "Dico, première version\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n\n\n\n\n\n\nEnvironnements virtuels avec Javascript\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n\n\n\n\n\n\nEnvironnements virtuels avec Python\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n\n\n\n\n\n\nL’Education 2.0\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/virtual-environnements/js_env.html",
@@ -117,6 +47,125 @@
     "title": "Environnements virtuels avec Javascript",
     "section": "Conclusion",
     "text": "Conclusion\nL’utilisation d’environnements virtuels et la gestion efficace des dépendances sont des piliers essentiels dans le développement moderne de logiciels, en particulier dans l’écosystème JavaScript. Que ce soit à travers npm ou Yarn, la capacité de gérer les dépendances de manière isolée et reproductible est cruciale pour la réussite et la stabilité des projets.\nEn embrassant ces outils et pratiques, les développeurs peuvent non seulement améliorer la qualité et la fiabilité de leurs applications, mais aussi faciliter la collaboration au sein des équipes et entre les projets. Il est important de rester à jour avec les meilleures pratiques et les nouvelles fonctionnalités offertes par ces outils, afin de tirer le meilleur parti des technologies disponibles.\nEn conclusion, les environnements virtuels et la gestion adéquate des dépendances ne sont pas seulement des facilitateurs techniques ; ils représentent une approche stratégique vers un développement plus ordonné, sécurisé et collaboratif."
+  },
+  {
+    "objectID": "dico-series.html",
+    "href": "dico-series.html",
+    "title": "Dico, le dictionnaire automatique qui éduque les élèves à l’utiliser judicieusement",
+    "section": "",
+    "text": "Dico, première version\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n3 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "env-series.html",
+    "href": "env-series.html",
+    "title": "Series: environments virtuels",
+    "section": "",
+    "text": "Environnements virtuels avec Javascript\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n5 min\n\n\n\n\n\n\n\n\nEnvironnements virtuels avec Python\n\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n6 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "A propos",
+    "section": "",
+    "text": "Chez Education 2.0, nous croyons en une vision d’apprentissage qui transcende les frontières traditionnelles. Notre mission est d’explorer les horizons de l’éducation, de repousser les limites de l’apprentissage, et d’inspirer une nouvelle génération d’apprenants et d’éducateurs.\nMon propre parcours éducatif est le moteur de ce blog. Originaire de la République Dominicaine, j’ai fait de Paris ma maison. En tant que professeur d’espagnol, j’ai eu le privilège d’enseigner et de voir les lumières de la compréhension s’allumer dans les yeux de mes élèves. Mais j’ai toujours été un éternel apprenant, avide de découvrir comment fonctionne le cerveau humain et comment l’IA peut améliorer nos vies.\nEducation 2.0 est né de cette passion pour l’éducation et l’innovation. Ici, nous explorons un éventail d’idées, des neurosciences cognitives aux projets d’IA en passant par les défis de l’apprentissage moderne. Nous partageons notre propre voyage à travers le développement de projets, des initiatives conçues pour repousser les frontières de l’apprentissage personnalisé et de l’optimisation éducative."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Series",
+    "section": "",
+    "text": "Series\n\nenvironnements virtuels\nCeci est une série d’articles sur les environnements virtuels.\n\n\nDico\nDico, le dictionnaire qui éduque les élèves à l’utiliser judicieusement, les guidant vers une autonomie linguistique et numérique.\n \n\n\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nDico, première version\n\n\n\n\n\n\n\nAPI\n\n\ndictionnaire\n\n\néducation\n\n\nnumérique\n\n\nautonomie\n\n\nlinguistique\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nEnvironnements virtuels avec Javascript\n\n\n\n\n\n\n\nGit\n\n\nJavascript\n\n\nNodeJS\n\n\nNPM\n\n\nYarn\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nEnvironnements virtuels avec Python\n\n\n\n\n\n\n\nVenv\n\n\nPython\n\n\nAnaconda\n\n\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nL’Education 2.0\n\n\n\n\n\n\n\neducation\n\n\nSTI\n\n\nLLM\n\n\n\n\n\n\n\n\n\n\n\nJan 19, 2024\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nMon premier modèle d’apprentissage automatique\n\n\n\n\n\n\n\nAI\n\n\nMachine Learning\n\n\nPython\n\n\nFastai\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2024\n\n\n1 min\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#introduction-à-python-et-aux-environnements-virtuels",
+    "href": "posts/virtual-environnements/python_env.html#introduction-à-python-et-aux-environnements-virtuels",
+    "title": "Environnements virtuels avec Python",
+    "section": "Introduction à Python et aux Environnements Virtuels",
+    "text": "Introduction à Python et aux Environnements Virtuels\nPython, l’un des langages de programmation les plus populaires et polyvalents, est largement utilisé dans divers domaines, allant du développement web à la science des données. Une caractéristique clé de Python est sa capacité à créer et à gérer des environnements virtuels. Ces environnements sont des espaces isolés qui permettent aux développeurs d’installer et de gérer des paquets spécifiques à chaque projet sans affecter les autres projets ou le système global. Cette isolation évite les conflits de dépendances et assure une plus grande reproductibilité des projets."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#création-dun-environnement-virtuel-avec-python",
+    "href": "posts/virtual-environnements/python_env.html#création-dun-environnement-virtuel-avec-python",
+    "title": "Environnements virtuels avec Python",
+    "section": "Création d’un Environnement Virtuel avec Python",
+    "text": "Création d’un Environnement Virtuel avec Python\nPython offre un outil intégré, venv, pour créer des environnements virtuels. Voici comment vous pouvez créer et activer un environnement virtuel :\nCréation de l’Environnement :\npython -m venv mon_env\nCette commande crée un nouvel environnement virtuel nommé mon_env.\nActivation de l’Environnement :\nSur Windows :\nmon_env\\Scripts\\activate\nSur Unix ou MacOS :\nsource mon_env/bin/activate\nCette étape active l’environnement virtuel, isolant ainsi vos installations de paquets.\nTrès bien, abordons maintenant la section sur Conda :\nIntroduction à Conda pour les Environnements Virtuels\nConda est un puissant gestionnaire de paquets et d’environnements virtuels qui se distingue dans la gestion des dépendances en Python. Contrairement à venv, qui est spécifique à Python, Conda est langage agnostique, ce qui lui permet de gérer des paquets dans plusieurs langages. Cela est particulièrement utile dans les projets interdisciplinaires qui impliquent différentes technologies."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#création-dun-environnement-avec-conda",
+    "href": "posts/virtual-environnements/python_env.html#création-dun-environnement-avec-conda",
+    "title": "Environnements virtuels avec Python",
+    "section": "Création d’un Environnement avec Conda :",
+    "text": "Création d’un Environnement avec Conda :\n\nInstallation de Conda :\nPour installer Conda, vous pouvez télécharger et exécuter le script d’installation Anaconda ou Miniconda . Vous pouvez également installer Conda à l’aide de pip, le gestionnaire de paquets Python. Pour ce faire, exécutez la commande suivante :\npip install conda\n\n\nCréation de l’Environnement Conda :\nconda create --name mon_env_python python=3.8\nCette commande crée un environnement Conda nommé mon_env_python avec une version spécifique de Python.\nActivation de l’Environnement Conda :\nconda activate mon_env_python\nEn activant l’environnement, vous isolez vos travaux et dépendances dans cet environnement.\n\n\nAvantages de Conda :\n\nGestion Multilingue : Conda peut gérer des paquets de différents langages, ce qui le rend idéal pour les projets complexes.\nEnvironnements Plus Robustes : Conda facilite la création et la gestion d’environnements avec des dépendances complexes et interdépendantes.\nIntégration avec des Outils Scientifiques : Conda est très populaire dans les communautés scientifiques et de data science pour sa capacité à gérer efficacement des bibliothèques scientifiques et des outils d’analyse de données."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#gestion-des-dépendances-avec-conda",
+    "href": "posts/virtual-environnements/python_env.html#gestion-des-dépendances-avec-conda",
+    "title": "Environnements virtuels avec Python",
+    "section": "Gestion des Dépendances avec Conda",
+    "text": "Gestion des Dépendances avec Conda\nConda simplifie non seulement la création d’environnements virtuels mais aussi la gestion des dépendances au sein de ces environnements :\n\nInstallation des Paquets avec Conda : Pour installer un paquet dans l’environnement actif, utilisez :\n\nconda install nom_du_paquet\nContrairement à pip, Conda cherche les paquets dans ses propres dépôts, ce qui peut inclure des optimisations spécifiques et des versions pré-compilées.\n\nListe des Paquets Installés : Pour voir les paquets installés dans l’environnement actif :\n\nconda list\n\nMise à jour des Paquets : Pour mettre à jour un paquet spécifique :\n\nbash Copy code conda update nom_du_paquet Ou pour mettre à jour tous les paquets de l’environnement :\nconda update --all\nAvantages de Conda pour la Gestion des Dépendances :\n\nRésolution de Dépendances Complexe :\n\n\nConda gère efficacement les dépendances complexes et leurs interdépendances.\nEnvironnements Consistants : Conda assure une cohérence accrue entre les environnements de développement et de production.\nLarge Éventail de Paquets : Avec Anaconda, Conda offre un accès à une vaste bibliothèque de paquets scientifiques et de data science."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#utilisation-de-pip-dans-les-environnements-virtuels",
+    "href": "posts/virtual-environnements/python_env.html#utilisation-de-pip-dans-les-environnements-virtuels",
+    "title": "Environnements virtuels avec Python",
+    "section": "Utilisation de pip dans les Environnements Virtuels",
+    "text": "Utilisation de pip dans les Environnements Virtuels\npip est le gestionnaire de paquets par défaut pour Python et est largement utilisé pour installer et gérer les paquets Python. Dans un environnement virtuel, pip est isolé et gère les installations de paquets spécifiques à cet environnement.\n\nInstallation des Paquets avec pip : Dans un environnement virtuel activé, vous pouvez installer des paquets en utilisant :\n\npip install nom_du_paquet\nCela garantit que le paquet est installé uniquement dans l’environnement virtuel, sans affecter d’autres projets ou le système global.\n\nGeler les Dépendances : Pour créer une liste de toutes les dépendances installées dans l’environnement :\n\npip freeze  &gt; requirements.txt\nCe fichier requirements.txt peut être utilisé pour recréer l’environnement ailleurs.\n\nInstaller des Dépendances à partir d’un Fichier requirements.txt :\n\npip install -r requirements.txt\nCette commande installe toutes les dépendances listées dans le fichier requirements.txt.\n\nComparaison entre pip et Conda :\n\n\nCiblage : pip est spécifiquement conçu pour Python, tandis que Conda est polyvalent et peut gérer des paquets dans plusieurs langages.\nSources de Paquets : pip installe des paquets à partir du Python Package Index (PyPI), tandis que Conda utilise ses propres dépôts, souvent optimisés pour des paquets scientifiques et de data science.\nGestion des Dépendances : Conda est généralement plus efficace dans la gestion des dépendances complexes et interdépendantes."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#bonnes-pratiques-pour-la-gestion-des-environnements-virtuels",
+    "href": "posts/virtual-environnements/python_env.html#bonnes-pratiques-pour-la-gestion-des-environnements-virtuels",
+    "title": "Environnements virtuels avec Python",
+    "section": "Bonnes Pratiques pour la Gestion des Environnements Virtuels",
+    "text": "Bonnes Pratiques pour la Gestion des Environnements Virtuels\nGérer efficacement les environnements virtuels est crucial pour le développement logiciel. Voici quelques bonnes pratiques :\n\nIsolation des Projets : Utilisez des environnements virtuels distincts pour chaque projet afin d’éviter les conflits de dépendances et de garantir que les besoins spécifiques de chaque projet sont satisfaits.\nDocumentation des Dépendances :\n\n\nAvec pip : Utilisez pip freeze pour créer un fichier requirements.txt, qui sert de documentation pour les dépendances du projet.\nAvec Conda : Utilisez conda list –export &gt; environment.yml pour créer un fichier similaire.\n\n\nReproductibilité des Environnements :\n\n\nPartagez les fichiers requirements.txt ou environment.yml au sein de votre équipe pour assurer que tous travaillent avec les mêmes versions de dépendances. 4.Mise à Jour Régulière :\nVérifiez régulièrement les mises à jour des paquets pour bénéficier des dernières fonctionnalités et corrections de sécurité.\n\n\nNettoyage des Environnements :\n\n\nSupprimez les environnements virtuels qui ne sont plus utilisés pour libérer de l’espace et maintenir un système organisé."
+  },
+  {
+    "objectID": "posts/virtual-environnements/python_env.html#conclusion",
+    "href": "posts/virtual-environnements/python_env.html#conclusion",
+    "title": "Environnements virtuels avec Python",
+    "section": "Conclusion",
+    "text": "Conclusion\nLes environnements virtuels, que ce soit avec venv, Conda, ou pip, sont des outils essentiels dans le développement en Python. Ils offrent une isolation cruciale, garantissent la reproductibilité des projets et facilitent la gestion des dépendances. Conda, en particulier, se distingue par sa capacité à gérer des dépendances complexes et multi-langages, ce qui en fait un choix privilégié pour des projets scientifiques et de data science.\nLa clé d’un développement efficace et sans heurts réside dans l’utilisation judicieuse de ces outils. En suivant les bonnes pratiques telles que l’isolation des projets, la documentation des dépendances, et la mise à jour régulière, les développeurs peuvent assurer la stabilité et la sécurité de leurs applications.\nEn fin de compte, une bonne maîtrise des environnements virtuels et des outils de gestion de dépendances est un atout indéniable pour tout développeur Python, ouvrant la voie à des projets plus organisés, reproductibles et réussis."
+  },
+  {
+    "objectID": "posts/dico/dico-old.html",
+    "href": "posts/dico/dico-old.html",
+    "title": "Dico, première version",
+    "section": "",
+    "text": "Ceci est une traduction de l’article Dico de Jason Suárez."
+  },
+  {
+    "objectID": "posts/dico/dico-old.html#quest-ce-que-dico",
+    "href": "posts/dico/dico-old.html#quest-ce-que-dico",
+    "title": "Dico, première version",
+    "section": "Qu’est-ce que Dico ?",
+    "text": "Qu’est-ce que Dico ?\nTout d’abord, voici le répertoire et le site de Dico.\nEnsuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.\nDico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.\nPour ce projet, j’ai utilisé :\n\nTypescript pour des raisons de sécurité\nNext.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app\nPrisma comme ORM\nTailwindcss pour le style"
+  },
+  {
+    "objectID": "posts/dico/dico-old.html#lobjectif-de-dico",
+    "href": "posts/dico/dico-old.html#lobjectif-de-dico",
+    "title": "Dico, première version",
+    "section": "L’objectif de Dico",
+    "text": "L’objectif de Dico\nEn tant que professeur d’espagnol, mon plus grand défi est de faire faire leurs devoirs aux élèves. Ensuite, le second est de les empêcher d’écrire tout en français dans un traducteur en ligne, mais plutôt de l’utiliser à bon escient lorsqu’ils en ont le plus besoin.\nCependant, ce que j’ai appris jusqu’à présent, c’est que bien qu’ils soient censés être des natifs numériques, ils ne savent pas utiliser un tel outil efficacement. C’est comme avoir une voiture mais ne pas savoir comment la conduire correctement.\nJ’ai donc introduit Dico dans un cours où ils pouvaient chercher un certain nombre de mots pour accomplir une série de tâches. Moins ils l’utilisent, plus ils obtiennent de points. Cela les oblige à essayer de deviner ou à réaliser qu’ils pourraient ne pas avoir besoin de ce mot spécifique pour comprendre le document."
+  },
+  {
+    "objectID": "posts/dico/dico-old.html#big-theta-de-dico",
+    "href": "posts/dico/dico-old.html#big-theta-de-dico",
+    "title": "Dico, première version",
+    "section": "Big Theta de Dico",
+    "text": "Big Theta de Dico\nÉtant un développeur adepte des “free tyer”, j’ai rapidement réalisé que même s’il est peu probable que mes élèves utilisent Dico assez pour atteindre la limite d’utilisation de l’API (1000 mots), cela pourrait arriver.\nDe plus, j’ai également réalisé que le coût algorithmique de Dico pourrait être exponentiel si chaque élève recherche n’importe quel mot. Pas performant du tout."
+  },
+  {
+    "objectID": "posts/dico/dico-old.html#big-o-de-dico",
+    "href": "posts/dico/dico-old.html#big-o-de-dico",
+    "title": "Dico, première version",
+    "section": "Big O de Dico",
+    "text": "Big O de Dico\nLa solution que j’ai trouvée est basée en partie sur la linguistique et une stratégie de partage des coûts.\nJe sais en effet que nous, en tant que locuteurs, tendons à utiliser de moins en moins de vocabulaire de nos jours. J’ai donc pensé que si je pouvais stocker chaque mot la première fois qu’il a été recherché, cela rendrait le coût de l’algorithme linéaire au lieu d’exponentiel. Cela rendrait moins probable le dépassement de la limite de l’API puisque nous avons en moyenne environ 25 000 mots de vocabulaire. Enfin, cela pourrait améliorer la performance de recherche. Une fois qu’un mot a été recherché et stocké dans une base de données, il peut être accédé plus rapidement que s’il fallait le demander à l’API."
+  },
+  {
+    "objectID": "posts/dico/dico-old.html#conclusion",
+    "href": "posts/dico/dico-old.html#conclusion",
+    "title": "Dico, première version",
+    "section": "Conclusion",
+    "text": "Conclusion\nEn somme, Dico est un dictionnaire automatique qui, malgré sa simplicité, aurait pu être vraiment coûteux si je n’avais pas trouvé une sorte d’optimisation. C’est un peu le revers de la médaille avec lequel j’ai dû travailler en évitant de trop solliciter l’API du dictionnaire."
   },
   {
     "objectID": "posts/first_notebook_model/goat_detector_training.html",

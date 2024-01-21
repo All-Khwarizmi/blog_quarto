@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/archive.html</loc>
-    <lastmod>2024-01-21T16:05:08.648Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/dico/dico-old.html</loc>
-    <lastmod>2024-01-21T16:05:07.344Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/index.html</loc>
-    <lastmod>2024-01-21T16:05:05.820Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/about.html</loc>
-    <lastmod>2024-01-21T16:05:04.588Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/env-series.html</loc>
-    <lastmod>2024-01-21T16:05:05.188Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/dico-series.html</loc>
-    <lastmod>2024-01-21T16:05:06.112Z</lastmod>
+    <lastmod>2024-01-21T16:45:21.970Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/js_env.html</loc>
-    <lastmod>2024-01-21T16:05:07.056Z</lastmod>
+    <lastmod>2024-01-21T16:45:20.070Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/dico-series.html</loc>
+    <lastmod>2024-01-21T16:45:19.118Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/env-series.html</loc>
+    <lastmod>2024-01-21T16:45:18.142Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/about.html</loc>
+    <lastmod>2024-01-21T16:45:17.502Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/index.html</loc>
+    <lastmod>2024-01-21T16:45:18.838Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/python_env.html</loc>
+    <lastmod>2024-01-21T16:45:19.726Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/dico/dico-old.html</loc>
+    <lastmod>2024-01-21T16:45:20.362Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training.html</loc>
-    <lastmod>2024-01-21T16:05:07.744Z</lastmod>
+    <lastmod>2024-01-21T16:45:21.038Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/road_map/index.html</loc>
-    <lastmod>2024-01-21T16:05:08.340Z</lastmod>
+    <lastmod>2024-01-21T16:45:21.634Z</lastmod>
   </url>
 </urlset>
