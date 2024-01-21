@@ -130,14 +130,14 @@
     "href": "posts/dico/dico-old.html",
     "title": "Dico, première version",
     "section": "",
-    "text": "Ceci est une traduction de l’article Dico de Jason Suárez."
+    "text": "Ceci est une traduction de l’article Dico de Jason Suárez, 19 février 2023."
   },
   {
     "objectID": "posts/dico/dico-old.html#quest-ce-que-dico",
     "href": "posts/dico/dico-old.html#quest-ce-que-dico",
     "title": "Dico, première version",
     "section": "Qu’est-ce que Dico ?",
-    "text": "Qu’est-ce que Dico ?\nTout d’abord, voici le répertoire et le site de Dico.\nEnsuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.\nDico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.\nPour ce projet, j’ai utilisé :\n\nTypescript pour des raisons de sécurité\nNext.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app\nPrisma comme ORM\nTailwindcss pour le style"
+    "text": "Qu’est-ce que Dico ?\nTout d’abord, voici le dépôt Github et le site..\nEnsuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.\nDico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.\nPour ce projet, j’ai utilisé :\n\nTypescript pour des raisons de sécurité\nNext.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app\nPrisma comme ORM\nTailwindcss pour le style"
   },
   {
     "objectID": "posts/dico/dico-old.html#lobjectif-de-dico",

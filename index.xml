@@ -20,10 +20,10 @@
 
 
 
-<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/dico/image.png" class="img-fluid"> <em>Ceci est une traduction de l’article <a href="https://dev.to/allkhwarizmi/dico-3ni2">Dico</a> de Jason Suárez.</em></p>
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/dico/image.png" class="img-fluid"> <em>Ceci est une traduction de l’article <a href="https://dev.to/allkhwarizmi/dico-3ni2">Dico</a> de Jason Suárez, 19 février 2023.</em></p>
 <section id="quest-ce-que-dico" class="level2">
 <h2 class="anchored" data-anchor-id="quest-ce-que-dico">Qu’est-ce que Dico ?</h2>
-<p>Tout d’abord, voici le répertoire et le site de Dico.</p>
+<p>Tout d’abord, voici le <a href="https://github.com/All-Khwarizmi/Dico">dépôt Github</a> et le <a href="https://dico-uno.vercel.app">site</a>..</p>
 <p>Ensuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.</p>
 <p>Dico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.</p>
 <p>Pour ce projet, j’ai utilisé :</p>
