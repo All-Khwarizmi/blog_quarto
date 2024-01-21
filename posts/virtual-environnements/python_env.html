@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -148,14 +182,136 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="image.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">image article</figcaption>
-</figure>
-</div>
-<section id="environnements-virtuels-avec-python" class="level1">
-<h1>Environnements virtuels avec Python</h1>
+<p><img src="image.png" class="img-fluid"></p>
+<p><br> <br></p>
+<section id="introduction-à-python-et-aux-environnements-virtuels" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-à-python-et-aux-environnements-virtuels">Introduction à Python et aux Environnements Virtuels</h2>
+<p>Python, l’un des langages de programmation les plus populaires et polyvalents, est largement utilisé dans divers domaines, allant du développement web à la science des données. Une caractéristique clé de Python est sa capacité à créer et à gérer des environnements virtuels. Ces environnements sont des espaces isolés qui permettent aux développeurs d’installer et de gérer des paquets spécifiques à chaque projet sans affecter les autres projets ou le système global. Cette isolation évite les conflits de dépendances et assure une plus grande reproductibilité des projets.</p>
+</section>
+<section id="création-dun-environnement-virtuel-avec-python" class="level2">
+<h2 class="anchored" data-anchor-id="création-dun-environnement-virtuel-avec-python">Création d’un Environnement Virtuel avec Python</h2>
+<p>Python offre un outil intégré, venv, pour créer des environnements virtuels. Voici comment vous pouvez créer et activer un environnement virtuel :</p>
+<p>Création de l’Environnement :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python <span class="op">-</span>m venv mon_env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cette commande crée un nouvel environnement virtuel nommé mon_env.</p>
+<p>Activation de l’Environnement :</p>
+<p>Sur Windows :</p>
+<pre class="cmd"><code>mon_env\Scripts\activate</code></pre>
+<p>Sur Unix ou MacOS :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> mon_env/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cette étape active l’environnement virtuel, isolant ainsi vos installations de paquets.</p>
+<p>Très bien, abordons maintenant la section sur Conda :</p>
+<p>Introduction à Conda pour les Environnements Virtuels</p>
+<p>Conda est un puissant gestionnaire de paquets et d’environnements virtuels qui se distingue dans la gestion des dépendances en Python. Contrairement à venv, qui est spécifique à Python, Conda est langage agnostique, ce qui lui permet de gérer des paquets dans plusieurs langages. Cela est particulièrement utile dans les projets interdisciplinaires qui impliquent différentes technologies.</p>
+</section>
+<section id="création-dun-environnement-avec-conda" class="level2">
+<h2 class="anchored" data-anchor-id="création-dun-environnement-avec-conda">Création d’un Environnement avec Conda :</h2>
+<section id="installation-de-conda" class="level3">
+<h3 class="anchored" data-anchor-id="installation-de-conda">Installation de Conda :</h3>
+<p>Pour installer Conda, vous pouvez télécharger et exécuter le script d’installation <a href="https://www.anaconda.com/products/individual">Anaconda</a> ou <a href="https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html">Miniconda</a> . Vous pouvez également installer Conda à l’aide de pip, le gestionnaire de paquets Python. Pour ce faire, exécutez la commande suivante :</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="création-de-lenvironnement-conda" class="level3">
+<h3 class="anchored" data-anchor-id="création-de-lenvironnement-conda">Création de l’Environnement Conda :</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> mon_env_python python=3.8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cette commande crée un environnement Conda nommé mon_env_python avec une version spécifique de Python.</p>
+<p>Activation de l’Environnement Conda :</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate mon_env_python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En activant l’environnement, vous isolez vos travaux et dépendances dans cet environnement.</p>
+</section>
+<section id="avantages-de-conda" class="level3">
+<h3 class="anchored" data-anchor-id="avantages-de-conda">Avantages de Conda :</h3>
+<ul>
+<li>Gestion Multilingue : Conda peut gérer des paquets de différents langages, ce qui le rend idéal pour les projets complexes.</li>
+<li>Environnements Plus Robustes : Conda facilite la création et la gestion d’environnements avec des dépendances complexes et interdépendantes.</li>
+<li>Intégration avec des Outils Scientifiques : Conda est très populaire dans les communautés scientifiques et de data science pour sa capacité à gérer efficacement des bibliothèques scientifiques et des outils d’analyse de données.</li>
+</ul>
+</section>
+</section>
+<section id="gestion-des-dépendances-avec-conda" class="level2">
+<h2 class="anchored" data-anchor-id="gestion-des-dépendances-avec-conda">Gestion des Dépendances avec Conda</h2>
+<p>Conda simplifie non seulement la création d’environnements virtuels mais aussi la gestion des dépendances au sein de ces environnements :</p>
+<ol type="1">
+<li>Installation des Paquets avec Conda : Pour installer un paquet dans l’environnement actif, utilisez :</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install nom_du_paquet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Contrairement à pip, Conda cherche les paquets dans ses propres dépôts, ce qui peut inclure des optimisations spécifiques et des versions pré-compilées.</p>
+<ol start="2" type="1">
+<li>Liste des Paquets Installés : Pour voir les paquets installés dans l’environnement actif :</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Mise à jour des Paquets : Pour mettre à jour un paquet spécifique :</li>
+</ol>
+<p>bash Copy code conda update nom_du_paquet Ou pour mettre à jour tous les paquets de l’environnement :</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Avantages de Conda pour la Gestion des Dépendances :</p>
+<ol start="4" type="1">
+<li>Résolution de Dépendances Complexe :</li>
+</ol>
+<ul>
+<li>Conda gère efficacement les dépendances complexes et leurs interdépendances.</li>
+<li>Environnements Consistants : Conda assure une cohérence accrue entre les environnements de développement et de production.</li>
+<li>Large Éventail de Paquets : Avec Anaconda, Conda offre un accès à une vaste bibliothèque de paquets scientifiques et de data science.</li>
+</ul>
+</section>
+<section id="utilisation-de-pip-dans-les-environnements-virtuels" class="level2">
+<h2 class="anchored" data-anchor-id="utilisation-de-pip-dans-les-environnements-virtuels">Utilisation de pip dans les Environnements Virtuels</h2>
+<p>pip est le gestionnaire de paquets par défaut pour Python et est largement utilisé pour installer et gérer les paquets Python. Dans un environnement virtuel, pip est isolé et gère les installations de paquets spécifiques à cet environnement.</p>
+<ol type="1">
+<li>Installation des Paquets avec pip : Dans un environnement virtuel activé, vous pouvez installer des paquets en utilisant :</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install nom_du_paquet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cela garantit que le paquet est installé uniquement dans l’environnement virtuel, sans affecter d’autres projets ou le système global.</p>
+<ol start="2" type="1">
+<li>Geler les Dépendances : Pour créer une liste de toutes les dépendances installées dans l’environnement :</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze  <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ce fichier requirements.txt peut être utilisé pour recréer l’environnement ailleurs.</p>
+<ol start="3" type="1">
+<li>Installer des Dépendances à partir d’un Fichier requirements.txt :</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cette commande installe toutes les dépendances listées dans le fichier requirements.txt.</p>
+<ol start="4" type="1">
+<li>Comparaison entre pip et Conda :</li>
+</ol>
+<ul>
+<li>Ciblage : pip est spécifiquement conçu pour Python, tandis que Conda est polyvalent et peut gérer des paquets dans plusieurs langages.</li>
+<li>Sources de Paquets : pip installe des paquets à partir du Python Package Index (PyPI), tandis que Conda utilise ses propres dépôts, souvent optimisés pour des paquets scientifiques et de data science.</li>
+<li>Gestion des Dépendances : Conda est généralement plus efficace dans la gestion des dépendances complexes et interdépendantes.</li>
+</ul>
+</section>
+<section id="bonnes-pratiques-pour-la-gestion-des-environnements-virtuels" class="level2">
+<h2 class="anchored" data-anchor-id="bonnes-pratiques-pour-la-gestion-des-environnements-virtuels">Bonnes Pratiques pour la Gestion des Environnements Virtuels</h2>
+<p>Gérer efficacement les environnements virtuels est crucial pour le développement logiciel. Voici quelques bonnes pratiques :</p>
+<ol type="1">
+<li><p>Isolation des Projets : Utilisez des environnements virtuels distincts pour chaque projet afin d’éviter les conflits de dépendances et de garantir que les besoins spécifiques de chaque projet sont satisfaits.</p></li>
+<li><p>Documentation des Dépendances :</p></li>
+</ol>
+<ul>
+<li>Avec pip : Utilisez pip freeze pour créer un fichier requirements.txt, qui sert de documentation pour les dépendances du projet.</li>
+<li>Avec Conda : Utilisez conda list –export &gt; environment.yml pour créer un fichier similaire.</li>
+</ul>
+<ol start="3" type="1">
+<li>Reproductibilité des Environnements :</li>
+</ol>
+<ul>
+<li><p>Partagez les fichiers requirements.txt ou environment.yml au sein de votre équipe pour assurer que tous travaillent avec les mêmes versions de dépendances. 4.Mise à Jour Régulière :</p></li>
+<li><p>Vérifiez régulièrement les mises à jour des paquets pour bénéficier des dernières fonctionnalités et corrections de sécurité.</p></li>
+</ul>
+<ol start="5" type="1">
+<li>Nettoyage des Environnements :</li>
+</ol>
+<ul>
+<li>Supprimez les environnements virtuels qui ne sont plus utilisés pour libérer de l’espace et maintenir un système organisé.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Les environnements virtuels, que ce soit avec venv, Conda, ou pip, sont des outils essentiels dans le développement en Python. Ils offrent une isolation cruciale, garantissent la reproductibilité des projets et facilitent la gestion des dépendances. Conda, en particulier, se distingue par sa capacité à gérer des dépendances complexes et multi-langages, ce qui en fait un choix privilégié pour des projets scientifiques et de data science.</p>
+<p>La clé d’un développement efficace et sans heurts réside dans l’utilisation judicieuse de ces outils. En suivant les bonnes pratiques telles que l’isolation des projets, la documentation des dépendances, et la mise à jour régulière, les développeurs peuvent assurer la stabilité et la sécurité de leurs applications.</p>
+<p>En fin de compte, une bonne maîtrise des environnements virtuels et des outils de gestion de dépendances est un atout indéniable pour tout développeur Python, ouvrant la voie à des projets plus organisés, reproductibles et réussis.</p>
 
 
 </section>
