@@ -6,10 +6,10 @@ categories: [API, dictionnaire, éducation, numérique, autonomie, linguistique]
 image: "image.png"
 ---
 ![](image.png)
-*Ceci est une traduction de l'article [Dico](https://dev.to/allkhwarizmi/dico-3ni2) de Jason Suárez.*
+*Ceci est une traduction de l'article [Dico](https://dev.to/allkhwarizmi/dico-3ni2) de Jason Suárez, 19 février 2023.*
 
 ## Qu'est-ce que Dico ?
-Tout d'abord, voici le répertoire et le site de Dico.
+Tout d'abord, voici le [dépôt Github](https://github.com/All-Khwarizmi/Dico) et le [site](https://dico-uno.vercel.app)..
 
 Ensuite, comme vous l'avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.
 
