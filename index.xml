@@ -79,6 +79,63 @@
   <media:content url="https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/image.png" medium="image" type="image/png" height="82" width="144"/>
 </item>
 <item>
+  <title>Dico, première version</title>
+  <dc:creator>Jason Suárez</dc:creator>
+  <link>https://all-khwarizmi.github.io/blog_quarto/posts/dico/dico-old.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><em>Ceci est une traduction de l’article <a href="https://dev.to/allkhwarizmi/dico-3ni2">Dico</a> de Jason Suárez.</em></p>
+<section id="quest-ce-que-dico" class="level2">
+<h2 class="anchored" data-anchor-id="quest-ce-que-dico">Qu’est-ce que Dico ?</h2>
+<p>Tout d’abord, voici le répertoire et le site de Dico.</p>
+<p>Ensuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.</p>
+<p>Dico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.</p>
+<p>Pour ce projet, j’ai utilisé :</p>
+<ul>
+<li>Typescript pour des raisons de sécurité</li>
+<li>Next.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app</li>
+<li>Prisma comme ORM</li>
+<li>Tailwindcss pour le style</li>
+</ul>
+</section>
+<section id="lobjectif-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="lobjectif-de-dico">L’objectif de Dico</h2>
+<p>En tant que professeur d’espagnol, mon plus grand défi est de faire faire leurs devoirs aux élèves. Ensuite, le second est de les empêcher d’écrire tout en français dans un traducteur en ligne, mais plutôt de l’utiliser à bon escient lorsqu’ils en ont le plus besoin.</p>
+<p>Cependant, ce que j’ai appris jusqu’à présent, c’est que bien qu’ils soient censés être des natifs numériques, ils ne savent pas utiliser un tel outil efficacement. C’est comme avoir une voiture mais ne pas savoir comment la conduire correctement.</p>
+<p>J’ai donc introduit Dico dans un cours où ils pouvaient chercher un certain nombre de mots pour accomplir une série de tâches. Moins ils l’utilisent, plus ils obtiennent de points. Cela les oblige à essayer de deviner ou à réaliser qu’ils pourraient ne pas avoir besoin de ce mot spécifique pour comprendre le document.</p>
+</section>
+<section id="big-theta-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="big-theta-de-dico">Big Theta de Dico</h2>
+<p>Étant un développeur adepte des “free tyer”, j’ai rapidement réalisé que même s’il est peu probable que mes élèves utilisent Dico assez pour atteindre la limite d’utilisation de l’API (1000 mots), cela pourrait arriver.</p>
+<p>De plus, j’ai également réalisé que le coût algorithmique de Dico pourrait être exponentiel si chaque élève recherche n’importe quel mot. Pas performant du tout.</p>
+</section>
+<section id="big-o-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="big-o-de-dico">Big O de Dico</h2>
+<p>La solution que j’ai trouvée est basée en partie sur la linguistique et une stratégie de partage des coûts.</p>
+<p>Je sais en effet que nous, en tant que locuteurs, tendons à utiliser de moins en moins de vocabulaire de nos jours. J’ai donc pensé que si je pouvais stocker chaque mot la première fois qu’il a été recherché, cela rendrait le coût de l’algorithme linéaire au lieu d’exponentiel. Cela rendrait moins probable le dépassement de la limite de l’API puisque nous avons en moyenne environ 25 000 mots de vocabulaire. Enfin, cela pourrait améliorer la performance de recherche. Une fois qu’un mot a été recherché et stocké dans une base de données, il peut être accédé plus rapidement que s’il fallait le demander à l’API.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>En somme, Dico est un dictionnaire automatique qui, malgré sa simplicité, aurait pu être vraiment coûteux si je n’avais pas trouvé une sorte d’optimisation. C’est un peu le revers de la médaille avec lequel j’ai dû travailler en évitant de trop solliciter l’API du dictionnaire.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>API</category>
+  <category>dictionnaire</category>
+  <category>éducation</category>
+  <category>numérique</category>
+  <category>autonomie</category>
+  <category>linguistique</category>
+  <guid>https://all-khwarizmi.github.io/blog_quarto/posts/dico/dico-old.html</guid>
+  <pubDate>Fri, 19 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://all-khwarizmi.github.io/blog_quarto/posts/dico/image.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
   <title>L’Education 2.0</title>
   <dc:creator>Jason Suárez</dc:creator>
   <link>https://all-khwarizmi.github.io/blog_quarto/posts/road_map/index.html</link>

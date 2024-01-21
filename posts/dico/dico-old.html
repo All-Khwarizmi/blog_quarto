@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Jason Suárez">
+<meta name="dcterms.date" content="2024-01-19">
 
-<title>Education 2.0 - Series: environments virtuels</title>
+<title>Education 2.0 - Dico, première version</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,50 +61,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-reading-time','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Education 2.0</span>
     </a>
   </div>
@@ -115,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">A propos</span></a>
   </li>  
   <li class="nav-item compact">
@@ -138,66 +107,88 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Series: environments virtuels</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Dico, première version</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">API</div>
+                <div class="quarto-category">dictionnaire</div>
+                <div class="quarto-category">éducation</div>
+                <div class="quarto-category">numérique</div>
+                <div class="quarto-category">autonomie</div>
+                <div class="quarto-category">linguistique</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jason Suárez </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 19, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
+<p><em>Ceci est une traduction de l’article <a href="https://dev.to/allkhwarizmi/dico-3ni2">Dico</a> de Jason Suárez.</em></p>
+<section id="quest-ce-que-dico" class="level2">
+<h2 class="anchored" data-anchor-id="quest-ce-que-dico">Qu’est-ce que Dico ?</h2>
+<p>Tout d’abord, voici le répertoire et le site de Dico.</p>
+<p>Ensuite, comme vous l’avez peut-être deviné, Dico est un simple dictionnaire français-espagnol.</p>
+<p>Dico vous permet de chercher un mot à la fois dans les deux langues grâce à l’API du Dictionnaire en ligne PONS, pour laquelle vous aurez besoin d’une clé API, mais leur offre gratuite est largement suffisante pour commencer.</p>
+<p>Pour ce projet, j’ai utilisé :</p>
+<ul>
+<li>Typescript pour des raisons de sécurité</li>
+<li>Next.js pour le front-end et le back-end une base de données PostgreSQL hébergée sur Railway.app</li>
+<li>Prisma comme ORM</li>
+<li>Tailwindcss pour le style</li>
+</ul>
+</section>
+<section id="lobjectif-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="lobjectif-de-dico">L’objectif de Dico</h2>
+<p>En tant que professeur d’espagnol, mon plus grand défi est de faire faire leurs devoirs aux élèves. Ensuite, le second est de les empêcher d’écrire tout en français dans un traducteur en ligne, mais plutôt de l’utiliser à bon escient lorsqu’ils en ont le plus besoin.</p>
+<p>Cependant, ce que j’ai appris jusqu’à présent, c’est que bien qu’ils soient censés être des natifs numériques, ils ne savent pas utiliser un tel outil efficacement. C’est comme avoir une voiture mais ne pas savoir comment la conduire correctement.</p>
+<p>J’ai donc introduit Dico dans un cours où ils pouvaient chercher un certain nombre de mots pour accomplir une série de tâches. Moins ils l’utilisent, plus ils obtiennent de points. Cela les oblige à essayer de deviner ou à réaliser qu’ils pourraient ne pas avoir besoin de ce mot spécifique pour comprendre le document.</p>
+</section>
+<section id="big-theta-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="big-theta-de-dico">Big Theta de Dico</h2>
+<p>Étant un développeur adepte des “free tyer”, j’ai rapidement réalisé que même s’il est peu probable que mes élèves utilisent Dico assez pour atteindre la limite d’utilisation de l’API (1000 mots), cela pourrait arriver.</p>
+<p>De plus, j’ai également réalisé que le coût algorithmique de Dico pourrait être exponentiel si chaque élève recherche n’importe quel mot. Pas performant du tout.</p>
+</section>
+<section id="big-o-de-dico" class="level2">
+<h2 class="anchored" data-anchor-id="big-o-de-dico">Big O de Dico</h2>
+<p>La solution que j’ai trouvée est basée en partie sur la linguistique et une stratégie de partage des coûts.</p>
+<p>Je sais en effet que nous, en tant que locuteurs, tendons à utiliser de moins en moins de vocabulaire de nos jours. J’ai donc pensé que si je pouvais stocker chaque mot la première fois qu’il a été recherché, cela rendrait le coût de l’algorithme linéaire au lieu d’exponentiel. Cela rendrait moins probable le dépassement de la limite de l’API puisque nous avons en moyenne environ 25 000 mots de vocabulaire. Enfin, cela pourrait améliorer la performance de recherche. Une fois qu’un mot a été recherché et stocké dans une base de données, il peut être accédé plus rapidement que s’il fallait le demander à l’API.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>En somme, Dico est un dictionnaire automatique qui, malgré sa simplicité, aurait pu être vraiment coûteux si je n’avais pas trouvé une sorte d’optimisation. C’est un peu le revers de la médaille avec lequel j’ai dû travailler en évitant de trop solliciter l’API du dictionnaire.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Git,Javascript,NodeJS,NPM,Yarn" data-listing-date-sort="1705795200000" data-listing-file-modified-sort="1705853093392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="body">
-<a href="./posts/virtual-environnements/js_env.html">
-<h3 class="no-anchor listing-title">
-Environnements virtuels avec Javascript
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
- <br> <br> <br>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/virtual-environnements/js_env.html">
-<div class="listing-date">
-Jan 21, 2024
-</div>
-<div class="listing-reading-time">
-5 min
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
