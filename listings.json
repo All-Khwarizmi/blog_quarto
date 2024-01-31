@@ -18,6 +18,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/regression/index.html",
       "/posts/dico/dico-old.html",
       "/posts/virtual-environnements/js_env.html",
       "/posts/virtual-environnements/python_env.html",
