@@ -12,15 +12,15 @@ def dataset_splitter(X, y, test_size=0.25, random_state=0, shuffle=True):
     """Function to split the dataset into train and test sets
     Args:
         X (numpy array): The input data
-        y (numpy array): The labels
+        y (numpy array): The target data
         test_size (float): The size of the test set
         random_state (int): The random state
-        shuffle (bool): Whether to shuffle the data or not
+        shuffle (bool): Whether to shuffle the data or not      
     Returns:
-        X_train (numpy array): The train set
-        X_val (numpy array): The validation set
-        y_train (numpy array): The train labels
-        y_val (numpy array): The validation labels
+        X_train (numpy array): The input data for training
+        X_val (numpy array): The input data for validation
+        y_train (numpy array): The target data for training
+        y_val (numpy array): The target data for validation
     """
     assert X.shape[0] == y.shape[0]
     # Check if test_size is a float between 0 and 1
@@ -207,6 +207,12 @@ def gradient_descent(x, y, w_in, b_in, alpha, num_iters, cost_function, gradient
 
 # Function to normalize data
 def normalize(x):
+    """Function to normalize the data
+    Args:
+        x (numpy array): The input data
+    Returns:
+        x_norm (numpy array): The normalized data
+    """
     m = x.shape[0]
     x_min = min(x)
     x_max = max(x)
