@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/env-series.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/dico-series.html</loc>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/road_map/index.html</loc>
-    <lastmod>2024-01-31T05:57:56.175Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/python_env.html</loc>
-    <lastmod>2024-01-31T05:57:56.183Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/archive.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/index.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/about.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/regression/index.html</loc>
-    <lastmod>2024-01-31T05:57:56.171Z</lastmod>
-  </url>
-  <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/js_env.html</loc>
-    <lastmod>2024-01-31T05:57:56.183Z</lastmod>
+    <lastmod>2024-01-31T10:01:51.991Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/dico/dico-old.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/python_env.html</loc>
+    <lastmod>2024-01-31T10:01:51.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/env-series.html</loc>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/index.html</loc>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/archive.html</loc>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/virtual-environnements/js_env.html</loc>
+    <lastmod>2024-01-31T10:01:51.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/posts/regression/index.html</loc>
+    <lastmod>2024-01-31T10:01:51.983Z</lastmod>
   </url>
   <url>
     <loc>https://all-khwarizmi.github.io/blog_quarto/posts/first_notebook_model/goat_detector_training.html</loc>
-    <lastmod>2024-01-31T05:57:56.167Z</lastmod>
+    <lastmod>2024-01-31T10:01:51.983Z</lastmod>
   </url>
   <url>
-    <loc>https://all-khwarizmi.github.io/blog_quarto/dico-series.html</loc>
-    <lastmod>2024-01-31T05:57:56.147Z</lastmod>
+    <loc>https://all-khwarizmi.github.io/blog_quarto/about.html</loc>
+    <lastmod>2024-01-31T10:01:51.963Z</lastmod>
   </url>
 </urlset>

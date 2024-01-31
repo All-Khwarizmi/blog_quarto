@@ -1,18 +1,15 @@
 [
   {
+    "listing": "/dico-series.html",
+    "items": [
+      "/posts/dico/dico-old.html"
+    ]
+  },
+  {
     "listing": "/env-series.html",
     "items": [
       "/posts/virtual-environnements/js_env.html",
       "/posts/virtual-environnements/python_env.html"
-    ]
-  },
-  {
-    "listing": "/archive.html",
-    "items": [
-      "/posts/dico/dico-old.html",
-      "/posts/virtual-environnements/js_env.html",
-      "/posts/virtual-environnements/python_env.html",
-      "/posts/road_map/index.html"
     ]
   },
   {
@@ -27,9 +24,12 @@
     ]
   },
   {
-    "listing": "/dico-series.html",
+    "listing": "/archive.html",
     "items": [
-      "/posts/dico/dico-old.html"
+      "/posts/dico/dico-old.html",
+      "/posts/virtual-environnements/js_env.html",
+      "/posts/virtual-environnements/python_env.html",
+      "/posts/road_map/index.html"
     ]
   }
 ]
