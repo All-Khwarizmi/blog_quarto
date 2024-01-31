@@ -95,7 +95,6 @@ def compute_model_output(X, W, b):
     """
     m = X.shape[0]
     y_pred = np.zeros(m)
-    print(f"W[0]:{W} - b {b}")
     for i in range(X.shape[0]):
         y_pred[i] = X[i] * W + b
     return y_pred
