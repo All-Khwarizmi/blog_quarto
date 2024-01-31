@@ -199,9 +199,9 @@ def gradient_descent(x, y, w_in, b_in, alpha, num_iters, cost_function, gradient
             p_history.append([w, b])
         # Print cost every at intervals 10 times or as many iterations if < 10
         if i % math.ceil(num_iters/10) == 0:
-            print(f"Iteration {i:4}: Cost {J_history[-1]:0.2e} ",
-                  f"dj_dw: {dj_dw: 0.3e}, dj_db: {dj_db: 0.3e}  ",
-                  f"w: {w: 0.3e}, b:{b: 0.5e}")
+            print(f"Iteration {i}: Cost {J_history[-1]} ",
+                  f"dj_dw: {dj_dw}, dj_db: {dj_db}  ",
+                  f"w: {w}, b:{b}")
     return w, b, J_history, p_history
 
 
@@ -225,7 +225,7 @@ def normalize(x):
 
 
 # Metric function to measure the quality of the model
-def mse(y_pred, y_labels):
+def compute_mse(y_pred, y_labels):
     """Function to compute the mean squared error
     Args:
         y_pred (numpy array): The predictions
@@ -234,13 +234,13 @@ def mse(y_pred, y_labels):
         error_cost (float): The mean squared error
     """
     assert y_pred.shape == y_labels.shape
-    
+
     m = y_labels.shape[0]
-    
+
     error_cost = 0
     for pred in range(m):
         error_cost += (y_pred[pred] - y_labels[pred])**2
-    
+
     error_cost / m
-    
+
     return error_cost

@@ -23,7 +23,7 @@
 
 <p>Les données sont disponibles sur <a href="https://www.kaggle.com/andonians/random-linear-regression">Kaggle</a>. Il s’agit d’un ensemble de données de régression linéaire aléatoire avec 2 variables. Bien que très simple, il est idéal pour illustrer le fonctionnement de la régression linéaire.</p>
 <p>Le but de ce notebook est de construire un modèle de régression linéaire en Python et sans aucune librairie pour prédire la variable dépendante <code>y</code> à partir de la variable indépendante <code>x</code>.</p>
-<div id="cell-2" class="cell" data-execution_count="34">
+<div id="cell-2" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Importing libraries</span></span>
@@ -53,15 +53,20 @@ font-style: inherit;">*</span></span></code></pre></div>
 <section id="chargement-et-visualisation-des-données" class="level2">
 <h2 class="anchored" data-anchor-id="chargement-et-visualisation-des-données">Chargement et visualisation des données</h2>
 <p>Grâce à la librairie <code>pandas</code>, nous pouvons charger les données depuis un fichier CSV et les stocker dans un DataFrame. Nous pouvons ensuite visualiser les données avec la librairie <code>matplotlib</code>.</p>
-<div id="cell-4" class="cell" data-execution_count="35">
+<div id="cell-4" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"></span>
 <span id="cb2-2">dataset <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'data/train.csv'</span>)</span>
-<span id="cb2-3">dataset.head()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<span id="cb2-3">dataset_test <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'data/test.csv'</span>)</span>
+<span id="cb2-4">dataset.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 
 
@@ -107,9 +112,9 @@ font-style: inherit;">'data/train.csv'</span>)</span>
 </div>
 <p>La méthode <code>head()</code> permet d’afficher les 5 premières lignes du DataFrame. Et la méthode <code>describe()</code> permet d’afficher des statistiques descriptives sur les données.</p>
 <p>Ces deux méthodes sont très utiles pour avoir un aperçu des données.</p>
-<div id="cell-6" class="cell" data-execution_count="36">
+<div id="cell-6" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">dataset.describe()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <div>
 
 
@@ -169,25 +174,25 @@ font-style: inherit;">'data/train.csv'</span>)</span>
 </div>
 </div>
 <p>Il est primordial de comprendre les données avant de commencer à les analyser. Il faut donc visualiser les données pour voir s’il y a des relations entre les variables et/ou des valeurs aberrantes ou manquantes.</p>
-<div id="cell-8" class="cell" data-execution_count="37">
+<div id="cell-8" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">dataset.isna().values.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">any</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>True</code></pre>
 </div>
 </div>
 <p>Comme nous sommes en présence de données manquantes, nous devons les gérer avant de commencer à construire notre modèle. Il existe plusieurs méthodes pour gérer les données manquantes. Dans un prochain notebook nous verrons les différentes méthodes pour gérer les données manquantes. Pour l’heure nous allons simplement supprimer les lignes qui contiennent des données manquantes.</p>
-<div id="cell-10" class="cell" data-execution_count="38">
+<div id="cell-10" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">dataset <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.dropna()</span></code></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="39">
+<div id="cell-11" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">dataset.isna().values.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">any</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>False</code></pre>
 </div>
 </div>
@@ -196,7 +201,7 @@ font-style: inherit;">any</span>()</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="distribution-des-données">Distribution des données</h4>
 <p>L’analyse de la distribution des données est importante pour comprendre les données. Nous pouvons visualiser la distribution des données avec un histogramme.</p>
 <p>Nous pouvons voir que les données sont distribuées uniformement, ce qui est une bonne chose pour la régression linéaire.</p>
-<div id="cell-14" class="cell" data-execution_count="60">
+<div id="cell-14" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Plotting the distribution of the data</span></span>
@@ -220,7 +225,7 @@ font-style: inherit;">15</span>))</span>
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="41">
+<div id="cell-15" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Plotting the correlation matrix</span></span>
@@ -234,7 +239,7 @@ background-color: null;
 font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>y    1.00000
 x    0.99534
 Name: y, dtype: float64</code></pre>
@@ -245,7 +250,7 @@ Name: y, dtype: float64</code></pre>
 <h4 class="anchored" data-anchor-id="la-corrélation-entre-les-variables">La corrélation entre les variables</h4>
 <p>La corrélation entre <code>X</code> et <code>y</code> est très importante pour la régression linéaire. Plus la corrélation est forte, plus la régression linéaire sera efficace.</p>
 <p>Ici, sans surprise puisque le dataset a été créé à cet effet, nous avons une corrélation très forte entre <code>X</code> et <code>y</code>.</p>
-<div id="cell-17" class="cell" data-execution_count="59">
+<div id="cell-17" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> seaborn <span class="im" style="color: #00769E;
@@ -355,16 +360,16 @@ font-style: inherit;">'Matrice de corrélation'</span>)</span>
 <li>Séparation des données en deux variables : variable indépendante <code>X</code> et variable dépendante <code>y</code></li>
 <li>Conversion des données en tableaux Numpy</li>
 </ul>
-<div id="cell-19" class="cell" data-execution_count="43">
+<div id="cell-19" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">columns <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.columns</span>
 <span id="cb14-2">columns</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>Index(['x', 'y'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="44">
+<div id="cell-20" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">X_full <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.x.to_numpy()</span>
@@ -376,7 +381,7 @@ font-style: inherit;">=</span> dataset.y.to_numpy()</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="division-des-données">Division des données</h4>
 <p>Nous passons ensuite à diviser notre dataset en données d’entraînement et données de test puis en données d’entraînement et données de validation.al</p>
 <p>Le dataset dispose d’un second ficher test.csv qui contient des données de test. Mais nous allons, à des fins d’entraînement, ne pas en tenir compte jusqu’à la fin. Une foid le modèle construit, nous pourrons entraîner avec l’entièreté des données d’entraînement puis l’évaluer avec ces données de test.</p>
-<div id="cell-22" class="cell" data-execution_count="61">
+<div id="cell-22" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">X_train, X_val, y_train, y_val <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset_splitter(X_full, y_full, <span class="fl" style="color: #AD0000;
@@ -409,7 +414,7 @@ X_val: 50%</code></pre>
 <h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
 <p>Cette étape est importante car elle permet d’éviter que certaines variables aient plus d’importance que d’autres dans le modèle. En effet, si une variable est exprimée en milliers et une autre en unités, la variable exprimée en milliers aura plus d’importance dans le modèle. Il faut donc standardiser les données pour que toutes les variables aient la même importance.</p>
 <p>Deplus, cela permet d’accélérer la convergence de l’algorithme d’optimisation et éviter les problèmes de précision ou d’overflow.</p>
-<div id="cell-24" class="cell" data-execution_count="50">
+<div id="cell-24" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Normalizing the data</span></span>
@@ -435,54 +440,51 @@ font-style: inherit;">4</span>])</span></code></pre></div>
 </section>
 <section id="entraînement-du-modèle" class="level2">
 <h2 class="anchored" data-anchor-id="entraînement-du-modèle">Entraînement du modèle</h2>
-<div id="cell-26" class="cell" data-execution_count="51">
+<p>Nous allons maintenant entraîner notre modèle. Pour cela, nous allons utiliser le gradient descent. Il s’agit d’un algorithme d’optimisation qui permet de trouver le minimum d’une fonction. Dans notre cas, il s’agit de trouver les paramètres de notre modèle qui minimisent la fonction de coût.</p>
+<p>La fonction de coût est une fonction qui permet de mesurer l’erreur de notre modèle. Plus l’erreur est grande, plus la fonction de coût est grande. L’objectif est donc de trouver les paramètres de notre modèle qui minimisent la fonction de coût.</p>
+<p>Nous utilisons la fonction de coût MSE (Mean Squared Error) qui est la moyenne des erreurs au carré. Il s’agit de la fonction de coût la plus utilisée pour la régression linéaire.</p>
+<div id="cell-26" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># X_train = np.array([1.0, 2.0, 1.5])  # features</span></span>
-<span id="cb21-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># y_train = np.array([300.0, 500.0, 250.0])  # target value</span></span>
-<span id="cb21-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># initialize parameters</span></span>
-<span id="cb21-4">w_init <span class="op" style="color: #5E5E5E;
+font-style: inherit;"># Initialisation des paramètres</span></span>
+<span id="cb21-2">w_init <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb21-5">b_init <span class="op" style="color: #5E5E5E;
+<span id="cb21-3">b_init <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb21-6"><span class="co" style="color: #5E5E5E;
+<span id="cb21-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># some gradient descent settings</span></span>
-<span id="cb21-7">iterations <span class="op" style="color: #5E5E5E;
+font-style: inherit;"># hyperparameters</span></span>
+<span id="cb21-5">iterations <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10000</span></span>
-<span id="cb21-8">tmp_alpha <span class="op" style="color: #5E5E5E;
+font-style: inherit;">20000</span></span>
+<span id="cb21-6">tmp_alpha <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1.0e-2</span></span>
-<span id="cb21-9"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">1.5e-2</span></span>
+<span id="cb21-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># run gradient descent</span></span>
-<span id="cb21-10">w_final, b_final, J_history, p_history <span class="op" style="color: #5E5E5E;
+font-style: inherit;"># On effectue la descente de gradient pour trouver les paramètres w et b</span></span>
+<span id="cb21-8">w_final, b_final, J_history, p_history <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> gradient_descent(</span>
-<span id="cb21-11">    X_train,</span>
-<span id="cb21-12">    y_train,</span>
-<span id="cb21-13">    w_init,</span>
-<span id="cb21-14">    b_init,</span>
-<span id="cb21-15">    tmp_alpha,</span>
-<span id="cb21-16">    iterations,</span>
-<span id="cb21-17">    compute_cost,</span>
-<span id="cb21-18">    compute_gradient)</span>
-<span id="cb21-19"><span class="bu" style="color: null;
+<span id="cb21-9">    X_train,</span>
+<span id="cb21-10">    y_train,</span>
+<span id="cb21-11">    w_init,</span>
+<span id="cb21-12">    b_init,</span>
+<span id="cb21-13">    tmp_alpha,</span>
+<span id="cb21-14">    iterations,</span>
+<span id="cb21-15">    compute_cost,</span>
+<span id="cb21-16">    compute_gradient)</span>
+<span id="cb21-17"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
 background-color: null;
@@ -500,47 +502,237 @@ font-style: inherit;">}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">)"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Iteration    0: Cost 1.57e+03  dj_dw: -3.287e+01, dj_db: -4.858e+01   w:  1.329e+00, b: 1.48578e+00
-Iteration 1000: Cost 7.06e+01  dj_dw: -2.647e+00, dj_db:  1.425e+00   w:  6.066e+01, b: 2.10548e+01
-Iteration 2000: Cost 2.12e+01  dj_dw: -1.345e+00, dj_db:  7.241e-01   w:  7.988e+01, b: 1.07055e+01
-Iteration 3000: Cost 8.43e+00  dj_dw: -6.834e-01, dj_db:  3.679e-01   w:  8.965e+01, b: 5.44649e+00
-Iteration 4000: Cost 5.13e+00  dj_dw: -3.473e-01, dj_db:  1.870e-01   w:  9.461e+01, b: 2.77413e+00
-Iteration 5000: Cost 4.28e+00  dj_dw: -1.765e-01, dj_db:  9.501e-02   w:  9.713e+01, b: 1.41618e+00
-Iteration 6000: Cost 4.06e+00  dj_dw: -8.967e-02, dj_db:  4.828e-02   w:  9.842e+01, b: 7.26141e-01
-Iteration 7000: Cost 4.00e+00  dj_dw: -4.556e-02, dj_db:  2.453e-02   w:  9.907e+01, b: 3.75501e-01
-Iteration 8000: Cost 3.99e+00  dj_dw: -2.315e-02, dj_db:  1.247e-02   w:  9.940e+01, b: 1.97324e-01
-Iteration 9000: Cost 3.99e+00  dj_dw: -1.177e-02, dj_db:  6.335e-03   w:  9.957e+01, b: 1.06785e-01
-(w,b) found by gradient descent: (99.6508769209906,0.060809317925982466)</code></pre>
+<pre><code>Iteration 0: Cost 1551.859965285387  dj_dw: -32.873739546586314, dj_db: -48.578447077520295   w: 1.4931060931987947, b:1.7286767061628043
+Iteration 2000: Cost 8.423656158596158  dj_dw: -0.6831496603139884, dj_db: 0.3678205742662411   w: 89.65499284685094, b:5.442780552104867
+Iteration 4000: Cost 4.0614640156356385  dj_dw: -0.08960525186481552, dj_db: 0.04824514614125734   w: 98.41652047287423, b:0.7254099522683186
+Iteration 6000: Cost 3.9864158627776507  dj_dw: -0.011753063242489757, dj_db: 0.006328069414907828   w: 99.56572530346672, b:0.10665654391001181
+Iteration 8000: Cost 3.985124717164894  dj_dw: -0.0015415892786128443, dj_db: 0.0008300205455334563   w: 99.71646063171404, b:0.025497819520598132
+Iteration 10000: Cost 3.9851025040000105  dj_dw: -0.00020220239226366815, dj_db: 0.00010886955575859842   w: 99.73623181486332, b:0.01485264414783104
+Iteration 12000: Cost 3.9851021218396427  dj_dw: -2.6521855068231795e-05, dj_db: 1.4279863596465318e-05   w: 99.73882509997904, b:0.013456370862629252
+Iteration 14000: Cost 3.985102115264865  dj_dw: -3.478736276372286e-06, dj_db: 1.8730167755593508e-06   w: 99.73916524794275, b:0.013273228827112946
+Iteration 16000: Cost 3.9851021151517485  dj_dw: -4.5628806805420693e-07, dj_db: 2.456740467172917e-07   w: 99.73920986341393, b:0.013249207021663368
+Iteration 18000: Cost 3.9851021151498016  dj_dw: -5.984895811768687e-08, dj_db: 3.222382454426939e-08   w: 99.73921571539752, b:0.013246056204090619
+(w,b) found by gradient descent: (99.73921648285449,0.013245642990875566)</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">y_pred <span class="op" style="color: #5E5E5E;
+<p>Une fois le modèle entraîné, nous pouvons visualiser la fonction de coût en fonction des itérations. Nous pouvons voir que la fonction de coût diminue au fur et à mesure des itérations. Cela signifie que notre modèle s’améliore au fur et à mesure des itérations.</p>
+<p>Il nous reste à effectuer les prédictions sur les données de test et à évaluer notre modèle.</p>
+<div id="cell-28" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Making predictions on the training set</span></span>
+<span id="cb23-2">X_train <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> normalize(X_train)</span>
+<span id="cb23-3">y_train_pred <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> compute_model_output(X_train, w_final, b_final)</span>
-<span id="cb23-2"><span class="bu" style="color: null;
+<span id="cb23-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">print</span>(y_pred[:<span class="dv" style="color: #AD0000;
+font-style: inherit;"># Computing the RMSE on the training set</span></span>
+<span id="cb23-5">mse_train <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_mse(y_train, y_train_pred)</span>
+<span id="cb23-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE on the training set: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_train<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb23-7"></span>
+<span id="cb23-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Making predictions on the validation set</span></span>
+<span id="cb23-9">X_val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> normalize(X_val)</span>
+<span id="cb23-10">y_val_pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_model_output(X_val, w_final, b_final)</span>
+<span id="cb23-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Computing the MSE on the validation set</span></span>
+<span id="cb23-12">mse_val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_mse(y_val, y_val_pred)</span>
+<span id="cb23-13"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE on the validation set: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_val<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb23-14"></span>
+<span id="cb23-15"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(y_val[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>])</span>
-<span id="cb23-3"><span class="co" style="color: #5E5E5E;
+<span id="cb23-16"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;"># y_val_norm = normalize(y_train)</span></span>
-<span id="cb23-4"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(y_train[:<span class="dv" style="color: #AD0000;
+font-style: inherit;">print</span>(y_val_pred[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>])</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>W[0]:99.6508769209906 - b 0.060809317925982466
-[28.95956363 57.85831793 83.76754593 75.79547578]
-[29.6673599  56.68718792 85.02778957 73.13850045]</code></pre>
+<pre><code>MSE on the training set: 3339.515572495507
+MSE on the validation set: 231487.7780914846
+[94. 75. 65. 84.]
+[14.97412812 70.82808935 48.88546172  5.99759863]</code></pre>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="53">
+<div id="cell-29" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
+font-style: inherit;"># Comparaison avec la regression linéaire de scikit-learn</span></span>
+<span id="cb25-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> sklearn.linear_model <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> LinearRegression</span>
+<span id="cb25-3"></span>
+<span id="cb25-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reshape X_train and y_train to be 2D</span></span>
+<span id="cb25-5">X_train_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> X_train.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb25-6">y_train_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> y_train.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb25-7"></span>
+<span id="cb25-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># create linear regression object</span></span>
+<span id="cb25-9">regr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LinearRegression()</span>
+<span id="cb25-10"></span>
+<span id="cb25-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># train the model using the training sets</span></span>
+<span id="cb25-12">regr.fit(X_train_sk, y_train_sk)</span>
+<span id="cb25-13"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"(w,b) found by sklearn: (</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>regr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>coef_<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>regr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>intercept_<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">)"</span>)</span>
+<span id="cb25-14"></span>
+<span id="cb25-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># make predictions using the testing set</span></span>
+<span id="cb25-16">y_train_pred_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> regr.predict(X_train_sk)</span>
+<span id="cb25-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># compute MSE for the training set</span></span>
+<span id="cb25-18">mse_train_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_mse(y_train.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), y_train_pred_sk)</span>
+<span id="cb25-19"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE sklearn training set = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_train_sk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span>
+<span id="cb25-20"></span>
+<span id="cb25-21"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Train sklearn model on the validation set</span></span>
+<span id="cb25-22">X_val_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> X_val.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb25-23">y_val_pred_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> regr.predict(X_val_sk)</span>
+<span id="cb25-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># compute MSE for the validation set</span></span>
+<span id="cb25-25">mse_val_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_mse(y_val.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), y_val_pred_sk)</span>
+<span id="cb25-26"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE sklearn validation set = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_val_sk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(w,b) found by sklearn: ([[99.7392166]],[0.01324558])
+MSE sklearn training set = [3339.5155725]
+MSE sklearn validation set = [231487.77835407]</code></pre>
+</div>
+</div>
+<div id="cell-30" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
 font-style: inherit;"># plot cost versus iteration</span></span>
-<span id="cb25-2">fig, (ax1, ax2) <span class="op" style="color: #5E5E5E;
+<span id="cb27-2">fig, (ax1, ax2) <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> plt.subplots(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -557,10 +749,10 @@ background-color: null;
 font-style: inherit;">12</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>))</span>
-<span id="cb25-3">ax1.plot(J_history[:<span class="dv" style="color: #AD0000;
+<span id="cb27-3">ax1.plot(J_history[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1000</span>])</span>
-<span id="cb25-4">ax2.plot(<span class="dv" style="color: #AD0000;
+<span id="cb27-4">ax2.plot(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -571,53 +763,242 @@ background-color: null;
 font-style: inherit;">1000</span>:])), J_history[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1000</span>:])</span>
-<span id="cb25-5">ax1.set_title(<span class="st" style="color: #20794D;
+<span id="cb27-5">ax1.set_title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cost vs. iteration(start)"</span>)</span>
-<span id="cb25-6">ax2.set_title(<span class="st" style="color: #20794D;
+<span id="cb27-6">ax2.set_title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Cost vs. iteration (end)"</span>)</span>
-<span id="cb25-7">ax1.set_ylabel(<span class="st" style="color: #20794D;
+<span id="cb27-7">ax1.set_ylabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Cost'</span>)</span>
-<span id="cb25-8">ax2.set_ylabel(<span class="st" style="color: #20794D;
+<span id="cb27-8">ax2.set_ylabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Cost'</span>)</span>
-<span id="cb25-9">ax1.set_xlabel(<span class="st" style="color: #20794D;
+<span id="cb27-9">ax1.set_xlabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'iteration step'</span>)</span>
-<span id="cb25-10">ax2.set_xlabel(<span class="st" style="color: #20794D;
+<span id="cb27-10">ax2.set_xlabel(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'iteration step'</span>)</span>
-<span id="cb25-11">plt.show()</span></code></pre></div>
+<span id="cb27-11">plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-29" class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
+<div id="cell-31" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">### Evaluation du modèle sur le jeu de validation</span></span>
-<span id="cb26-2"><span class="co" style="color: #5E5E5E;
+font-style: inherit;"># Entraînement du modèle sur le jeu de données complet</span></span>
+<span id="cb28-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Normalizing the data  </span></span>
+<span id="cb28-3">X_full <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> normalize(X_full)</span>
+<span id="cb28-4">w_init <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb28-5">b_init <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb28-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># some gradient descent settings</span></span>
+<span id="cb28-7">iterations <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000</span></span>
+<span id="cb28-8">tmp_alpha <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5e-2</span></span>
+<span id="cb28-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># run gradient descent</span></span>
+<span id="cb28-10">w_final, b_final, J_history, p_history <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> gradient_descent(</span>
+<span id="cb28-11">    X_full,</span>
+<span id="cb28-12">    y_full,</span>
+<span id="cb28-13">    w_init,</span>
+<span id="cb28-14">    b_init,</span>
+<span id="cb28-15">    tmp_alpha,</span>
+<span id="cb28-16">    iterations,</span>
+<span id="cb28-17">    compute_cost,</span>
+<span id="cb28-18">    compute_gradient)</span>
+<span id="cb28-19"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"(w,b) found by gradient descent: (</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>w_final<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">,</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>b_final<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">)"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Iteration 0: Cost 1537.3567329291454  dj_dw: -32.52024298395501, dj_db: -48.43972610894132   w: 1.487803644759325, b:1.7265958916341198
+Iteration 1000: Cost 38.98085747456498  dj_dw: -1.8984414216810792, dj_db: 1.016621137292813   w: 71.34361556464307, b:15.273469067109064
+Iteration 2000: Cost 8.763458563326123  dj_dw: -0.7047363066142613, dj_db: 0.37738854099322106   w: 89.40349545087861, b:5.6023459928707755
+Iteration 3000: Cost 4.599407703716551  dj_dw: -0.26161107161811215, dj_db: 0.14009356364788061   w: 96.10765480886297, b:2.012247263814149
+Iteration 4000: Cost 4.025588639661802  dj_dw: -0.09711483877137726, dj_db: 0.05200530605382486   w: 98.59636199973698, b:0.6795366216797071
+Iteration 5000: Cost 3.9465146010936167  dj_dw: -0.036050813336207035, dj_db: 0.019305325579060225   w: 99.52021585689978, b:0.18480993316743607
+Iteration 6000: Cost 3.9356179544550427  dj_dw: -0.013382724603611356, dj_db: 0.007166491729286533   w: 99.86316739114395, b:0.0011582922273052087
+Iteration 7000: Cost 3.9341163629072184  dj_dw: -0.0049679133767509, dj_db: 0.0026603334657992147   w: 99.99047730485871, b:-0.06701657281066145
+Iteration 8000: Cost 3.933909438956092  dj_dw: -0.0018441807666289998, dj_db: 0.0009875646852625613   w: 100.03773708506571, b:-0.09232433591668049
+Iteration 9000: Cost 3.933880924196801  dj_dw: -0.0006845938006577501, dj_db: 0.00036660216479203765   w: 100.05528078421726, b:-0.10171904279395448
+(w,b) found by gradient descent: (100.061789515827,-0.10520448934023051)</code></pre>
+</div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Preparation du jeu de test</span></span>
+<span id="cb30-2">X_test <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dataset_test.x.to_numpy().reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)   </span>
+<span id="cb30-3">y_test_final <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dataset_test.y.to_numpy().reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+</div>
+<div id="cell-33" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Evaluation du modèle sur le jeu de test</span></span>
+<span id="cb31-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Normalizing the data</span></span>
-<span id="cb26-3">X_val <span class="op" style="color: #5E5E5E;
+<span id="cb31-3">X_test_norm <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> normalize(X_val)</span>
-<span id="cb26-4"><span class="bu" style="color: null;
+font-style: inherit;">=</span> normalize(X_test)</span>
+<span id="cb31-4">y_test_pred <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">print</span>(X_val[:<span class="dv" style="color: #AD0000;
+font-style: inherit;">=</span> compute_model_output(X_test_norm, w_final, b_final)</span>
+<span id="cb31-5"></span>
+<span id="cb31-6">mse_test <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">4</span>])</span>
-<span id="cb26-5"><span class="bu" style="color: null;
+font-style: inherit;">=</span> compute_mse(y_test_final, y_test_pred.reshape(<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">print</span>(y_val[:<span class="dv" style="color: #AD0000;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">4</span>])</span></code></pre></div>
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb31-7"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE on the test set: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_test<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MSE on the test set: [2830.11215745]</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"></span>
+<span id="cb33-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># reshape X_train and y_train to be 2D</span></span>
+<span id="cb33-3">X_full_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> X_full.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb33-4">y_full_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> y_full.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb33-5">X_test_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> normalize(X_test).reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb33-6"></span>
+<span id="cb33-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># create linear regression object</span></span>
+<span id="cb33-8">regr <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LinearRegression()</span>
+<span id="cb33-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># train the model using the training sets</span></span>
+<span id="cb33-10">regr.fit(X_full_sk, y_full_sk)</span>
+<span id="cb33-11"></span>
+<span id="cb33-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># make predictions using the testing set</span></span>
+<span id="cb33-13">y_test_pred_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> regr.predict(X_test_sk)</span>
+<span id="cb33-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># compute MSE for the training set</span></span>
+<span id="cb33-15">mse_test_sk <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compute_mse(y_test_final, y_test_pred_sk)</span>
+<span id="cb33-16"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"MSE = </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>mse_test_sk<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MSE = [2829.87665761]</code></pre>
+</div>
 </div>
 
 
