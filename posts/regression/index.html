@@ -333,9 +333,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Ici, nous avons deux variables : la variable indépendante <code>X</code> et la variable dépendante <code>y</code>. Nous pouvons visualiser les données avec un nuage de points.</p>
-<div id="cell-13" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dataset.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="distribution-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-des-données">Distribution des données</h4>
+<p>L’analyse de la distribution des données est importante pour comprendre les données. Nous pouvons visualiser la distribution des données avec un histogramme.</p>
+<p>Nous pouvons voir que les données sont distribuées uniformement, ce qui est une bonne chose pour la régression linéaire.</p>
+<div id="cell-14" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the distribution of the data</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dataset.hist(bins<span class="op">=</span><span class="dv">30</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">15</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -344,42 +349,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the distribution of the data</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dataset.hist(bins<span class="op">=</span><span class="dv">50</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">15</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <div id="cell-15" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the correlation matrix</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> dataset.corr()</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>corr_matrix[<span class="st">'y'</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the correlation matrix</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> dataset.corr()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>corr_matrix[<span class="st">'y'</span>].sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>y    1.00000
 x    0.99534
 Name: y, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the X points in one color and the Y points in another color</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to see the difference between the two</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(dataset[<span class="st">'x'</span>], dataset[<span class="st">'y'</span>], c<span class="op">=</span>dataset[<span class="st">'x'</span>], cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>plt.colorbar()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="la-corrélation-entre-les-variables" class="level4">
+<h4 class="anchored" data-anchor-id="la-corrélation-entre-les-variables">La corrélation entre les variables</h4>
+<p>La corrélation entre <code>X</code> et <code>y</code> est très importante pour la régression linéaire. Plus la corrélation est forte, plus la régression linéaire sera efficace.</p>
+<p>Ici, sans surprise puisque le dataset a été créé à cet effet, nous avons une corrélation très forte entre <code>X</code> et <code>y</code>.</p>
+<div id="cell-17" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculer le coefficient de corrélation de Pearson</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> dataset.corr()</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Afficher le coefficient de corrélation</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coefficient de corrélation de Pearson entre x et y :"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(correlation_matrix.loc[<span class="st">'x'</span>, <span class="st">'y'</span>])</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiser la corrélation avec un nuage de points</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'x'</span>, y<span class="op">=</span><span class="st">'y'</span>, data<span class="op">=</span>dataset)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Nuage de points de x contre y'</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualiser la matrice de corrélation avec une heatmap</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, center<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Matrice de corrélation'</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficient de corrélation de Pearson entre x et y :
+0.9953399077212526</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="index_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-10-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="préparation-des-données" class="level2">
 <h2 class="anchored" data-anchor-id="préparation-des-données">Préparation des données</h2>
@@ -387,20 +412,22 @@ Name: y, dtype: float64</code></pre>
 <li>Séparation des données en deux variables : variable indépendante <code>X</code> et variable dépendante <code>y</code></li>
 <li>Conversion des données en tableaux Numpy</li>
 </ul>
-<div id="cell-18" class="cell" data-execution_count="43">
+<div id="cell-19" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> dataset.columns</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>Index(['x', 'y'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="44">
+<div id="cell-20" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>X_full <span class="op">=</span> dataset.x.to_numpy()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>y_full <span class="op">=</span> dataset.y.to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="division-des-données-en-données-dentraînement-et-données-de-test-puis-en-données-dentraînement-et-données-de-validation" class="level3">
-<h3 class="anchored" data-anchor-id="division-des-données-en-données-dentraînement-et-données-de-test-puis-en-données-dentraînement-et-données-de-validation">Division des données en données d’entraînement et données de test puis en données d’entraînement et données de validation</h3>
-<div id="cell-21" class="cell" data-execution_count="45">
+<section id="division-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="division-des-données">Division des données</h4>
+<p>Nous passons ensuite à diviser notre dataset en données d’entraînement et données de test puis en données d’entraînement et données de validation.al</p>
+<p>Le dataset dispose d’un second ficher test.csv qui contient des données de test. Mais nous allons, à des fins d’entraînement, ne pas en tenir compte jusqu’à la fin. Une foid le modèle construit, nous pourrons entraîner avec l’entièreté des données d’entraînement puis l’évaluer avec ces données de test.</p>
+<div id="cell-22" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_train, X_val, y_train, y_val <span class="op">=</span> dataset_splitter(X_full, y_full, <span class="fl">0.4</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X_val, y_val, X_test, y_test <span class="op">=</span> dataset_splitter(X_val, y_val, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -425,7 +452,7 @@ X_val: 50%</code></pre>
 <h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
 <p>Cette étape est importante car elle permet d’éviter que certaines variables aient plus d’importance que d’autres dans le modèle. En effet, si une variable est exprimée en milliers et une autre en unités, la variable exprimée en milliers aura plus d’importance dans le modèle. Il faut donc standardiser les données pour que toutes les variables aient la même importance.</p>
 <p>Deplus, cela permet d’accélérer la convergence de l’algorithme d’optimisation et éviter les problèmes de précision ou d’overflow.</p>
-<div id="cell-23" class="cell" data-execution_count="50">
+<div id="cell-24" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizing the data</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> normalize(X_train)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X_train[:<span class="dv">4</span>])</span>
@@ -439,7 +466,7 @@ X_val: 50%</code></pre>
 </section>
 <section id="entraînement-du-modèle" class="level2">
 <h2 class="anchored" data-anchor-id="entraînement-du-modèle">Entraînement du modèle</h2>
-<div id="cell-25" class="cell" data-execution_count="51">
+<div id="cell-26" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X_train = np.array([1.0, 2.0, 1.5])  # features</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y_train = np.array([300.0, 500.0, 250.0])  # target value</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># initialize parameters</span></span>
@@ -473,7 +500,7 @@ Iteration 9000: Cost 3.99e+00  dj_dw: -1.177e-02, dj_db:  6.335e-03   w:  9.957e
 (w,b) found by gradient descent: (99.6508769209906,0.060809317925982466)</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="52">
+<div id="cell-27" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> compute_model_output(X_train, w_final, b_final)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_pred[:<span class="dv">4</span>])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y_val_norm = normalize(y_train)</span></span>
@@ -484,7 +511,7 @@ Iteration 9000: Cost 3.99e+00  dj_dw: -1.177e-02, dj_db:  6.335e-03   w:  9.957e
 [29.6673599  56.68718792 85.02778957 73.13850045]</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="53">
+<div id="cell-28" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot cost versus iteration</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, constrained_layout<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ax1.plot(J_history[:<span class="dv">1000</span>])</span>
@@ -499,12 +526,12 @@ Iteration 9000: Cost 3.99e+00  dj_dw: -1.177e-02, dj_db:  6.335e-03   w:  9.957e
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="index_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-28" class="cell">
+<div id="cell-29" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Evaluation du modèle sur le jeu de validation</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalizing the data</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> normalize(X_val)</span>

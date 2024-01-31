@@ -192,27 +192,26 @@ font-style: inherit;">any</span>()</span></code></pre></div>
 </div>
 </div>
 <p>Ici, nous avons deux variables : la variable indépendante <code>X</code> et la variable dépendante <code>y</code>. Nous pouvons visualiser les données avec un nuage de points.</p>
-<div id="cell-13" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">dataset.plot(kind<span class="op" style="color: #5E5E5E;
+<section id="distribution-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-des-données">Distribution des données</h4>
+<p>L’analyse de la distribution des données est importante pour comprendre les données. Nous pouvons visualiser la distribution des données avec un histogramme.</p>
+<p>Nous pouvons voir que les données sont distribuées uniformement, ce qui est une bonne chose pour la régression linéaire.</p>
+<div id="cell-14" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
+font-style: inherit;"># Plotting the distribution of the data</span></span>
+<span id="cb9-2">dataset.hist(bins<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">"scatter"</span>, x<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"x"</span>, y<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"y"</span>, figsize<span class="op" style="color: #5E5E5E;
+font-style: inherit;">30</span>, figsize<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span>,<span class="dv" style="color: #AD0000;
+font-style: inherit;">20</span>,<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>))</span>
-<span id="cb9-2">plt.show()</span></code></pre></div>
+font-style: inherit;">15</span>))</span>
+<span id="cb9-3">plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -221,38 +220,14 @@ font-style: inherit;">5</span>))</span>
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="40">
+<div id="cell-15" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Plotting the distribution of the data</span></span>
-<span id="cb10-2">dataset.hist(bins<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>, figsize<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>,<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>))</span>
-<span id="cb10-3">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cell-15" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
 font-style: inherit;"># Plotting the correlation matrix</span></span>
-<span id="cb11-2">corr_matrix <span class="op" style="color: #5E5E5E;
+<span id="cb10-2">corr_matrix <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.corr()</span>
-<span id="cb11-3">corr_matrix[<span class="st" style="color: #20794D;
+<span id="cb10-3">corr_matrix[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'y'</span>].sort_values(ascending<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -265,36 +240,114 @@ x    0.99534
 Name: y, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+</section>
+<section id="la-corrélation-entre-les-variables" class="level4">
+<h4 class="anchored" data-anchor-id="la-corrélation-entre-les-variables">La corrélation entre les variables</h4>
+<p>La corrélation entre <code>X</code> et <code>y</code> est très importante pour la régression linéaire. Plus la corrélation est forte, plus la régression linéaire sera efficace.</p>
+<p>Ici, sans surprise puisque le dataset a été créé à cet effet, nous avons une corrélation très forte entre <code>X</code> et <code>y</code>.</p>
+<div id="cell-17" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;"># Plot the X points in one color and the Y points in another color</span></span>
-<span id="cb13-2"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">import</span> seaborn <span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;"># to see the difference between the two</span></span>
-<span id="cb13-3">plt.scatter(dataset[<span class="st" style="color: #20794D;
+font-style: inherit;">as</span> sns</span>
+<span id="cb12-2"></span>
+<span id="cb12-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">'x'</span>], dataset[<span class="st" style="color: #20794D;
+font-style: inherit;"># Calculer le coefficient de corrélation de Pearson</span></span>
+<span id="cb12-4">correlation_matrix <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">'y'</span>], c<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> dataset.corr()</span>
+<span id="cb12-5"></span>
+<span id="cb12-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>dataset[<span class="st" style="color: #20794D;
+font-style: inherit;"># Afficher le coefficient de corrélation</span></span>
+<span id="cb12-7"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">'x'</span>], cmap<span class="op" style="color: #5E5E5E;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Coefficient de corrélation de Pearson entre x et y :"</span>)</span>
+<span id="cb12-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(correlation_matrix.loc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'x'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'y'</span>])</span>
+<span id="cb12-9"></span>
+<span id="cb12-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Visualiser la corrélation avec un nuage de points</span></span>
+<span id="cb12-11">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb12-12">sns.scatterplot(x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'viridis'</span>)</span>
-<span id="cb13-4">plt.colorbar()</span>
-<span id="cb13-5">plt.show()</span></code></pre></div>
+font-style: inherit;">'x'</span>, y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'y'</span>, data<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>dataset)</span>
+<span id="cb12-13">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Nuage de points de x contre y'</span>)</span>
+<span id="cb12-14">plt.show()</span>
+<span id="cb12-15"></span>
+<span id="cb12-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Visualiser la matrice de corrélation avec une heatmap</span></span>
+<span id="cb12-17">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb12-18">sns.heatmap(correlation_matrix, annot<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'coolwarm'</span>, center<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb12-19">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Matrice de corrélation'</span>)</span>
+<span id="cb12-20">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficient de corrélation de Pearson entre x et y :
+0.9953399077212526</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-10-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="préparation-des-données" class="level2">
 <h2 class="anchored" data-anchor-id="préparation-des-données">Préparation des données</h2>
@@ -302,7 +355,7 @@ font-style: inherit;">'viridis'</span>)</span>
 <li>Séparation des données en deux variables : variable indépendante <code>X</code> et variable dépendante <code>y</code></li>
 <li>Conversion des données en tableaux Numpy</li>
 </ul>
-<div id="cell-18" class="cell" data-execution_count="43">
+<div id="cell-19" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">columns <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.columns</span>
@@ -311,7 +364,7 @@ font-style: inherit;">=</span> dataset.columns</span>
 <pre><code>Index(['x', 'y'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="44">
+<div id="cell-20" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">X_full <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset.x.to_numpy()</span>
@@ -319,9 +372,11 @@ font-style: inherit;">=</span> dataset.x.to_numpy()</span>
 background-color: null;
 font-style: inherit;">=</span> dataset.y.to_numpy()</span></code></pre></div>
 </div>
-<section id="division-des-données-en-données-dentraînement-et-données-de-test-puis-en-données-dentraînement-et-données-de-validation" class="level3">
-<h3 class="anchored" data-anchor-id="division-des-données-en-données-dentraînement-et-données-de-test-puis-en-données-dentraînement-et-données-de-validation">Division des données en données d’entraînement et données de test puis en données d’entraînement et données de validation</h3>
-<div id="cell-21" class="cell" data-execution_count="45">
+<section id="division-des-données" class="level4">
+<h4 class="anchored" data-anchor-id="division-des-données">Division des données</h4>
+<p>Nous passons ensuite à diviser notre dataset en données d’entraînement et données de test puis en données d’entraînement et données de validation.al</p>
+<p>Le dataset dispose d’un second ficher test.csv qui contient des données de test. Mais nous allons, à des fins d’entraînement, ne pas en tenir compte jusqu’à la fin. Une foid le modèle construit, nous pourrons entraîner avec l’entièreté des données d’entraînement puis l’évaluer avec ces données de test.</p>
+<div id="cell-22" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">X_train, X_val, y_train, y_val <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset_splitter(X_full, y_full, <span class="fl" style="color: #AD0000;
@@ -354,7 +409,7 @@ X_val: 50%</code></pre>
 <h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
 <p>Cette étape est importante car elle permet d’éviter que certaines variables aient plus d’importance que d’autres dans le modèle. En effet, si une variable est exprimée en milliers et une autre en unités, la variable exprimée en milliers aura plus d’importance dans le modèle. Il faut donc standardiser les données pour que toutes les variables aient la même importance.</p>
 <p>Deplus, cela permet d’accélérer la convergence de l’algorithme d’optimisation et éviter les problèmes de précision ou d’overflow.</p>
-<div id="cell-23" class="cell" data-execution_count="50">
+<div id="cell-24" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Normalizing the data</span></span>
@@ -380,7 +435,7 @@ font-style: inherit;">4</span>])</span></code></pre></div>
 </section>
 <section id="entraînement-du-modèle" class="level2">
 <h2 class="anchored" data-anchor-id="entraînement-du-modèle">Entraînement du modèle</h2>
-<div id="cell-25" class="cell" data-execution_count="51">
+<div id="cell-26" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># X_train = np.array([1.0, 2.0, 1.5])  # features</span></span>
@@ -458,7 +513,7 @@ Iteration 9000: Cost 3.99e+00  dj_dw: -1.177e-02, dj_db:  6.335e-03   w:  9.957e
 (w,b) found by gradient descent: (99.6508769209906,0.060809317925982466)</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="52">
+<div id="cell-27" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">y_pred <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> compute_model_output(X_train, w_final, b_final)</span>
@@ -481,7 +536,7 @@ font-style: inherit;">4</span>])</span></code></pre></div>
 [29.6673599  56.68718792 85.02778957 73.13850045]</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="53">
+<div id="cell-28" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># plot cost versus iteration</span></span>
@@ -538,12 +593,12 @@ font-style: inherit;">'iteration step'</span>)</span>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/regression/index_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-28" class="cell">
+<div id="cell-29" class="cell">
 <div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">### Evaluation du modèle sur le jeu de validation</span></span>
