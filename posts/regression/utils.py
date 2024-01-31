@@ -222,3 +222,25 @@ def normalize(x):
         x_norm[i] = (x[i] - x_min) / diff
 
     return x_norm
+
+
+# Metric function to measure the quality of the model
+def mse(y_pred, y_labels):
+    """Function to compute the mean squared error
+    Args:
+        y_pred (numpy array): The predictions
+        y_labels (numpy array): The labels
+    Returns:
+        error_cost (float): The mean squared error
+    """
+    assert y_pred.shape == y_labels.shape
+    
+    m = y_labels.shape[0]
+    
+    error_cost = 0
+    for pred in range(m):
+        error_cost += (y_pred[pred] - y_labels[pred])**2
+    
+    error_cost / m
+    
+    return error_cost
