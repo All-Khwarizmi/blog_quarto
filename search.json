@@ -39,7 +39,7 @@
     "href": "posts/rl-algorithm-code/index.html#préparation-des-jeux-de-données",
     "title": "Régression linéaire code Python",
     "section": "Préparation des jeux de données",
-    "text": "Préparation des jeux de données\n\nfrom utils import dataset_splitter\n\nX_full = train_data.x\ny_full = train_data.y\n\nX_train, X_val, y_train, y_val = dataset_splitter(X_full, y_full, test_size=0.3)\n\ntrain_size: 70.0% - test_size: 30.0%\nX_train: 70%\nX_val: 30%"
+    "text": "Préparation des jeux de données\n\nfrom utils import dataset_splitter\n\nX_train, X_val, y_train, y_val = dataset_splitter(X_train, y_train, test_size=0.3)\n\ntrain_size: 70.0% - test_size: 30.0%\nX_train: 70%\nX_val: 30%"
   },
   {
     "objectID": "posts/regression/index.html",
