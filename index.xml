@@ -10,7 +10,104 @@
 <atom:link href="https://all-khwarizmi.github.io/blog_quarto/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.549</generator>
-<lastBuildDate>Tue, 30 Jan 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 02 Feb 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Régression linéaire code Python</title>
+  <dc:creator>Jason Suárez</dc:creator>
+  <link>https://all-khwarizmi.github.io/blog_quarto/posts/rl-algorithm-code/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Dans ce notebook, nous allons voir comment implémenter une régression linéaire en Python. Nous n’allons pas utiliser de bibliothèques pour ce faire, mais nous allons plutôt implémenter l’algorithme de régression linéaire à partir de zéro. Nous allons également voir comment utiliser notre implémentation pour prédire des valeurs à partir d’un ensemble de données.</p>
+<div id="cell-2" class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt </span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> seaborn <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> sns</span></code></pre></div>
+</div>
+<section id="chargement-et-visualisation-des-données" class="level3">
+<h3 class="anchored" data-anchor-id="chargement-et-visualisation-des-données">Chargement et visualisation des données</h3>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'data/train.csv'</span>)</span>
+<span id="cb2-2">data.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>24.0</td>
+<td>21.549452</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>50.0</td>
+<td>47.464463</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>15.0</td>
+<td>17.218656</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>38.0</td>
+<td>36.586398</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>87.0</td>
+<td>87.288984</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Science</category>
+  <category>Python</category>
+  <guid>https://all-khwarizmi.github.io/blog_quarto/posts/rl-algorithm-code/</guid>
+  <pubDate>Fri, 02 Feb 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://all-khwarizmi.github.io/blog_quarto/posts/rl-algorithm-code/image.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>Régression linéaire simple avec Python</title>
   <dc:creator>Jason Suárez</dc:creator>

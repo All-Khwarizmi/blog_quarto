@@ -1,9 +1,8 @@
 [
   {
-    "listing": "/env-series.html",
+    "listing": "/dico-series.html",
     "items": [
-      "/posts/virtual-environnements/js_env.html",
-      "/posts/virtual-environnements/python_env.html"
+      "/posts/dico/dico-old.html"
     ]
   },
   {
@@ -18,6 +17,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/rl-algorithm-code/index.html",
       "/posts/regression/index.html",
       "/posts/dico/dico-old.html",
       "/posts/virtual-environnements/js_env.html",
@@ -27,9 +27,10 @@
     ]
   },
   {
-    "listing": "/dico-series.html",
+    "listing": "/env-series.html",
     "items": [
-      "/posts/dico/dico-old.html"
+      "/posts/virtual-environnements/js_env.html",
+      "/posts/virtual-environnements/python_env.html"
     ]
   }
 ]
