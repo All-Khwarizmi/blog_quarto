@@ -46,14 +46,19 @@ font-style: inherit;">as</span> sns</span></code></pre></div>
 </div>
 <section id="chargement-et-visualisation-des-données" class="level3">
 <h3 class="anchored" data-anchor-id="chargement-et-visualisation-des-données">Chargement et visualisation des données</h3>
-<div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">data <span class="op" style="color: #5E5E5E;
+<div id="cell-4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">train_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'data/train.csv'</span>)</span>
-<span id="cb2-2">data.head()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<span id="cb2-2">test_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'data/test.csv'</span>)</span>
+<span id="cb2-3">train_data.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -95,6 +100,125 @@ font-style: inherit;">'data/train.csv'</span>)</span>
 </table>
 
 </div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">train_data.describe()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>700.000000</td>
+<td>699.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>54.985939</td>
+<td>49.939869</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>134.681703</td>
+<td>29.109217</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>0.000000</td>
+<td>-3.839981</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>25.000000</td>
+<td>24.929968</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>49.000000</td>
+<td>48.973020</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>75.000000</td>
+<td>74.929911</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>3530.157369</td>
+<td>108.871618</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">train_data.dropna(inplace<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span></code></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span>
+<span id="cb5-2">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Scatter plot of X and Y"</span>)</span>
+<span id="cb5-3">plt.scatter(train_data.x, train_data.y)</span>
+<span id="cb5-4">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://all-khwarizmi.github.io/blog_quarto/posts/rl-algorithm-code/index_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="préparation-des-jeux-de-données" class="level2">
+<h2 class="anchored" data-anchor-id="préparation-des-jeux-de-données">Préparation des jeux de données</h2>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> utils <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> dataset_splitter</span>
+<span id="cb6-2"></span>
+<span id="cb6-3">X_full <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> train_data.x</span>
+<span id="cb6-4">y_full <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> train_data.y</span>
+<span id="cb6-5"></span>
+<span id="cb6-6">X_train, X_val, y_train, y_val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> dataset_splitter(X_full, y_full, test_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>train_size: 70.0% - test_size: 30.0%
+X_train: 70%
+X_val: 30%</code></pre>
 </div>
 </div>
 
