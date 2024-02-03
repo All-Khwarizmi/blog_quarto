@@ -248,7 +248,29 @@ X_val: 30%</code></pre>
 </section>
 <section id="standardisation-des-données" class="level3">
 <h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
-<div id="cell-11" class="cell" data-execution_count="14">
+<p>Standardization is a preprocessing technique used in machine learning to rescale and transform the features (variables) of a dataset to have a mean of 0 and a standard deviation of 1. It is also known as “z-score normalization” or “z-score scaling.” Standardization is an essential step in the data preprocessing pipeline for various reasons:</p>
+</section>
+<section id="why-use-standardization-in-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-standardization-in-machine-learning">Why Use Standardization in Machine Learning?</h3>
+<ol type="1">
+<li><p><strong>Mean Centering</strong>: Standardization centers the data by subtracting the mean from each feature. This ensures that the transformed data has a mean of 0. Mean centering is crucial because it helps in capturing the relative variations in the data.</p></li>
+<li><p><strong>Scale Invariance</strong>: Standardization scales the data by dividing each feature by its standard deviation. This makes the data scale-invariant, meaning that the scale of the features no longer affects the performance of many machine learning algorithms. Without standardization, features with larger scales may dominate the learning process.</p></li>
+<li><p><strong>Improved Convergence</strong>: Many machine learning algorithms, such as gradient-based optimization algorithms (e.g., gradient descent), converge faster when the features are standardized. It reduces the potential for numerical instability and overflow/underflow issues during training.</p></li>
+<li><p><strong>Comparability</strong>: Standardizing the features makes it easier to compare and interpret the importance of each feature. This is especially important in models like linear regression, where the coefficients represent the feature’s impact on the target variable.</p></li>
+<li><p><strong>Regularization</strong>: In regularization techniques like Ridge and Lasso regression, the regularization strength is applied uniformly to all features. Standardization ensures that the regularization term applies fairly to all features.</p></li>
+</ol>
+</section>
+<section id="how-to-standardize-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-standardize-data">How to Standardize Data</h3>
+<p>The standardization process involves the following steps:</p>
+<ol type="1">
+<li>Calculate the mean (<img src="https://latex.codecogs.com/png.latex?%5Cmu">) and standard deviation (<img src="https://latex.codecogs.com/png.latex?%5Csigma">) for each feature in the dataset.</li>
+<li>For each data point (sample), subtract the mean (<img src="https://latex.codecogs.com/png.latex?%5Cmu">) of the feature and then divide by the standard deviation (<img src="https://latex.codecogs.com/png.latex?%5Csigma">) of the feature.</li>
+</ol>
+<p>Mathematically, the standardized value for a feature <code>x</code> in a dataset is calculated as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BStandardized%20value%7D%20=%20%5Cfrac%7Bx%20-%20%5Cmu%7D%7B%5Csigma%7D%0A"></p>
+<p>Here, <code>x</code> is the original value of the feature, <img src="https://latex.codecogs.com/png.latex?%5Cmu"> is the mean of the feature, and <img src="https://latex.codecogs.com/png.latex?%5Csigma"> is the standard deviation of the feature.</p>
+<div id="cell-12" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">X_train, y_train <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> standardize_data(X_train, y_train)</span>
@@ -278,6 +300,36 @@ font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 </div>
+</section>
+<section id="implémentation-de-lalgorithme-de-régression-linéaire" class="level2">
+<h2 class="anchored" data-anchor-id="implémentation-de-lalgorithme-de-régression-linéaire">Implémentation de l’algorithme de régression linéaire</h2>
+<p>Linear regression is a fundamental model in machine learning used for predicting a continuous output variable based on input features. The model function for linear regression is represented as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?f_%7Bw,b%7D(x)%20=%20wx%20+%20b"></p>
+<p>In this equation, <img src="https://latex.codecogs.com/png.latex?f_%7Bw,b%7D(x)"> represents the predicted output, <img src="https://latex.codecogs.com/png.latex?w"> is the weight parameter, <img src="https://latex.codecogs.com/png.latex?b"> is the bias parameter, and <img src="https://latex.codecogs.com/png.latex?x"> is the input feature.</p>
+</section>
+<section id="model-training" class="level2">
+<h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
+<p>To train a linear regression model, we aim to find the best values for the parameters <img src="https://latex.codecogs.com/png.latex?(w,%20b)"> that best fit our dataset.</p>
+<section id="forward-pass" class="level3">
+<h3 class="anchored" data-anchor-id="forward-pass">Forward Pass</h3>
+<p>The forward pass is a step where we compute the linear regression output for the input data <img src="https://latex.codecogs.com/png.latex?X"> using the current weights and biases. It’s essentially applying our model to the input data.</p>
+</section>
+<section id="cost-function" class="level3">
+<h3 class="anchored" data-anchor-id="cost-function">Cost Function</h3>
+<p>The cost function is used to measure how well our model is performing. It quantifies the difference between the predicted values and the actual values in our dataset. The cost function is defined as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?J(w,b)%20=%20%5Cfrac%7B1%7D%7B2m%7D%20%5Csum_%7Bi=1%7D%5E%7Bm%7D(f_%7Bw,b%7D(x%5E%7B(i)%7D)%20-%20y%5E%7B(i)%7D)%5E2"></p>
+<p>Here, <img src="https://latex.codecogs.com/png.latex?J(w,%20b)"> is the cost, <img src="https://latex.codecogs.com/png.latex?m"> is the number of training examples, <img src="https://latex.codecogs.com/png.latex?x%5E%7B(i)%7D"> is the input data for the <img src="https://latex.codecogs.com/png.latex?i">-th example, <img src="https://latex.codecogs.com/png.latex?y%5E%7B(i)%7D"> is the actual output for the <img src="https://latex.codecogs.com/png.latex?i">-th example, and <img src="https://latex.codecogs.com/png.latex?w"> and <img src="https://latex.codecogs.com/png.latex?b"> are the weight and bias parameters, respectively. **** ### Backward Pass (Gradient Computation)</p>
+<p>The backward pass computes the gradients of the cost function with respect to the weights and biases. These gradients are crucial for updating the model parameters during training. The gradient formulas are as follows: <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20J(w,b)%7D%7B%5Cpartial%20b%7D%20=%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bi=0%7D%5E%7Bm-1%7D%20(f_%7Bw,b%7D(X%5E%7B(i)%7D)%20-%20y%5E%7B(i)%7D)%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20J(w,b)%7D%7B%5Cpartial%20w%7D%20=%20%5Cfrac%7B1%7D%7Bm%7D%20%5Csum_%7Bi=0%7D%5E%7Bm-1%7D%20(f_%7Bw,b%7D(X%5E%7B(i)%7D)%20-%20y%5E%7B(i)%7D)X%5E%7B(i)%7D%0A"></p>
+</section>
+</section>
+<section id="training-process" class="level2">
+<h2 class="anchored" data-anchor-id="training-process">Training Process</h2>
+<p>The training process involves iteratively updating the weights and biases to minimize the cost function. This is typically done through an optimization algorithm like gradient descent. The update equations for parameters are:</p>
+<p><img src="https://latex.codecogs.com/png.latex?w%20%5Cleftarrow%20w%20-%20%5Calpha%20%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20w%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b%20%5Cleftarrow%20b%20-%20%5Calpha%20%5Cfrac%7B%5Cpartial%20J%7D%7B%5Cpartial%20b%7D"></p>
+<p>Here, <img src="https://latex.codecogs.com/png.latex?%5Calpha"> represents the learning rate, which controls the step size during parameter updates.</p>
+<p>By iteratively performing the forward pass, computing the cost, performing the backward pass, and updating the parameters, the model learns to make better predictions and fit the data.</p>
 
 
 </section>
@@ -1696,7 +1748,7 @@ font-style: inherit;">-r</span> requirements.txt</span></code></pre></div>
 <section id="goat-detector-training" class="level1">
 <h1>Goat Detector Training</h1>
 <p>This notebook utilizes the fastai and fastbook libraries to train a machine learning model for image classification. The goal is to classify images as either featuring Messi or Cristiano Ronaldo, two renowned football players. ## Importing Necessary Libraries Import fastai and fastbook libraries essential for image loading, preparation, and machine learning model operations.</p>
-<div id="fig-installation" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="1" data-outputid="fa1217f1-17a6-4bfb-845d-3ea74c688756">
+<div id="fig-installation" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-outputid="fa1217f1-17a6-4bfb-845d-3ea74c688756" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-installation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;

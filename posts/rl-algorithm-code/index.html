@@ -106,6 +106,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -359,7 +388,31 @@ X_val: 30%</code></pre>
 </section>
 <section id="standardisation-des-données" class="level3">
 <h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
-<div id="cell-11" class="cell" data-execution_count="14">
+<p>Standardization is a preprocessing technique used in machine learning to rescale and transform the features (variables) of a dataset to have a mean of 0 and a standard deviation of 1. It is also known as “z-score normalization” or “z-score scaling.” Standardization is an essential step in the data preprocessing pipeline for various reasons:</p>
+</section>
+<section id="why-use-standardization-in-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="why-use-standardization-in-machine-learning">Why Use Standardization in Machine Learning?</h3>
+<ol type="1">
+<li><p><strong>Mean Centering</strong>: Standardization centers the data by subtracting the mean from each feature. This ensures that the transformed data has a mean of 0. Mean centering is crucial because it helps in capturing the relative variations in the data.</p></li>
+<li><p><strong>Scale Invariance</strong>: Standardization scales the data by dividing each feature by its standard deviation. This makes the data scale-invariant, meaning that the scale of the features no longer affects the performance of many machine learning algorithms. Without standardization, features with larger scales may dominate the learning process.</p></li>
+<li><p><strong>Improved Convergence</strong>: Many machine learning algorithms, such as gradient-based optimization algorithms (e.g., gradient descent), converge faster when the features are standardized. It reduces the potential for numerical instability and overflow/underflow issues during training.</p></li>
+<li><p><strong>Comparability</strong>: Standardizing the features makes it easier to compare and interpret the importance of each feature. This is especially important in models like linear regression, where the coefficients represent the feature’s impact on the target variable.</p></li>
+<li><p><strong>Regularization</strong>: In regularization techniques like Ridge and Lasso regression, the regularization strength is applied uniformly to all features. Standardization ensures that the regularization term applies fairly to all features.</p></li>
+</ol>
+</section>
+<section id="how-to-standardize-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-standardize-data">How to Standardize Data</h3>
+<p>The standardization process involves the following steps:</p>
+<ol type="1">
+<li>Calculate the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>) for each feature in the dataset.</li>
+<li>For each data point (sample), subtract the mean (<span class="math inline">\(\mu\)</span>) of the feature and then divide by the standard deviation (<span class="math inline">\(\sigma\)</span>) of the feature.</li>
+</ol>
+<p>Mathematically, the standardized value for a feature <code>x</code> in a dataset is calculated as:</p>
+<p><span class="math display">\[
+\text{Standardized value} = \frac{x - \mu}{\sigma}
+\]</span></p>
+<p>Here, <code>x</code> is the original value of the feature, <span class="math inline">\(\mu\)</span> is the mean of the feature, and <span class="math inline">\(\sigma\)</span> is the standard deviation of the feature.</p>
+<div id="cell-12" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_train, y_train <span class="op">=</span> standardize_data(X_train, y_train)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_val, y_val <span class="op">=</span> standardize_data(X_val, y_val)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -367,6 +420,40 @@ X_val: 30%</code></pre>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>X_val <span class="op">=</span> X_val.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="implémentation-de-lalgorithme-de-régression-linéaire" class="level2">
+<h2 class="anchored" data-anchor-id="implémentation-de-lalgorithme-de-régression-linéaire">Implémentation de l’algorithme de régression linéaire</h2>
+<p>Linear regression is a fundamental model in machine learning used for predicting a continuous output variable based on input features. The model function for linear regression is represented as:</p>
+<p><span class="math display">\[f_{w,b}(x) = wx + b\]</span></p>
+<p>In this equation, <span class="math inline">\(f_{w,b}(x)\)</span> represents the predicted output, <span class="math inline">\(w\)</span> is the weight parameter, <span class="math inline">\(b\)</span> is the bias parameter, and <span class="math inline">\(x\)</span> is the input feature.</p>
+</section>
+<section id="model-training" class="level2">
+<h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
+<p>To train a linear regression model, we aim to find the best values for the parameters <span class="math inline">\((w, b)\)</span> that best fit our dataset.</p>
+<section id="forward-pass" class="level3">
+<h3 class="anchored" data-anchor-id="forward-pass">Forward Pass</h3>
+<p>The forward pass is a step where we compute the linear regression output for the input data <span class="math inline">\(X\)</span> using the current weights and biases. It’s essentially applying our model to the input data.</p>
+</section>
+<section id="cost-function" class="level3">
+<h3 class="anchored" data-anchor-id="cost-function">Cost Function</h3>
+<p>The cost function is used to measure how well our model is performing. It quantifies the difference between the predicted values and the actual values in our dataset. The cost function is defined as:</p>
+<p><span class="math display">\[J(w,b) = \frac{1}{2m} \sum_{i=1}^{m}(f_{w,b}(x^{(i)}) - y^{(i)})^2\]</span></p>
+<p>Here, <span class="math inline">\(J(w, b)\)</span> is the cost, <span class="math inline">\(m\)</span> is the number of training examples, <span class="math inline">\(x^{(i)}\)</span> is the input data for the <span class="math inline">\(i\)</span>-th example, <span class="math inline">\(y^{(i)}\)</span> is the actual output for the <span class="math inline">\(i\)</span>-th example, and <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> are the weight and bias parameters, respectively. **** ### Backward Pass (Gradient Computation)</p>
+<p>The backward pass computes the gradients of the cost function with respect to the weights and biases. These gradients are crucial for updating the model parameters during training. The gradient formulas are as follows: <span class="math display">\[
+\frac{\partial J(w,b)}{\partial b} = \frac{1}{m} \sum_{i=0}^{m-1} (f_{w,b}(X^{(i)}) - y^{(i)})
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial J(w,b)}{\partial w} = \frac{1}{m} \sum_{i=0}^{m-1} (f_{w,b}(X^{(i)}) - y^{(i)})X^{(i)}
+\]</span></p>
+</section>
+</section>
+<section id="training-process" class="level2">
+<h2 class="anchored" data-anchor-id="training-process">Training Process</h2>
+<p>The training process involves iteratively updating the weights and biases to minimize the cost function. This is typically done through an optimization algorithm like gradient descent. The update equations for parameters are:</p>
+<p><span class="math display">\[w \leftarrow w - \alpha \frac{\partial J}{\partial w}\]</span></p>
+<p><span class="math display">\[b \leftarrow b - \alpha \frac{\partial J}{\partial b}\]</span></p>
+<p>Here, <span class="math inline">\(\alpha\)</span> represents the learning rate, which controls the step size during parameter updates.</p>
+<p>By iteratively performing the forward pass, computing the cost, performing the backward pass, and updating the parameters, the model learns to make better predictions and fit the data.</p>
 
 
 </section>
