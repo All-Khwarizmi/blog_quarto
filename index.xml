@@ -22,7 +22,7 @@
 
 
 <p>Dans ce notebook, nous allons voir comment implémenter une régression linéaire en Python. Nous n’allons pas utiliser de bibliothèques pour ce faire, mais nous allons plutôt implémenter l’algorithme de régression linéaire à partir de zéro. Nous allons également voir comment utiliser notre implémentation pour prédire des valeurs à partir d’un ensemble de données.</p>
-<div id="cell-2" class="cell">
+<div id="cell-2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
@@ -40,36 +40,44 @@ background-color: null;
 font-style: inherit;">as</span> plt </span>
 <span id="cb1-4"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> seaborn <span class="im" style="color: #00769E;
+font-style: inherit;">from</span> utils <span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">as</span> sns</span></code></pre></div>
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(2,)
+[1 2]
+(2,)
+[1 2]</code></pre>
+</div>
 </div>
 <section id="chargement-et-visualisation-des-données" class="level3">
 <h3 class="anchored" data-anchor-id="chargement-et-visualisation-des-données">Chargement et visualisation des données</h3>
-<div id="cell-4" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">train_data <span class="op" style="color: #5E5E5E;
+<div id="cell-4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">train_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'data/train.csv'</span>)</span>
-<span id="cb2-2">test_data <span class="op" style="color: #5E5E5E;
+<span id="cb3-2">test_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> pd.read_csv(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'data/test.csv'</span>)</span>
-<span id="cb2-3"></span>
-<span id="cb2-4"><span class="co" style="color: #5E5E5E;
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># On élimine les rangées avec des valeurs manquantes</span></span>
-<span id="cb2-5">train_data <span class="op" style="color: #5E5E5E;
+<span id="cb3-5">train_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> train_data.dropna()</span>
-<span id="cb2-6">test_data <span class="op" style="color: #5E5E5E;
+<span id="cb3-6">test_data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> test_data.dropna()</span>
-<span id="cb2-7"></span>
-<span id="cb2-8">train_data.head()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<span id="cb3-7"></span>
+<span id="cb3-8">train_data.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -113,28 +121,28 @@ font-style: inherit;">=</span> test_data.dropna()</span>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div id="cell-5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># On sépare les données en X et y</span></span>
-<span id="cb3-2"></span>
-<span id="cb3-3">X_train <span class="op" style="color: #5E5E5E;
+<span id="cb4-2"></span>
+<span id="cb4-3">X_train <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> train_data.x</span>
-<span id="cb3-4">y_train <span class="op" style="color: #5E5E5E;
+<span id="cb4-4">y_train <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> train_data.y</span>
-<span id="cb3-5"></span>
-<span id="cb3-6">X_test <span class="op" style="color: #5E5E5E;
+<span id="cb4-5"></span>
+<span id="cb4-6">X_test <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> test_data.x</span>
-<span id="cb3-7">y_test <span class="op" style="color: #5E5E5E;
+<span id="cb4-7">y_test <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> test_data.y</span></code></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">train_data.describe()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">train_data.describe()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -149,17 +157,17 @@ font-style: inherit;">=</span> test_data.y</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">count</td>
-<td>700.000000</td>
+<td>699.000000</td>
 <td>699.000000</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">mean</td>
-<td>54.985939</td>
+<td>50.014306</td>
 <td>49.939869</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">std</td>
-<td>134.681703</td>
+<td>28.954560</td>
 <td>29.109217</td>
 </tr>
 <tr class="even">
@@ -184,7 +192,7 @@ font-style: inherit;">=</span> test_data.y</span></code></pre></div>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">max</td>
-<td>3530.157369</td>
+<td>100.000000</td>
 <td>108.871618</td>
 </tr>
 </tbody>
@@ -193,19 +201,19 @@ font-style: inherit;">=</span> test_data.y</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">plt.figure(figsize<span class="op" style="color: #5E5E5E;
+<div id="cell-7" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">plt.figure(figsize<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>))</span>
-<span id="cb5-2">plt.title(<span class="st" style="color: #20794D;
+<span id="cb6-2">plt.title(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Scatter plot of X and Y"</span>)</span>
-<span id="cb5-3">plt.scatter(train_data.x, train_data.y)</span>
-<span id="cb5-4">plt.show()</span></code></pre></div>
+<span id="cb6-3">plt.scatter(train_data.x, train_data.y)</span>
+<span id="cb6-4">plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -215,16 +223,16 @@ font-style: inherit;">"Scatter plot of X and Y"</span>)</span>
 </div>
 </div>
 </section>
-<section id="préparation-des-jeux-de-données" class="level2">
-<h2 class="anchored" data-anchor-id="préparation-des-jeux-de-données">Préparation des jeux de données</h2>
-<div id="cell-9" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+<section id="préparation-des-jeux-de-données" class="level3">
+<h3 class="anchored" data-anchor-id="préparation-des-jeux-de-données">Préparation des jeux de données</h3>
+<div id="cell-9" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> utils <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> dataset_splitter</span>
-<span id="cb6-2"></span>
-<span id="cb6-3">X_train, X_val, y_train, y_val <span class="op" style="color: #5E5E5E;
+<span id="cb7-2"></span>
+<span id="cb7-3">X_train, X_val, y_train, y_val <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> dataset_splitter(X_train, y_train, test_size<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -236,6 +244,39 @@ font-style: inherit;">0.3</span>)</span></code></pre></div>
 X_train: 70%
 X_val: 30%</code></pre>
 </div>
+</div>
+</section>
+<section id="standardisation-des-données" class="level3">
+<h3 class="anchored" data-anchor-id="standardisation-des-données">Standardisation des données</h3>
+<div id="cell-11" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">X_train, y_train <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> standardize_data(X_train, y_train)</span>
+<span id="cb9-2">X_val, y_val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> standardize_data(X_val, y_val)</span>
+<span id="cb9-3"></span>
+<span id="cb9-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># On remodèle les données pour qu'elles soient compatibles avec le modèle</span></span>
+<span id="cb9-5">X_train <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> X_train.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb9-6">X_val <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> X_val.reshape(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
 </div>
 
 
