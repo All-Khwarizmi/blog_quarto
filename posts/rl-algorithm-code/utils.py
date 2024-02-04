@@ -95,10 +95,34 @@ class LinearRegression:
     def cost_function(self, fw_b):
         cost = (1/(2*self.m)) * np.sum(np.square(fw_b - self.y_train))
         return cost
-    
+
     def backward_pass(self, fw_b):
-        dw = (1/self.m) * np.sum(self.X_train.T, (fw_b - self.y_train))
+        dw = (1/self.m) * np.dot(self.X_train.T, (fw_b - self.y_train))
         db = (1/self.m) * np.sum(fw_b - self.y_train)
         return dw, db
-    
-    
+
+    def update_parameters(self, dw, db, learning_rate):
+        self.w = self.w - learning_rate * dw
+        self.b = self.b - learning_rate * db
+
+    def train(self, learning_rate=0.01, epochs=1000):
+        costs = []
+        for i in range(epochs):
+            fw_b = self.forward_pass()
+            cost = self.cost_function(fw_b)
+            dw, db = self.backward_pass(fw_b)
+            self.update_parameters(dw, db, learning_rate)
+            costs.append(cost)
+            if i % 100 == 0:
+                print(f"Cost after iteration {i}: {cost}")
+        return costs
+
+    def predict(self, X_val):
+        return np.dot(X_val, self.w) + self.b
+
+    def plot_cost(self, costs):
+        plt.plot(costs)
+        plt.xlabel('Iterations')
+        plt.ylabel('Cost')
+        plt.title('Cost function over iterations')
+        plt.show()
