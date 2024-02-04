@@ -91,3 +91,14 @@ class LinearRegression:
 
         fw_b = np.dot(self.X_train, self.w) + self.b
         return fw_b
+
+    def cost_function(self, fw_b):
+        cost = (1/(2*self.m)) * np.sum(np.square(fw_b - self.y_train))
+        return cost
+    
+    def backward_pass(self, fw_b):
+        dw = (1/self.m) * np.sum(self.X_train.T, (fw_b - self.y_train))
+        db = (1/self.m) * np.sum(fw_b - self.y_train)
+        return dw, db
+    
+    
