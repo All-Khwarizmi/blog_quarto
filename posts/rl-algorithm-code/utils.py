@@ -38,7 +38,7 @@ def dataset_splitter(X, y, test_size=0.25, random_state=0, shuffle=True):
         X_np = X.to_numpy()
     if isinstance(y, pd.DataFrame) or isinstance(y, pd.Series):
         y_np = y.to_numpy()
-  
+
     # Shuffle the data
     if shuffle:
         np.random.seed(random_state)
@@ -59,6 +59,7 @@ def dataset_splitter(X, y, test_size=0.25, random_state=0, shuffle=True):
 
     return X_train, X_val, y_train, y_val
 
+
 def standardize_data(X_train, y_train):
     """Function to standardize the data using the mean and standard deviation
     Args:
@@ -77,3 +78,16 @@ def standardize_data(X_train, y_train):
     return X_train_norm, y_train_norm
 
 
+class LinearRegression:
+    def __init__(self, X_train: np.ndarray, y_train: np.ndarray):
+        self.X_train = X_train
+        self.y_train = y_train
+        self.m = X_train.shape[0]
+        self.n = X_train.shape[1]
+        self.b = np.ones((self.m, 1))
+        self.w = np.zeros((self.n, 1))
+
+    def forward_pass(self):
+
+        fw_b = np.dot(self.X_train, self.w) + self.b
+        return fw_b
