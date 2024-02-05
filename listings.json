@@ -17,7 +17,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/rl-algorithm-code/index.html",
       "/posts/regression/index.html",
       "/posts/dico/dico-old.html",
       "/posts/virtual-environnements/js_env.html",

@@ -228,7 +228,7 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/yj/l9r_dtt126ncwq1x9jfz7xkw0000gn/T/ipykernel_52817/702382961.py:1: DeprecationWarning: 
+<pre><code>/var/folders/yj/l9r_dtt126ncwq1x9jfz7xkw0000gn/T/ipykernel_53206/702382961.py:1: DeprecationWarning: 
 Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
 (to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
 but was not found to be installed on your system.
@@ -458,7 +458,7 @@ X_val: 30%</code></pre>
 <p><span class="math display">\[b \leftarrow b - \alpha \frac{\partial J}{\partial b}\]</span></p>
 <p>Here, <span class="math inline">\(\alpha\)</span> represents the learning rate, which controls the step size during parameter updates.</p>
 <p>By iteratively performing the forward pass, computing the cost, performing the backward pass, and updating the parameters, the model learns to make better predictions and fit the data.</p>
-<div id="cell-15" class="cell" data-execution_count="11">
+<div id="cell-15" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>rl <span class="op">=</span> LinearRegression(X_train, y_train)</span>
@@ -467,13 +467,10 @@ X_val: 30%</code></pre>
 <pre><code>Cost after iteration 0: 489.0000000000001</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coeficients: "</span>, rl.b[:<span class="dv">4</span>], rl.w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coeficients: "</span>,  rl.w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Coeficients:  [[9.88462351e+58]
- [9.88462351e+58]
- [9.88462351e+58]
- [9.88462351e+58]] [[-1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
+<pre><code>Coeficients:  [[-1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
   -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
   -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
   -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
@@ -598,11 +595,15 @@ X_val: 30%</code></pre>
   -1.87186164e+40]]</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> rl.predict(X_val)</span>
+<div id="cell-17" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y_pred = rl.predict(X_val)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rl.plot_cost(costs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ValueError: operands could not be broadcast together with shapes (210,489) (489,1) </code></pre>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 

@@ -84,7 +84,7 @@ class LinearRegression:
         self.y_train = y_train
         self.m = X_train.shape[0]
         self.n = X_train.shape[1]
-        self.b = np.ones((self.m, 1))
+        self.b = 1
         self.w = np.zeros((self.n, 1))
 
     def forward_pass(self):
