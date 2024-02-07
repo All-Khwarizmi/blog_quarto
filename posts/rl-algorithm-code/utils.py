@@ -79,6 +79,20 @@ def standardize_data(X_train, y_train):
 
 
 class LinearRegression:
+    """Class to implement a simple linear regression model
+    Args:
+        X_train (numpy array): The input data for training
+        y_train (numpy array): The target data for training
+
+    Attributes:
+        X_train (numpy array): The input data for training
+        y_train (numpy array): The target data for training
+        m (int): The number of training examples
+        n (int): The number of features
+        b (float): The bias
+        w (numpy array): The weights
+    """
+
     def __init__(self, X_train: np.ndarray, y_train: np.ndarray):
         self.X_train = X_train
         self.y_train = y_train
