@@ -228,7 +228,7 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utils <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/yj/l9r_dtt126ncwq1x9jfz7xkw0000gn/T/ipykernel_57519/702382961.py:1: DeprecationWarning: 
+<pre><code>/var/folders/yj/l9r_dtt126ncwq1x9jfz7xkw0000gn/T/ipykernel_8977/702382961.py:1: DeprecationWarning: 
 Pyarrow will become a required dependency of pandas in the next major release of pandas (pandas 3.0),
 (to allow more performant data types, such as the Arrow string type, and better interoperability with other libraries)
 but was not found to be installed on your system.
@@ -458,16 +458,16 @@ X_val: 30%</code></pre>
 <p><span class="math display">\[b \leftarrow b - \alpha \frac{\partial J}{\partial b}\]</span></p>
 <p>Here, <span class="math inline">\(\alpha\)</span> represents the learning rate, which controls the step size during parameter updates.</p>
 <p>By iteratively performing the forward pass, computing the cost, performing the backward pass, and updating the parameters, the model learns to make better predictions and fit the data.</p>
-<div id="cell-15" class="cell" data-execution_count="13">
+<div id="cell-15" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X_train[:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([[-0.71105588],
        [ 0.29327514],
        [ 1.19370984],
        [ 0.91665301]])</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="11">
+<div id="cell-16" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rl <span class="op">=</span> LinearRegression(X_train, y_train)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>costs<span class="op">=</span> rl.train(epochs<span class="op">=</span><span class="dv">1000</span>, learning_rate<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -492,135 +492,40 @@ Cost after iteration 900: nan</code></pre>
   self.b = self.b - learning_rate * db</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="9">
+<div id="cell-17" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Coeficients: "</span>,  rl.w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Coeficients:  [[-1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40 -1.87186164e+40 -1.87186164e+40 -1.87186164e+40
-  -1.87186164e+40]]</code></pre>
+<pre><code>Coeficients:  [[nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+  nan nan nan]]</code></pre>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="10">
+<div id="cell-18" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#y_pred = rl.predict(X_val)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rl.plot_cost(costs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">

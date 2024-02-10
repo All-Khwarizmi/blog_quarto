@@ -142,13 +142,15 @@ class LinearRegression:
         plt.show()
 
 # A test to check if the linear regression model works
+
+
 def test_linear_regression():
     X = np.array([[1, 2, 3, 4, 5]]).T
     y = np.array([[2, 4, 6, 8, 10]]).T
     X_train, X_val, y_train, y_val = dataset_splitter(X, y, test_size=0.2)
     X_train_norm, y_train_norm = standardize_data(X_train, y_train)
     model = LinearRegression(X_train_norm, y_train_norm)
-    costs = model.train(learning_rate=0.01, epochs=10000)
+    costs = model.train(learning_rate=0.01, epochs=4000)
     model.plot_cost(costs)
     X_val_norm = (X_val - np.mean(X_train, axis=0)) / np.std(X_train, axis=0)
     y_val_norm = (y_val - np.mean(y_train, axis=0)) / np.std(y_train, axis=0)
@@ -162,7 +164,7 @@ def test_linear_regression():
     assert math.isclose(y_pred[4][0], y_val_norm[4][0], rel_tol=0.1)
     print("All tests passed!")
 
+
 if __name__ == "__main__":
-    
+
     test_linear_regression()
-    
