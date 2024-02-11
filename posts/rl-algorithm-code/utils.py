@@ -1,4 +1,6 @@
 import math
+from re import X
+from matplotlib.pylab import f
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -60,7 +62,7 @@ def dataset_splitter(X, y, test_size=0.25, random_state=0, shuffle=True):
     return X_train, X_val, y_train, y_val
 
 
-def standardize_data(X_train, y_train):
+def standardize_data(X_train, X_test):
     """Function to standardize the data using the mean and standard deviation
     Args:
         X_train (numpy array): The input data for training
@@ -69,13 +71,12 @@ def standardize_data(X_train, y_train):
         X_train_norm (numpy array): The normalised input data for training
         y_train_norm (numpy array): The normalised target data for training
     """
-    X_mean = np.mean(X_train, axis=0)
-    X_std = np.std(X_train, axis=0)
-    y_mean = np.mean(y_train, axis=0)
-    y_std = np.std(y_train, axis=0)
-    X_train_norm = (X_train - X_mean) / X_std
-    y_train_norm = (y_train - y_mean) / y_std
-    return X_train_norm, y_train_norm
+    mean = np.mean(X_train, axis=0)
+    std = np.std(X_train, axis=0)
+
+    X_train = (X_train - mean) / std
+    X_test = (X_test - mean) / std
+    return X_train, X_test
 
 
 class LinearRegression:
@@ -93,46 +94,68 @@ class LinearRegression:
         w (numpy array): The weights
     """
 
-    def __init__(self, X_train: np.ndarray, y_train: np.ndarray):
-        self.X_train = X_train
-        self.y_train = y_train
-        self.m = X_train.shape[0]
-        self.n = X_train.shape[1]
-        self.b = 1
-        self.w = np.zeros((self.n, 1))
+    def __init__(self, learning_rate, convergence_tol=1e-6):
+        self.learning_rate = learning_rate
+        self.convergence_tol = convergence_tol
+        self.W = None
+        self.b = None
 
-    def forward_pass(self):
+    def initialize_parameters(self, n_features):
+        """
+        Initialize model parameters.
 
-        fw_b = np.dot(self.X_train, self.w) + self.b
+        Parameters:
+            n_features (int): The number of features in the input data.
+        """
+        self.W = np.random.randn(n_features) * 0.01
+        self.b = 0
+
+    def forward(self, X):
+
+        fw_b = np.dot(X, self.W) + self.b
         return fw_b
 
     def cost_function(self, fw_b):
-        cost = (1/(2*self.m)) * np.sum(np.square(fw_b - self.y_train))
+        m = len(fw_b)
+        cost = np.sum(np.square(fw_b - self.y) / (2 * m))
         return cost
 
-    def backward_pass(self, fw_b):
-        dw = (1/self.m) * np.dot(self.X_train.T, (fw_b - self.y_train))
-        db = (1/self.m) * np.sum(fw_b - self.y_train)
-        return dw, db
+    def backward(self, fw_b):
+        m = len(fw_b)
+        self.dW = np.dot((fw_b - self.y), self.X) / m
+        self.db = np.sum(fw_b - self.y) / m
 
-    def update_parameters(self, dw, db, learning_rate):
-        self.w = self.w - learning_rate * dw
-        self.b = self.b - learning_rate * db
+    def update_parameters(self):
+        self.W = self.W - self.learning_rate * self.dW
+        self.b = self.b - self.learning_rate * self.db
 
-    def train(self, learning_rate=0.01, epochs=1000):
+    def fit(self, X, y, iterations=1000):
+        assert isinstance(X, np.ndarray), "X must be a NumPy array"
+        assert isinstance(y, np.ndarray), "y must be a NumPy array"
+        assert X.shape[0] == y.shape[0], "X and y must have the same number of samples"
+        assert iterations > 0, "Iterations must be greater than 0"
         costs = []
-        for i in range(epochs):
-            fw_b = self.forward_pass()
+
+        self.X = X
+        self.y = y
+        self.initialize_parameters(X.shape[1])
+
+        for i in range(iterations):
+            fw_b = self.forward(X)
             cost = self.cost_function(fw_b)
-            dw, db = self.backward_pass(fw_b)
-            self.update_parameters(dw, db, learning_rate)
+            self.backward(fw_b)
+            self.update_parameters()
             costs.append(cost)
             if i % 100 == 0:
                 print(f"Cost after iteration {i}: {cost}")
-        return costs
+            if i > 0 and abs(costs[-1] - costs[-2]) < self.convergence_tol:
+                print(f"Converged after {i} iterations.")
+                break
+
+        self.plot_cost(costs)
 
     def predict(self, X_val):
-        return np.dot(X_val, self.w) + self.b
+        return np.dot(X_val, self.W) + self.b
 
     def plot_cost(self, costs):
         plt.plot(costs)
@@ -150,7 +173,7 @@ def test_linear_regression():
     X_train, X_val, y_train, y_val = dataset_splitter(X, y, test_size=0.2)
     X_train_norm, y_train_norm = standardize_data(X_train, y_train)
     model = LinearRegression(X_train_norm, y_train_norm)
-    costs = model.train(learning_rate=0.01, epochs=4000)
+    costs = model.fit(learning_rate=0.01, iterations=4000)
     model.plot_cost(costs)
     X_val_norm = (X_val - np.mean(X_train, axis=0)) / np.std(X_train, axis=0)
     y_val_norm = (y_val - np.mean(y_train, axis=0)) / np.std(y_train, axis=0)
